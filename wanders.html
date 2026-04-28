@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>JB Wanders</title>
+
+  <!-- Leaflet map library -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+
+  <style>
+    :root {
+      --bg: #f7f4ee;
+      --text: #1f2933;
+      --muted: #5f6b76;
+      --card: #ffffff;
+      --border: #e2ded6;
+      --accent: #2f6f73;
+      --accent-dark: #214f52;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      padding: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    nav a {
+      margin-left: 1rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    .hero {
+      margin-bottom: 2rem;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 13vw, 5.5rem);
+      line-height: 0.95;
+      margin: 0 0 1rem;
+      letter-spacing: -0.06em;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0;
+    }
+
+    .view-toggle {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin: 2rem 0 1.25rem;
+      background: #ebe6dc;
+      border-radius: 999px;
+      padding: 0.35rem;
+    }
+
+    .view-toggle button {
+      border: 0;
+      border-radius: 999px;
+      padding: 0.85rem 1rem;
+      font: inherit;
+      font-weight: 700;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+    }
+
+    .view-toggle button.active {
+      background: var(--card);
+      color: var(--text);
+      box-shadow: var(--shadow);
+    }
+
+    .view {
+      display: none;
+    }
+
+    .view.active {
+      display: block;
+    }
+
+    .trip-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .trip-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 1.25rem;
+      box-shadow: var(--shadow);
+    }
+
+    .trip-meta {
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.5rem;
+    }
+
+    .trip-card h2 {
+      font-size: 1.6rem;
+      line-height: 1.1;
+      margin: 0 0 0.75rem;
+      letter-spacing: -0.03em;
+    }
+
+    .trip-card p {
+      color: var(--muted);
+      margin: 0 0 1rem;
+    }
+
+    .trip-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .pill {
+      display: inline-block;
+      border: 1px solid var(--border);
+      background: #fbfaf7;
+      border-radius: 999px;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+    }
+
+    #map {
+      height: 70vh;
+      min-height: 430px;
+      width: 100%;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      background: #ddd;
+    }
+
+    .map-note {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin: 0 0 1rem;
+    }
+
+    .popup-title {
+      font-weight: 800;
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .popup-meta {
+      color: #5f6b76;
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .popup-link {
+      display: inline-block;
+      margin-top: 0.4rem;
+      color: #2f6f73;
+      font-weight: 700;
+    }
+
+    footer {
+      padding: 2rem 1.25rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (min-width: 760px) {
+      header {
+        padding: 1.5rem 2rem;
+      }
+
+      main {
+        padding-top: 4rem;
+      }
+
+      .trip-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .trip-card {
+        padding: 1.5rem;
+      }
+
+      .view-toggle {
+        max-width: 420px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a class="logo" href="/">JB WNDRS</a>
+    <nav>
+      <a href="/wanders.html">Wanders</a>
+      <a href="/wonders.html">Wonders</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow">Travel</div>
+      <h1>JB Wanders</h1>
+      <p class="subtitle">
+        Notes from the road, places worth lingering, and stories gathered along the way.
+      </p>
+    </section>
+
+    <section class="view-toggle" aria-label="Choose view">
+      <button id="chronologicalButton" class="active" type="button">
+        Chronological
+      </button>
+      <button id="mapButton" type="button">
+        Map
+      </button>
+    </section>
+
+    <section id="chronologicalView" class="view active">
+      <div id="tripList" class="trip-list"></div>
+    </section>
+
+    <section id="mapView" class="view">
+      <p class="map-note">
+        Tap a marker to open photos, videos, and reflections from that place.
+      </p>
+      <div id="map"></div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 JB WNDRS
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <script>
+    const trips = [
+      {
+        title: "San Pedro de Atacama",
+        location: "Chile",
+        date: "November 2024",
+        description: "Desert skies, salt flats, flamingos, hot springs, and stargazing in the Atacama.",
+        latitude: -22.9087,
+        longitude: -68.1997,
+        reflectionUrl: "/trips/atacama.html",
+        photosUrl: "#",
+        videosUrl: "#"
+      },
+      {
+        title: "Valparaíso",
+        location: "Chile",
+        date: "November 2024",
+        description: "Colorful hillsides, street art, sea air, and wandering through a city built for getting lost.",
+        latitude: -33.0472,
+        longitude: -71.6127,
+        reflectionUrl: "/trips/valparaiso.html",
+        photosUrl: "#",
+        videosUrl: "#"
+      },
+      {
+        title: "Paris",
+        location: "France",
+        date: "November 2025",
+        description: "Gardens, winter markets, long walks, and the quiet pleasure of returning to a city that changes every time.",
+        latitude: 48.8566,
+        longitude: 2.3522,
+        reflectionUrl: "/trips/paris.html",
+        photosUrl: "#",
+        videosUrl: "#"
+      },
+      {
+        title: "Amsterdam",
+        location: "Netherlands",
+        date: "November 2025",
+        description: "Canals, bikes, museums, and a few days of northern European wandering.",
+        latitude: 52.3676,
+        longitude: 4.9041,
+        reflectionUrl: "/trips/amsterdam.html",
+        photosUrl: "#",
+        videosUrl: "#"
+      }
+    ];
+
+    const chronologicalButton = document.getElementById("chronologicalButton");
+    const mapButton = document.getElementById("mapButton");
+    const chronologicalView = document.getElementById("chronologicalView");
+    const mapView = document.getElementById("mapView");
+    const tripList = document.getElementById("tripList");
+
+    let map;
+    let mapInitialized = false;
+
+    function createTripCard(trip) {
+      const card = document.createElement("article");
+      card.className = "trip-card";
+
+      card.innerHTML = `
+        <div class="trip-meta">${trip.date} · ${trip.location}</div>
+        <h2>${trip.title}</h2>
+        <p>${trip.description}</p>
+        <div class="trip-links">
+          <a class="pill" href="${trip.reflectionUrl}">Reflection</a>
+          <a class="pill" href="${trip.photosUrl}">Photos</a>
+          <a class="pill" href="${trip.videosUrl}">Videos</a>
+        </div>
+      `;
+
+      return card;
+    }
+
+    function renderTripList() {
+      tripList.innerHTML = "";
+
+      trips.forEach((trip) => {
+        tripList.appendChild(createTripCard(trip));
+      });
+    }
+
+    function initializeMap() {
+      if (mapInitialized) {
+        setTimeout(() => map.invalidateSize(), 100);
+        return;
+      }
+
+      map = L.map("map").setView([20, 0], 2);
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 18,
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(map);
+
+      trips.forEach((trip) => {
+        const marker = L.marker([trip.latitude, trip.longitude]).addTo(map);
+
+        marker.bindPopup(`
+          <div class="popup-title">${trip.title}</div>
+          <div class="popup-meta">${trip.date} · ${trip.location}</div>
+          <div>${trip.description}</div>
+          <a class="popup-link" href="${trip.reflectionUrl}">Read reflection</a><br>
+          <a class="popup-link" href="${trip.photosUrl}">View photos</a><br>
+          <a class="popup-link" href="${trip.videosUrl}">Watch videos</a>
+        `);
+      });
+
+      const bounds = trips.map((trip) => [trip.latitude, trip.longitude]);
+      map.fitBounds(bounds, {
+        padding: [30, 30]
+      });
+
+      mapInitialized = true;
+    }
+
+    function showChronologicalView() {
+      chronologicalView.classList.add("active");
+      mapView.classList.remove("active");
+
+      chronologicalButton.classList.add("active");
+      mapButton.classList.remove("active");
+    }
+
+    function showMapView() {
+      mapView.classList.add("active");
+      chronologicalView.classList.remove("active");
+
+      mapButton.classList.add("active");
+      chronologicalButton.classList.remove("active");
+
+      initializeMap();
+    }
+
+    chronologicalButton.addEventListener("click", showChronologicalView);
+    mapButton.addEventListener("click", showMapView);
+
+    renderTripList();
+  </script>
+</body>
+</html>

@@ -1,16 +1,243 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JB WNDRS</title>
+
+  <style>
+    :root {
+      --bg: #f7f4ee;
+      --text: #1f2933;
+      --muted: #5f6b76;
+      --card: #ffffff;
+      --border: #e2ded6;
+      --accent: #2f6f73;
+      --accent-dark: #214f52;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      font-size: 1rem;
+    }
+
+    nav {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    nav a {
+      margin-left: 1rem;
+    }
+
+    .hero {
+      padding: 3rem 1.25rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 12vw, 6rem);
+      line-height: 0.95;
+      margin: 0;
+      letter-spacing: -0.06em;
+    }
+
+    .subtitle {
+      margin: 1.25rem auto 0;
+      max-width: 640px;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .sections {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 1.25rem;
+      max-width: 1000px;
+      width: 100%;
+      margin: 0 auto 3rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .card-label {
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .card h2 {
+      font-size: 2rem;
+      line-height: 1;
+      margin: 0 0 1rem;
+      letter-spacing: -0.04em;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin: 0 0 1.5rem;
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 0.8rem 1rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .button:hover {
+      background: var(--accent-dark);
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 2rem 1.25rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (min-width: 720px) {
+      header {
+        padding: 1.5rem 2rem;
+      }
+
+      .hero {
+        padding-top: 5rem;
+      }
+
+      .sections {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        padding: 2rem;
+      }
+
+      .card {
+        padding: 2rem;
+        min-height: 340px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .card h2 {
+        font-size: 2.75rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>JB WNDRS</h1>
-  <p>Travel, reflections, and notes from the road.</p>
+  <div class="page">
+    <header>
+      <a href="/" class="logo">JB WNDRS</a>
+      <nav>
+        <a href="#wanders">Wanders</a>
+        <a href="#wonders">Wonders</a>
+      </nav>
+    </header>
 
-  <h2>About</h2>
-  <p>Welcome. This site is a place for travel writing, personal reflections, and occasional observations about the places I visit.</p>
+    <main>
+      <section class="hero">
+        <div class="eyebrow">Travel & Reflections</div>
+        <h1>JB WNDRS</h1>
+        <p class="subtitle">
+          A home for where I go, what I notice, and what I keep thinking about afterward.
+        </p>
+      </section>
 
-  <h2>Recent Notes</h2>
-  <p>More coming soon.</p>
+      <section class="sections">
+        <a class="card" id="wanders" href="wanders.html">
+          <div>
+            <div class="card-label">Travel</div>
+            <h2>JB Wanders</h2>
+            <p>
+              Notes from the road, travel essays, itineraries, places worth lingering,
+              and observations from near and far.
+            </p>
+          </div>
+          <span class="button">Enter JB Wanders</span>
+        </a>
+
+        <a class="card" id="wonders" href="wonders.html">
+          <div>
+            <div class="card-label">Musings</div>
+            <h2>JB Wonders</h2>
+            <p>
+              Reflections, questions, essays, stray thoughts, and attempts to make sense
+              of the world one curiosity at a time.
+            </p>
+          </div>
+          <span class="button">Enter JB Wonders</span>
+        </a>
+      </section>
+    </main>
+
+    <footer>
+      © 2026 JB WNDRS. Built with GitHub Pages.
+    </footer>
+  </div>
 </body>
 </html>

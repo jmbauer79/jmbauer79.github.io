@@ -3,25 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>JB Wanders</title>
-
-  <!-- Leaflet map library -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  />
 
   <style>
     :root {
-      --bg: #f7f4ee;
-      --text: #1f2933;
-      --muted: #5f6b76;
+      --bg: #f7f3ed;
       --card: #ffffff;
-      --border: #e2ded6;
+      --text: #1f2933;
+      --muted: #6b7280;
       --accent: #2f6f73;
-      --accent-dark: #214f52;
+      --accent-dark: #24575a;
+      --border: #e5e0d8;
       --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --radius: 22px;
     }
 
     * {
@@ -38,397 +32,442 @@
 
     a {
       color: inherit;
-      text-decoration: none;
     }
 
-    header {
+    .site-header {
       padding: 1.25rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 1rem;
+      position: sticky;
+      top: 0;
+      background: rgba(247, 243, 237, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 10;
     }
 
     .logo {
       font-weight: 800;
-      letter-spacing: 0.08em;
+      letter-spacing: -0.03em;
+      font-size: 1.2rem;
+      text-decoration: none;
     }
 
-    nav a {
-      margin-left: 1rem;
-      color: var(--muted);
+    .nav {
+      display: flex;
+      gap: 0.75rem;
       font-size: 0.95rem;
     }
 
-    main {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 2rem 1.25rem 4rem;
+    .nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .nav a.active {
+      color: var(--accent);
     }
 
     .hero {
-      margin-bottom: 2rem;
+      padding: 3rem 1.25rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     .eyebrow {
       color: var(--accent);
-      font-weight: 700;
-      letter-spacing: 0.08em;
       text-transform: uppercase;
-      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      font-size: 0.78rem;
+      font-weight: 800;
       margin-bottom: 0.75rem;
     }
 
     h1 {
-      font-size: clamp(2.6rem, 13vw, 5.5rem);
+      font-size: clamp(2.4rem, 12vw, 5rem);
       line-height: 0.95;
+      letter-spacing: -0.08em;
       margin: 0 0 1rem;
-      letter-spacing: -0.06em;
     }
 
-    .subtitle {
+    .hero p {
       color: var(--muted);
-      font-size: 1.1rem;
-      max-width: 700px;
+      font-size: 1.08rem;
+      max-width: 680px;
       margin: 0;
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.25rem 3rem;
     }
 
     .view-toggle {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 0.75rem;
-      margin: 2rem 0 1.25rem;
-      background: #ebe6dc;
-      border-radius: 999px;
-      padding: 0.35rem;
+      margin: 1rem 0 1.5rem;
     }
 
     .view-toggle button {
-      border: 0;
+      appearance: none;
+      border: 1px solid var(--border);
+      background: #fff;
+      padding: 0.9rem 1rem;
       border-radius: 999px;
-      padding: 0.85rem 1rem;
-      font: inherit;
-      font-weight: 700;
-      background: transparent;
+      font-weight: 800;
       color: var(--muted);
       cursor: pointer;
+      font-size: 0.95rem;
     }
 
     .view-toggle button.active {
-      background: var(--card);
-      color: var(--text);
-      box-shadow: var(--shadow);
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
     }
 
-    .view {
-      display: none;
+    .section-header {
+      margin-bottom: 1rem;
     }
 
-    .view.active {
-      display: block;
+    .section-header h2 {
+      font-size: 1.5rem;
+      margin: 0 0 0.25rem;
+      letter-spacing: -0.03em;
+    }
+
+    .section-header p {
+      margin: 0;
+      color: var(--muted);
     }
 
     .trip-list {
       display: grid;
-      gap: 1rem;
+      gap: 1.25rem;
     }
 
     .trip-card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
       background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 1.25rem;
-      box-shadow: var(--shadow);
-    }
-
-    .trip-meta {
-      color: var(--accent);
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 0.5rem;
-    }
-
-    .trip-card h2 {
-      font-size: 1.6rem;
-      line-height: 1.1;
-      margin: 0 0 0.75rem;
-      letter-spacing: -0.03em;
-    }
-
-    .trip-card p {
-      color: var(--muted);
-      margin: 0 0 1rem;
-    }
-
-    .trip-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .pill {
-      display: inline-block;
-      border: 1px solid var(--border);
-      background: #fbfaf7;
-      border-radius: 999px;
-      padding: 0.5rem 0.75rem;
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--accent-dark);
-    }
-
-    #map {
-      height: 70vh;
-      min-height: 430px;
-      width: 100%;
-      border-radius: 24px;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
+      border-radius: var(--radius);
       overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .trip-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.12);
+    }
+
+    .trip-image {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      display: block;
       background: #ddd;
     }
 
-    .map-note {
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin: 0 0 1rem;
+    .trip-content {
+      padding: 1.25rem;
     }
 
-    .popup-title {
+    .trip-date {
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
       font-weight: 800;
-      font-size: 1rem;
-      margin-bottom: 0.25rem;
+      margin: 0 0 0.45rem;
     }
 
-    .popup-meta {
-      color: #5f6b76;
-      font-size: 0.85rem;
-      margin-bottom: 0.5rem;
+    .trip-content h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.45rem;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
     }
 
-    .popup-link {
+    .trip-content p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .read-more {
+      margin-top: 1rem;
       display: inline-block;
-      margin-top: 0.4rem;
-      color: #2f6f73;
-      font-weight: 700;
+      font-weight: 800;
+      color: var(--accent);
     }
 
-    footer {
+    .map-panel {
+      display: none;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .map-placeholder {
+      min-height: 430px;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(47, 111, 115, 0.22), transparent 18%),
+        radial-gradient(circle at 70% 40%, rgba(47, 111, 115, 0.16), transparent 16%),
+        radial-gradient(circle at 45% 75%, rgba(47, 111, 115, 0.2), transparent 15%),
+        linear-gradient(135deg, #dbe7e2, #f4ede1);
+      position: relative;
+      padding: 1rem;
+    }
+
+    .map-note {
+      position: absolute;
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 18px;
+      padding: 1rem;
+      color: var(--muted);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .pin {
+      position: absolute;
+      width: 34px;
+      height: 34px;
+      border-radius: 50% 50% 50% 0;
+      background: var(--accent);
+      transform: rotate(-45deg);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+      cursor: pointer;
+      border: 3px solid white;
+    }
+
+    .pin span {
+      position: absolute;
+      inset: 0;
+      transform: rotate(45deg);
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 0.78rem;
+      font-weight: 900;
+    }
+
+    .pin.paris {
+      left: 53%;
+      top: 35%;
+    }
+
+    .pin.amsterdam {
+      left: 50%;
+      top: 27%;
+    }
+
+    .pin.brussels {
+      left: 51%;
+      top: 31%;
+    }
+
+    .pin.atacama {
+      left: 38%;
+      top: 70%;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .site-footer {
       padding: 2rem 1.25rem;
       text-align: center;
       color: var(--muted);
       font-size: 0.9rem;
     }
 
-    @media (min-width: 760px) {
-      header {
-        padding: 1.5rem 2rem;
+    @media (min-width: 720px) {
+      .site-header {
+        padding: 1.25rem 2rem;
       }
 
-      main {
-        padding-top: 4rem;
-      }
-
-      .trip-list {
-        grid-template-columns: repeat(2, 1fr);
+      .hero {
+        padding-top: 4.5rem;
       }
 
       .trip-card {
-        padding: 1.5rem;
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        min-height: 220px;
       }
 
-      .view-toggle {
-        max-width: 420px;
+      .trip-image {
+        height: 100%;
+      }
+
+      .trip-content {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <a class="logo" href="/">JB WNDRS</a>
-    <nav>
-      <a href="/wanders.html">Wanders</a>
-      <a href="/wonders.html">Wonders</a>
+  <header class="site-header">
+    <a href="index.html" class="logo">JB</a>
+
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="wanders.html" class="active">Wanders</a>
+      <a href="wonders.html">Wonders</a>
     </nav>
   </header>
 
   <main>
     <section class="hero">
-      <div class="eyebrow">Travel</div>
-      <h1>JB Wanders</h1>
-      <p class="subtitle">
-        Notes from the road, places worth lingering, and stories gathered along the way.
+      <div class="eyebrow">JB Wanders</div>
+      <h1>Places, paths, and passing thoughts.</h1>
+      <p>
+        A travel journal organized by time and place — part photo album, part field notes,
+        part reflection on the beauty and strangeness of wandering.
       </p>
     </section>
 
-    <section class="view-toggle" aria-label="Choose view">
-      <button id="chronologicalButton" class="active" type="button">
-        Chronological
-      </button>
-      <button id="mapButton" type="button">
-        Map
-      </button>
-    </section>
+    <section class="page">
+      <div class="view-toggle" aria-label="Choose view">
+        <button id="chronologicalBtn" class="active" type="button">Chronological</button>
+        <button id="mapBtn" type="button">Map View</button>
+      </div>
 
-    <section id="chronologicalView" class="view active">
-      <div id="tripList" class="trip-list"></div>
-    </section>
+      <section id="chronologicalView">
+        <div class="section-header">
+          <h2>Chronological</h2>
+          <p>Newest travels and articles first.</p>
+        </div>
 
-    <section id="mapView" class="view">
-      <p class="map-note">
-        Tap a marker to open photos, videos, and reflections from that place.
-      </p>
-      <div id="map"></div>
+        <div id="tripList" class="trip-list"></div>
+      </section>
+
+      <section id="mapView" class="map-panel">
+        <div class="map-placeholder">
+          <a class="pin paris" href="wanders/paris.html" aria-label="Paris">
+            <span>P</span>
+          </a>
+
+          <a class="pin amsterdam" href="wanders/amsterdam.html" aria-label="Amsterdam">
+            <span>A</span>
+          </a>
+
+          <a class="pin brussels" href="wanders/brussels.html" aria-label="Brussels">
+            <span>B</span>
+          </a>
+
+          <a class="pin atacama" href="wanders/san-pedro-de-atacama.html" aria-label="San Pedro de Atacama">
+            <span>S</span>
+          </a>
+
+          <div class="map-note">
+            <strong>Map view placeholder.</strong>
+            Later, this can become a real interactive map with clickable flags or pins.
+            For now, each marker can link to its own travel article.
+          </div>
+        </div>
+      </section>
     </section>
   </main>
 
-  <footer>
-    © 2026 JB WNDRS
+  <footer class="site-footer">
+    <p>© 2026 JB Wanders</p>
   </footer>
-
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
   <script>
     const trips = [
       {
-        title: "San Pedro de Atacama",
-        location: "Chile",
-        date: "November 2024",
-        description: "Desert skies, salt flats, flamingos, hot springs, and stargazing in the Atacama.",
-        latitude: -22.9087,
-        longitude: -68.1997,
-        reflectionUrl: "/trips/atacama.html",
-        photosUrl: "#",
-        videosUrl: "#"
-      },
-      {
-        title: "Valparaíso",
-        location: "Chile",
-        date: "November 2024",
-        description: "Colorful hillsides, street art, sea air, and wandering through a city built for getting lost.",
-        latitude: -33.0472,
-        longitude: -71.6127,
-        reflectionUrl: "/trips/valparaiso.html",
-        photosUrl: "#",
-        videosUrl: "#"
-      },
-      {
         title: "Paris",
-        location: "France",
-        date: "November 2025",
-        description: "Gardens, winter markets, long walks, and the quiet pleasure of returning to a city that changes every time.",
-        latitude: 48.8566,
-        longitude: 2.3522,
-        reflectionUrl: "/trips/paris.html",
-        photosUrl: "#",
-        videosUrl: "#"
+        date: "2025-11-25",
+        displayDate: "November 2025",
+        description: "Reflections, photos, and small moments from Paris.",
+        image: "images/paris.jpg",
+        url: "wanders/paris.html"
       },
       {
         title: "Amsterdam",
-        location: "Netherlands",
-        date: "November 2025",
-        description: "Canals, bikes, museums, and a few days of northern European wandering.",
-        latitude: 52.3676,
-        longitude: 4.9041,
-        reflectionUrl: "/trips/amsterdam.html",
-        photosUrl: "#",
-        videosUrl: "#"
+        date: "2025-11-22",
+        displayDate: "November 2025",
+        description: "Canals, winter light, museums, and wandering.",
+        image: "images/amsterdam.jpg",
+        url: "wanders/amsterdam.html"
+      },
+      {
+        title: "Brussels",
+        date: "2025-11-19",
+        displayDate: "November 2025",
+        description: "A few days in Brussels at the start and end of the trip.",
+        image: "images/brussels.jpg",
+        url: "wanders/brussels.html"
+      },
+      {
+        title: "San Pedro de Atacama",
+        date: "2024-11-18",
+        displayDate: "November 2024",
+        description: "Desert landscapes, flamingos, hot springs, and stargazing.",
+        image: "images/atacama.jpg",
+        url: "wanders/san-pedro-de-atacama.html"
       }
     ];
 
-    const chronologicalButton = document.getElementById("chronologicalButton");
-    const mapButton = document.getElementById("mapButton");
-    const chronologicalView = document.getElementById("chronologicalView");
-    const mapView = document.getElementById("mapView");
     const tripList = document.getElementById("tripList");
 
-    let map;
-    let mapInitialized = false;
+    trips
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .forEach(trip => {
+        const card = document.createElement("a");
+        card.className = "trip-card";
+        card.href = trip.url;
+        card.setAttribute("aria-label", `Read more about ${trip.title}`);
 
-    function createTripCard(trip) {
-      const card = document.createElement("article");
-      card.className = "trip-card";
+        card.innerHTML = `
+          <img src="${trip.image}" alt="${trip.title}" class="trip-image">
+          <div class="trip-content">
+            <p class="trip-date">${trip.displayDate}</p>
+            <h3>${trip.title}</h3>
+            <p>${trip.description}</p>
+            <span class="read-more">Read the article →</span>
+          </div>
+        `;
 
-      card.innerHTML = `
-        <div class="trip-meta">${trip.date} · ${trip.location}</div>
-        <h2>${trip.title}</h2>
-        <p>${trip.description}</p>
-        <div class="trip-links">
-          <a class="pill" href="${trip.reflectionUrl}">Reflection</a>
-          <a class="pill" href="${trip.photosUrl}">Photos</a>
-          <a class="pill" href="${trip.videosUrl}">Videos</a>
-        </div>
-      `;
-
-      return card;
-    }
-
-    function renderTripList() {
-      tripList.innerHTML = "";
-
-      trips.forEach((trip) => {
-        tripList.appendChild(createTripCard(trip));
-      });
-    }
-
-    function initializeMap() {
-      if (mapInitialized) {
-        setTimeout(() => map.invalidateSize(), 100);
-        return;
-      }
-
-      map = L.map("map").setView([20, 0], 2);
-
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 18,
-        attribution: '&copy; OpenStreetMap contributors'
-      }).addTo(map);
-
-      trips.forEach((trip) => {
-        const marker = L.marker([trip.latitude, trip.longitude]).addTo(map);
-
-        marker.bindPopup(`
-          <div class="popup-title">${trip.title}</div>
-          <div class="popup-meta">${trip.date} · ${trip.location}</div>
-          <div>${trip.description}</div>
-          <a class="popup-link" href="${trip.reflectionUrl}">Read reflection</a><br>
-          <a class="popup-link" href="${trip.photosUrl}">View photos</a><br>
-          <a class="popup-link" href="${trip.videosUrl}">Watch videos</a>
-        `);
+        tripList.appendChild(card);
       });
 
-      const bounds = trips.map((trip) => [trip.latitude, trip.longitude]);
-      map.fitBounds(bounds, {
-        padding: [30, 30]
-      });
+    const chronologicalBtn = document.getElementById("chronologicalBtn");
+    const mapBtn = document.getElementById("mapBtn");
+    const chronologicalView = document.getElementById("chronologicalView");
+    const mapView = document.getElementById("mapView");
 
-      mapInitialized = true;
-    }
+    chronologicalBtn.addEventListener("click", () => {
+      chronologicalBtn.classList.add("active");
+      mapBtn.classList.remove("active");
 
-    function showChronologicalView() {
-      chronologicalView.classList.add("active");
-      mapView.classList.remove("active");
+      chronologicalView.classList.remove("hidden");
+      mapView.style.display = "none";
+    });
 
-      chronologicalButton.classList.add("active");
-      mapButton.classList.remove("active");
-    }
+    mapBtn.addEventListener("click", () => {
+      mapBtn.classList.add("active");
+      chronologicalBtn.classList.remove("active");
 
-    function showMapView() {
-      mapView.classList.add("active");
-      chronologicalView.classList.remove("active");
-
-      mapButton.classList.add("active");
-      chronologicalButton.classList.remove("active");
-
-      initializeMap();
-    }
-
-    chronologicalButton.addEventListener("click", showChronologicalView);
-    mapButton.addEventListener("click", showMapView);
-
-    renderTripList();
+      chronologicalView.classList.add("hidden");
+      mapView.style.display = "block";
+    });
   </script>
 </body>
 </html>

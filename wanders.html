@@ -167,12 +167,40 @@
       box-shadow: 0 14px 36px rgba(0, 0, 0, 0.12);
     }
 
-    .trip-image {
+    .trip-image-wrap {
       width: 100%;
       height: 230px;
+      background:
+        radial-gradient(circle at 25% 25%, rgba(47, 111, 115, 0.25), transparent 22%),
+        radial-gradient(circle at 75% 35%, rgba(47, 111, 115, 0.16), transparent 20%),
+        linear-gradient(135deg, #dbe7e2, #f4ede1);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .trip-image {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       display: block;
-      background: #ddd;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .trip-image.loaded {
+      opacity: 1;
+    }
+
+    .fallback-label {
+      position: absolute;
+      color: var(--accent-dark);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      opacity: 0.75;
+      pointer-events: none;
     }
 
     .trip-content {
@@ -307,7 +335,7 @@
         min-height: 220px;
       }
 
-      .trip-image {
+      .trip-image-wrap {
         height: 100%;
       }
 
@@ -396,7 +424,6 @@
         date: "2025-11-25",
         displayDate: "November 2025",
         description: "Reflections, photos, and small moments from Paris.",
-        image: "images/paris.jpg",
         url: "wanders/paris.html"
       },
       {
@@ -404,7 +431,6 @@
         date: "2025-11-22",
         displayDate: "November 2025",
         description: "Canals, winter light, museums, and wandering.",
-        image: "images/amsterdam.jpg",
         url: "wanders/amsterdam.html"
       },
       {
@@ -412,7 +438,6 @@
         date: "2025-11-19",
         displayDate: "November 2025",
         description: "A few days in Brussels at the start and end of the trip.",
-        image: "images/brussels.jpg",
         url: "wanders/brussels.html"
       },
       {
@@ -420,12 +445,76 @@
         date: "2024-11-18",
         displayDate: "November 2024",
         description: "Desert landscapes, flamingos, hot springs, and stargazing.",
-        image: "images/atacama.jpg",
         url: "wanders/san-pedro-de-atacama.html"
       }
     ];
 
     const tripList = document.getElementById("tripList");
+
+    function resolveUrl(path, baseUrl) {
+      try {
+        return new URL(path, baseUrl).href;
+      } catch {
+        return path;
+      }
+    }
+
+    function showFallback(image, label) {
+      image.removeAttribute("src");
+      image.alt = "";
+      image.classList.remove("loaded");
+      label.style.display = "block";
+    }
+
+    async function findFirstArticleImage(articleUrl) {
+      try {
+        const response = await fetch(articleUrl);
+
+        if (!response.ok) {
+          return null;
+        }
+
+        const html = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, "text/html");
+
+        const firstImage = doc.querySelector("img");
+
+        if (!firstImage) {
+          return null;
+        }
+
+        const imageSrc = firstImage.getAttribute("src");
+
+        if (!imageSrc) {
+          return null;
+        }
+
+        return resolveUrl(imageSrc, articleUrl);
+      } catch {
+        return null;
+      }
+    }
+
+    async function loadCardImage(image, label, articleUrl) {
+      const articleImage = await findFirstArticleImage(articleUrl);
+
+      if (!articleImage) {
+        showFallback(image, label);
+        return;
+      }
+
+      image.onload = () => {
+        image.classList.add("loaded");
+        label.style.display = "none";
+      };
+
+      image.onerror = () => {
+        showFallback(image, label);
+      };
+
+      image.src = articleImage;
+    }
 
     trips
       .sort((a, b) => new Date(b.date) - new Date(a.date))
@@ -436,7 +525,11 @@
         card.setAttribute("aria-label", `Read more about ${trip.title}`);
 
         card.innerHTML = `
-          <img src="${trip.image}" alt="${trip.title}" class="trip-image">
+          <div class="trip-image-wrap">
+            <span class="fallback-label">JB Wanders</span>
+            <img alt="${trip.title}" class="trip-image">
+          </div>
+
           <div class="trip-content">
             <p class="trip-date">${trip.displayDate}</p>
             <h3>${trip.title}</h3>
@@ -446,6 +539,11 @@
         `;
 
         tripList.appendChild(card);
+
+        const image = card.querySelector(".trip-image");
+        const label = card.querySelector(".fallback-label");
+
+        loadCardImage(image, label, trip.url);
       });
 
     const chronologicalBtn = document.getElementById("chronologicalBtn");

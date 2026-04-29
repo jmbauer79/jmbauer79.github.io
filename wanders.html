@@ -190,7 +190,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 75%;
+      object-position: center center;
       display: block;
       opacity: 0;
       transition: opacity 0.25s ease;
@@ -397,7 +397,8 @@
         url: "wanders/jacumba-wilderness.html",
         lat: 32.655,
         lng: -116.165,
-        pinned: true
+        pinned: true,
+        imagePosition: "center 85%"
       },
       {
         title: "Paris",
@@ -536,6 +537,11 @@
         tripList.appendChild(card);
 
         const image = card.querySelector(".trip-image");
+
+        if (trip.imagePosition) {
+          image.style.objectPosition = trip.imagePosition;
+        }
+
         loadCardImage(image, trip.url);
       });
 

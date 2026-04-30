@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>San Pedro de Atacama | JB Wanders</title>
+
+  <style>
+    :root {
+      --bg: #f7f3ed;
+      --paper: #ffffff;
+      --text: #1f2933;
+      --muted: #6b7280;
+      --accent: #2f6f73;
+      --border: #e5e0d8;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .site-header {
+      padding: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      position: sticky;
+      top: 0;
+      background: rgba(247, 243, 237, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 10;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      font-size: 1.2rem;
+      text-decoration: none;
+    }
+
+    .nav {
+      display: flex;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .nav a.active {
+      color: var(--accent);
+    }
+
+    .article-shell {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+
+    .article-card {
+      background: var(--paper);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .article-header {
+      padding: 2rem 1.25rem 1rem;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.78rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-size: clamp(2.25rem, 11vw, 4.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.08em;
+      margin: 0 0 1rem;
+    }
+
+    .dek {
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    .article-meta {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: 1rem;
+    }
+
+    .article-body {
+      padding: 0 1.25rem 2rem;
+    }
+
+    .article-body p {
+      margin: 1.25rem 0;
+      font-size: 1.05rem;
+    }
+
+    figure {
+      margin: 2rem 0;
+    }
+
+    figure img {
+      width: 100%;
+      display: block;
+      border-radius: 18px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+    }
+
+    figcaption {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.5;
+      margin-top: 0.75rem;
+      text-align: center;
+    }
+
+    .pull-quote {
+      margin: 2rem 0;
+      padding: 1.25rem;
+      border-left: 5px solid var(--accent);
+      background: #f4faf8;
+      border-radius: 16px;
+      color: var(--accent);
+      font-weight: 750;
+      font-size: 1.15rem;
+      line-height: 1.5;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1.5rem;
+      color: var(--accent);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .site-footer {
+      padding: 2rem 1.25rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (min-width: 720px) {
+      .site-header {
+        padding: 1.25rem 2rem;
+      }
+
+      .article-header {
+        padding: 3rem 3rem 1rem;
+      }
+
+      .article-body {
+        padding: 0 3rem 3rem;
+      }
+
+      .article-body p {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <a href="../index.html" class="logo">JB</a>
+
+    <nav class="nav" aria-label="Main navigation">
+      <a href="../index.html">Home</a>
+      <a href="../wanders.html" class="active">Wanders</a>
+      <a href="../wonders.html">Wonders</a>
+    </nav>
+  </header>
+
+  <main class="article-shell">
+    <article class="article-card">
+      <header class="article-header">
+        <div class="eyebrow">JB Wanders</div>
+        <h1>San Pedro de Atacama</h1>
+        <p class="dek">
+          Desert light, salt lagoons, impossible colors, wide skies, and the strange magic of floating
+          effortlessly in the Atacama.
+        </p>
+        <div class="article-meta">November 2024 · San Pedro de Atacama, Chile</div>
+      </header>
+
+      <div class="article-body">
+        <p>
+          San Pedro de Atacama felt like a place made out of contrasts: dry earth and bright water, silence
+          and wind, empty horizons and landscapes so vivid they almost seemed unreal. The desert was vast,
+          but never blank. Everywhere we went, there was texture — salt, rock, sky, heat, color, and space.
+        </p>
+
+        <p>
+          One of the most memorable experiences was floating in the salty desert water. The buoyancy was
+          immediate and almost comical, as if the rules of the body had changed. Instead of swimming, I simply
+          leaned back and let the water hold me.
+        </p>
+
+        <figure>
+          <img src="../images/floating_in_desert.jpeg" alt="Feet floating in a salty emerald-blue lagoon in the Atacama Desert with blue sky and desert landscape in the background" />
+          <figcaption>
+            Floating on my back in one of the salty lagoons near San Pedro de Atacama — emerald-blue water, open sky, and desert all around.
+          </figcaption>
+        </figure>
+
+        <p>
+          The water was a beautiful shade of emerald blue, made even more striking by the surrounding desert.
+          It was one of those travel moments that felt both playful and surreal: my feet in the foreground,
+          the salt-rich lagoon holding me up, the sky above, and the dry Atacama landscape stretching out
+          beyond the water.
+        </p>
+
+        <div class="pull-quote">
+          The Atacama made the impossible feel casual: floating in blue desert water beneath a sky that seemed to go on forever.
+        </div>
+
+        <p>
+          What made the scene so memorable was the combination of opposites. Water in the desert. Weightlessness
+          in a place defined by hard ground. Brilliant color in a landscape that could otherwise seem spare
+          and lunar. The whole experience felt like stepping briefly into another planet.
+        </p>
+
+        <p>
+          San Pedro itself became the base for a wider encounter with the desert: salt flats, lagoons, flamingos,
+          volcanic landscapes, night skies, and roads that seemed to run straight into the horizon. It was the
+          kind of place where each outing felt distinct, but together they formed one larger impression of awe.
+        </p>
+
+        <p>
+          This is placeholder text for now, but eventually this page can become a fuller reflection on the
+          San Pedro de Atacama portion of the trip: favorite landscapes, lagoon visits, flamingo sightings,
+          stargazing, desert drives, meals in town, and the moments when the desert felt most otherworldly.
+        </p>
+
+        <a href="../wanders.html" class="back-link">← Back to JB Wanders</a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 JB Wanders</p>
+  </footer>
+</body>
+</html>

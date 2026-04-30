@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patagonia | JB Wanders</title>
+
+  <style>
+    :root {
+      --bg: #f7f3ed;
+      --card: #ffffff;
+      --text: #1f2933;
+      --muted: #6b7280;
+      --accent: #2f6f73;
+      --accent-dark: #24575a;
+      --border: #e5e0d8;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .site-header {
+      padding: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      position: sticky;
+      top: 0;
+      background: rgba(247, 243, 237, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      font-size: 1.2rem;
+      text-decoration: none;
+    }
+
+    .nav {
+      display: flex;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .nav a.active {
+      color: var(--accent);
+    }
+
+    .article {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 2rem;
+      color: var(--accent);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.78rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 12vw, 5rem);
+      line-height: 0.95;
+      letter-spacing: -0.08em;
+      margin: 0 0 1rem;
+    }
+
+    .dek {
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin: 0 0 2rem;
+      max-width: 680px;
+    }
+
+    .hero-image {
+      margin: 2rem 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #dbe7e2;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-image img {
+      width: 100%;
+      display: block;
+    }
+
+    figcaption {
+      padding: 0.85rem 1rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      background: var(--card);
+    }
+
+    .story-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.4rem;
+      margin-top: 2rem;
+    }
+
+    .story-card p {
+      margin: 0 0 1.1rem;
+    }
+
+    .story-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .placeholder-note {
+      margin-top: 2rem;
+      padding: 1rem;
+      border: 1px dashed var(--border);
+      border-radius: 16px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.55);
+      font-size: 0.95rem;
+    }
+
+    .site-footer {
+      padding: 2rem 1.25rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (min-width: 720px) {
+      .site-header {
+        padding: 1.25rem 2rem;
+      }
+
+      .article {
+        padding-top: 4rem;
+      }
+
+      .story-card {
+        padding: 1.75rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <a href="../index.html" class="logo">JB</a>
+
+    <nav class="nav" aria-label="Main navigation">
+      <a href="../index.html">Home</a>
+      <a href="../wanders.html" class="active">Wanders</a>
+      <a href="../wonders.html">Wonders</a>
+    </nav>
+  </header>
+
+  <main>
+    <article class="article">
+      <a class="back-link" href="../wanders.html">← Back to Wanders</a>
+
+      <div class="eyebrow">November 2024</div>
+      <h1>Patagonia</h1>
+
+      <p class="dek">
+        Glaciers, mountain light, windswept trails, and the vast southern edge of the world.
+      </p>
+
+      <figure class="hero-image">
+        <img src="../images/torres_selfie.jpeg" alt="Selfie in front of the Torres del Paine mountains in Patagonia" />
+        <figcaption>
+          A moment beneath the towers — Patagonia doing what Patagonia does.
+        </figcaption>
+      </figure>
+
+      <section class="story-card">
+        <p>
+          Patagonia felt like a place built out of extremes: sharp peaks, huge skies,
+          impossible blues, and wind that seemed to have its own personality.
+        </p>
+
+        <p>
+          After the surreal stillness of the Atacama Desert, the south felt wilder and more kinetic —
+          all movement, weather, water, and stone. The landscape had a way of making everything else
+          feel small in the best possible sense.
+        </p>
+
+        <p>
+          This page is a placeholder for a fuller reflection on the trip: the trails, the views,
+          the photos, the cold air, and the strange joy of standing somewhere that feels both
+          remote and unforgettable.
+        </p>
+      </section>
+
+      <div class="placeholder-note">
+        Placeholder note: replace or expand this text later with your own journal entry, additional photos,
+        captions, or reflections from the Patagonia portion of the trip.
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 JB Wanders</p>
+  </footer>
+</body>
+</html>

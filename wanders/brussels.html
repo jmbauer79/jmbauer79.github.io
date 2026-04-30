@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Delirium Village | JB Wanders</title>
+
+  <style>
+    :root {
+      --bg: #f7f3ed;
+      --paper: #ffffff;
+      --text: #1f2933;
+      --muted: #6b7280;
+      --accent: #2f6f73;
+      --border: #e5e0d8;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .site-header {
+      padding: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      position: sticky;
+      top: 0;
+      background: rgba(247, 243, 237, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 10;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      font-size: 1.2rem;
+      text-decoration: none;
+    }
+
+    .nav {
+      display: flex;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .nav a.active {
+      color: var(--accent);
+    }
+
+    .article-shell {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+
+    .article-card {
+      background: var(--paper);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .article-header {
+      padding: 2rem 1.25rem 1rem;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.78rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-size: clamp(2.25rem, 11vw, 4.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.08em;
+      margin: 0 0 1rem;
+    }
+
+    .dek {
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    .article-meta {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: 1rem;
+    }
+
+    .article-body {
+      padding: 0 1.25rem 2rem;
+    }
+
+    .article-body p {
+      margin: 1.25rem 0;
+      font-size: 1.05rem;
+    }
+
+    figure {
+      margin: 2rem 0;
+    }
+
+    figure img {
+      width: 100%;
+      display: block;
+      border-radius: 18px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+    }
+
+    figcaption {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.5;
+      margin-top: 0.75rem;
+      text-align: center;
+    }
+
+    .pull-quote {
+      margin: 2rem 0;
+      padding: 1.25rem;
+      border-left: 5px solid var(--accent);
+      background: #f4faf8;
+      border-radius: 16px;
+      color: var(--accent);
+      font-weight: 750;
+      font-size: 1.15rem;
+      line-height: 1.5;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1.5rem;
+      color: var(--accent);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .site-footer {
+      padding: 2rem 1.25rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (min-width: 720px) {
+      .site-header {
+        padding: 1.25rem 2rem;
+      }
+
+      .article-header {
+        padding: 3rem 3rem 1rem;
+      }
+
+      .article-body {
+        padding: 0 3rem 3rem;
+      }
+
+      .article-body p {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <a href="../index.html" class="logo">JB</a>
+
+    <nav class="nav" aria-label="Main navigation">
+      <a href="../index.html">Home</a>
+      <a href="../wanders.html" class="active">Wanders</a>
+      <a href="../wonders.html">Wonders</a>
+    </nav>
+  </header>
+
+  <main class="article-shell">
+    <article class="article-card">
+      <header class="article-header">
+        <div class="eyebrow">JB Wanders</div>
+        <h1>Delirium Village</h1>
+        <p class="dek">
+          A night in Brussels with Jase, tucked into the glow and bustle of Delirium Village,
+          tasting rich Belgian beers in one of the city’s most famous beer destinations.
+        </p>
+        <div class="article-meta">November 2025 · Brussels, Belgium</div>
+      </header>
+
+      <div class="article-body">
+        <p>
+          Some places announce themselves before you even walk inside. Delirium Village is one of those
+          places — bright, busy, slightly chaotic, and full of the feeling that everyone has come looking
+          for a good story, a good beer, or both.
+        </p>
+
+        <p>
+          Jase and I went at night, which felt exactly right. The lights, signs, narrow streets, and hum of
+          people gave the whole place a festive energy. It was touristy, certainly, but in the best possible
+          way: lively, memorable, and completely committed to its own sense of fun.
+        </p>
+
+        <figure>
+          <img src="../images/delirium_village.jpeg" alt="Delirium Village in Brussels at night with glowing signs and lively streets" />
+          <figcaption>
+            Delirium Village at night — glowing signs, narrow streets, and the perfect setting for rich Belgian beers with Jase.
+          </figcaption>
+        </figure>
+
+        <p>
+          Belgian beer has a way of making an evening feel substantial. These are not casual, forgettable
+          beers. They are rich, layered, sometimes surprisingly strong, and often served with a sense of
+          ritual. At Delirium, the sheer variety becomes part of the experience.
+        </p>
+
+        <div class="pull-quote">
+          Delirium Village felt like Brussels turning the volume up: bright, lively, indulgent, and impossible not to enjoy.
+        </div>
+
+        <p>
+          What made the night memorable was not just the beer, though that certainly helped. It was the
+          combination of place and company — being in Brussels with Jase, surrounded by travelers and locals,
+          trying something deeply tied to Belgian culture, and letting the evening unfold without needing it
+          to be too polished or planned.
+        </p>
+
+        <p>
+          Travel often becomes vivid in these little nighttime scenes: a glowing street, a shared table,
+          a drink you would not normally order at home, and the pleasure of realizing that the day has turned
+          into exactly the kind of memory you hoped the trip would create.
+        </p>
+
+        <p>
+          This is placeholder text for now, but eventually this page can become a fuller reflection on our
+          Brussels stop: favorite beers, first impressions of the city, places we wandered, meals we loved,
+          and how Delirium Village fit into the rhythm of the trip.
+        </p>
+
+        <a href="../wanders.html" class="back-link">← Back to JB Wanders</a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 JB Wanders</p>
+  </footer>
+</body>
+</html>

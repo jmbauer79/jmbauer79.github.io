@@ -70,13 +70,12 @@
     .feature-tile {
       display: block;
       position: relative;
-      min-height: 280px;
+      min-height: 360px;
       border-radius: 24px;
       overflow: hidden;
       text-decoration: none;
       color: inherit;
-      background:
-        linear-gradient(135deg, rgba(63,95,75,0.85), rgba(35,35,35,0.95));
+      background: #111;
       border: 1px solid var(--border);
       box-shadow: 0 10px 30px rgba(0,0,0,0.08);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -87,19 +86,40 @@
       box-shadow: 0 14px 34px rgba(0,0,0,0.12);
     }
 
-    .tile-image {
+    .tile-media {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      display: block;
-      opacity: 0;
-      transition: opacity 0.35s ease;
+      overflow: hidden;
+      background: #111;
     }
 
-    .tile-image.loaded {
-      opacity: 1;
+    .tile-media iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      pointer-events: none;
+    }
+
+    .tile-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .video-crop {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      max-width: 430px;
+      aspect-ratio: 9 / 16;
+      transform: translate(-50%, -50%);
+      overflow: hidden;
+      border-radius: 0;
     }
 
     .tile-overlay {
@@ -112,10 +132,11 @@
       color: #fff;
       background: linear-gradient(
         to top,
-        rgba(0,0,0,0.72),
-        rgba(0,0,0,0.22),
-        rgba(0,0,0,0.04)
+        rgba(0,0,0,0.76),
+        rgba(0,0,0,0.28),
+        rgba(0,0,0,0.08)
       );
+      z-index: 2;
     }
 
     .tile-label {
@@ -206,7 +227,7 @@
       }
 
       .feature-tile {
-        min-height: 360px;
+        min-height: 420px;
       }
 
       .tile-overlay {
@@ -231,12 +252,18 @@
 
   <main>
     <section class="featured" aria-label="Featured reflections">
+
       <a class="feature-tile" href="sights-and-sounds.html">
-        <img
-          id="sights-sounds-thumbnail"
-          class="tile-image"
-          alt="Preview image from the latest Sights & Sounds entry"
-        >
+        <div class="tile-media">
+          <div class="video-crop">
+            <iframe
+              src="https://player.vimeo.com/video/1188333418?muted=1&autoplay=0&background=0&controls=0&playsinline=1"
+              title="Bird Reflection"
+              allow="fullscreen; picture-in-picture"
+              tabindex="-1">
+            </iframe>
+          </div>
+        </div>
 
         <div class="tile-overlay">
           <p class="tile-label">Ongoing Log</p>
@@ -246,6 +273,7 @@
           </p>
         </div>
       </a>
+
     </section>
 
     <section class="essay-grid" aria-label="Essays and reflections">
@@ -270,58 +298,5 @@
   <footer>
     <p>JB Wonders</p>
   </footer>
-
-  <script>
-    const thumbnailImg = document.getElementById("sights-sounds-thumbnail");
-
-    async function loadSightsAndSoundsPreview() {
-      try {
-        const response = await fetch("sights-and-sounds.html");
-        const htmlText = await response.text();
-
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(htmlText, "text/html");
-
-        const topItem = doc.querySelector(".sound-card");
-
-        if (!topItem) {
-          return;
-        }
-
-        const previewType = topItem.getAttribute("data-preview-type");
-        const previewSrc = topItem.getAttribute("data-preview-src");
-
-        if (!previewType || !previewSrc) {
-          return;
-        }
-
-        if (previewType === "image") {
-          thumbnailImg.src = previewSrc;
-          thumbnailImg.onload = () => {
-            thumbnailImg.classList.add("loaded");
-          };
-        }
-
-        if (previewType === "vimeo") {
-          const vimeoResponse = await fetch(
-            `https://vimeo.com/api/oembed.json?url=${encodeURIComponent(previewSrc)}`
-          );
-
-          const vimeoData = await vimeoResponse.json();
-
-          if (vimeoData.thumbnail_url) {
-            thumbnailImg.src = vimeoData.thumbnail_url;
-            thumbnailImg.onload = () => {
-              thumbnailImg.classList.add("loaded");
-            };
-          }
-        }
-      } catch (error) {
-        console.log("Sights & Sounds preview could not be loaded:", error);
-      }
-    }
-
-    loadSightsAndSoundsPreview();
-  </script>
 </body>
 </html>

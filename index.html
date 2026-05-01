@@ -227,4 +227,286 @@
       opacity: 0.4;
     }
 
-    /* ── SECTION:​​​​​​​​​​​​​​​​
+    /* ── SECTION: CARDS ── */
+    .cards-section {
+      background: var(--cream);
+      padding: 6rem 3rem;
+      position: relative;
+    }
+
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--clay);
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .card {
+      position: relative;
+      border: 1px solid rgba(139, 94, 60, 0.2);
+      overflow: hidden;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      background: var(--parchment);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(59, 47, 30, 0.18);
+    }
+
+    .card-illustration {
+      width: 100%;
+      height: 220px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-wanders .card-illustration {
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 80%, rgba(59,47,30,0.6) 0%, transparent 70%),
+        linear-gradient(170deg,
+          #6b8fa8 0%,
+          #8faabc 20%,
+          #c9a87c 42%,
+          #b07a48 58%,
+          #8b5e3c 72%,
+          #5a3a1e 100%
+        );
+    }
+
+    .card-wonders .card-illustration {
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 80%, rgba(28,23,18,0.5) 0%, transparent 70%),
+        linear-gradient(170deg,
+          #2c3340 0%,
+          #3d4f5a 18%,
+          #4a6858 34%,
+          #5a7a5a 50%,
+          #6a8f68 65%,
+          #4a5a3a 80%,
+          #2c3a28 100%
+        );
+    }
+
+    .card-mountains {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+    }
+
+    .card-body {
+      padding: 2rem 2rem 2.25rem;
+    }
+
+    .card-kicker {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--clay);
+      margin-bottom: 0.6rem;
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 700;
+      font-size: 1.9rem;
+      line-height: 1.15;
+      color: var(--bark);
+      margin-bottom: 0.9rem;
+    }
+
+    .card-desc {
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: rgba(28, 23, 18, 0.72);
+      margin-bottom: 1.5rem;
+    }
+
+    .card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      transition: gap 0.2s ease;
+    }
+    .card:hover .card-cta { gap: 0.85rem; }
+    .card-cta::after {
+      content: '→';
+      font-size: 1rem;
+    }
+
+    .card-corner {
+      position: absolute;
+      top: 0; right: 0;
+      width: 48px; height: 48px;
+      border-left: 1px solid rgba(139,94,60,0.25);
+      border-bottom: 1px solid rgba(139,94,60,0.25);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bark);
+      padding: 2.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--sand);
+    }
+    .footer-copy {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: rgba(201, 168, 124, 0.55);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      nav { padding: 1rem 1.5rem; }
+      .hero { padding: 0 1.5rem 4rem; }
+      .cards-section { padding: 4rem 1.5rem; }
+      .cards-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+      footer { flex-direction: column; gap: 0.75rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="/" class="nav-logo">JB WNDRS</a>
+    <ul class="nav-links">
+      <li><a href="https://jbwndrs.com/wanders.html">Wanders</a></li>
+      <li><a href="https://jbwndrs.com/wonders.html">Wonders</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-sun"></div>
+
+    <svg class="hero-mountains" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,220 L80,160 L160,195 L260,110 L360,155 L440,90 L540,135 L640,70 L720,115 L820,60 L900,100 L1000,50 L1100,95 L1200,75 L1300,110 L1440,80 L1440,320 L0,320 Z"
+            fill="rgba(42,55,45,0.55)" />
+      <path d="M0,260 L100,195 L180,230 L280,165 L380,205 L480,150 L560,185 L660,130 L740,170 L840,120 L940,160 L1040,115 L1140,155 L1240,135 L1340,165 L1440,145 L1440,320 L0,320 Z"
+            fill="rgba(36,47,35,0.75)" />
+      <path d="M0,290 L120,250 L240,270 L360,240 L480,265 L600,245 L720,260 L840,242 L960,258 L1080,245 L1200,262 L1320,248 L1440,260 L1440,320 L0,320 Z"
+            fill="rgba(28,36,26,0.92)" />
+      <path d="M0,308 L1440,308 L1440,320 L0,320 Z" fill="#1c2419" />
+    </svg>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Travel &amp; Reflections</p>
+      <h1 class="hero-title">JB<br><em>WNDRS</em></h1>
+      <p class="hero-tagline">A home for where I go, what I notice, and what I keep thinking about afterward.</p>
+    </div>
+
+    <div class="hero-scroll">
+      <span>Explore</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- CARDS SECTION -->
+  <section class="cards-section">
+    <p class="section-label">Two paths, one journal</p>
+
+    <div class="cards-grid">
+
+      <!-- Wanders -->
+      <a href="https://jbwndrs.com/wanders.html" class="card card-wanders">
+        <div class="card-illustration">
+          <svg class="card-mountains" viewBox="0 0 400 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,80 L50,45 L90,65 L140,20 L190,55 L240,30 L290,60 L340,35 L400,50 L400,120 L0,120 Z" fill="rgba(59,47,30,0.5)" />
+            <path d="M0,95 L60,70 L110,85 L160,55 L210,75 L270,50 L320,72 L370,60 L400,68 L400,120 L0,120 Z" fill="rgba(59,47,30,0.75)" />
+          </svg>
+        </div>
+        <div class="card-body">
+          <div class="card-corner"></div>
+          <p class="card-kicker">Travel</p>
+          <h2 class="card-title">JB Wanders</h2>
+          <p class="card-desc">Notes from the road, travel essays, itineraries, places worth lingering, and observations from near and far.</p>
+          <span class="card-cta">Set out</span>
+        </div>
+      </a>
+
+      <!-- Wonders -->
+      <a href="https://jbwndrs.com/wonders.html" class="card card-wonders">
+        <div class="card-illustration">
+          <svg class="card-mountains" viewBox="0 0 400 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,75 L60,40 L100,60 L150,25 L200,50 L250,15 L310,45 L360,30 L400,45 L400,120 L0,120 Z" fill="rgba(28,36,26,0.5)" />
+            <path d="M0,95 L70,68 L120,82 L170,55 L220,78 L275,48 L330,70 L380,58 L400,64 L400,120 L0,120 Z" fill="rgba(28,36,26,0.78)" />
+          </svg>
+        </div>
+        <div class="card-body">
+          <div class="card-corner"></div>
+          <p class="card-kicker">Musings &amp; Moments</p>
+          <h2 class="card-title">JB Wonders</h2>
+          <p class="card-desc">Reflections, essays, and stray thoughts — alongside snapshots of everyday life, small moments, and quiet curiosities caught outside the bigger adventures.</p>
+          <span class="card-cta">Look closer</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-logo">JB Wndrs</span>
+    <span class="footer-copy">© 2026 JB WNDRS · Built with GitHub Pages</span>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          e.target.style.transition = `opacity 0.7s ${i * 0.15}s ease, transform 0.7s ${i * 0.15}s ease`;
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.card').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px)';
+      observer.observe(card);
+    });
+  </script>
+
+</body>
+</html>

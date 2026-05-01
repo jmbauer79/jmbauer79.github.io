@@ -3,20 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Sights & Sounds | JB WNDRS</title>
+  <title>Sights & Sounds | JB Wonders</title>
 
   <style>
     :root {
-      --bg: #f7f4ee;
-      --text: #1f2933;
-      --muted: #5f6b76;
+      --bg: #f7f3ec;
+      --text: #232323;
+      --muted: #666;
       --card: #ffffff;
-      --border: #e2ded6;
-      --accent: #7a4e2d;
-      --accent-dark: #4f321d;
-      --soft-accent: #efe2d3;
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --accent: #3f5f4b;
+      --border: rgba(0, 0, 0, 0.1);
     }
 
     * {
@@ -25,203 +21,144 @@
 
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: Georgia, "Times New Roman", serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
     header {
-      padding: 1.25rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      padding: 2rem 1.25rem 1rem;
+      text-align: center;
     }
 
-    .logo {
-      font-weight: 800;
-      letter-spacing: 0.08em;
-    }
-
-    nav a {
-      margin-left: 1rem;
-      color: var(--muted);
+    header a {
+      color: var(--accent);
+      text-decoration: none;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       font-size: 0.95rem;
     }
 
-    main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 2rem 1.25rem 4rem;
-    }
-
-    .back-link {
-      display: inline-block;
-      color: var(--accent);
-      font-weight: 800;
-      margin-bottom: 1.5rem;
-    }
-
-    .eyebrow {
-      color: var(--accent);
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      margin-bottom: 0.75rem;
-    }
-
     h1 {
-      font-size: clamp(2.5rem, 12vw, 5.25rem);
-      line-height: 0.95;
-      margin: 0 0 1rem;
-      letter-spacing: -0.06em;
+      margin: 1rem 0 0.5rem;
+      font-size: clamp(2rem, 8vw, 4rem);
+      line-height: 1.05;
+      font-weight: normal;
     }
 
-    .subtitle {
+    .intro {
+      max-width: 680px;
+      margin: 0 auto;
       color: var(--muted);
-      font-size: 1.1rem;
-      max-width: 700px;
-      margin: 0 0 2rem;
+      font-size: 1.05rem;
+      padding: 0 1rem;
     }
 
-    .entry {
+    main {
+      width: min(920px, 100%);
+      margin: 0 auto;
+      padding: 1.25rem;
+    }
+
+    .sound-card {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 28px;
-      padding: 1.25rem;
-      box-shadow: var(--shadow);
-      margin-bottom: 1.5rem;
-    }
-
-    .entry-meta {
-      color: var(--accent);
-      font-size: 0.82rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 0.75rem;
-    }
-
-    .entry h2 {
-      font-size: clamp(1.8rem, 8vw, 3.5rem);
-      line-height: 0.95;
-      letter-spacing: -0.05em;
-      margin: 0 0 1rem;
-    }
-
-    .entry p {
-      color: var(--muted);
-      margin: 0 0 1rem;
-      font-size: 1.03rem;
-    }
-
-    video {
-      display: block;
-      width: 100%;
-      max-height: 720px;
       border-radius: 22px;
-      border: 1px solid var(--border);
+      overflow: hidden;
+      margin: 1.5rem 0 2.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
       background: #000;
-      margin: 1rem 0;
+    }
+
+    .video-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .sound-content {
+      padding: 1.25rem;
+    }
+
+    .date {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      margin: 0 0 0.75rem;
+      font-size: 1.6rem;
+      line-height: 1.2;
+      font-weight: normal;
+    }
+
+    p {
+      margin: 0 0 1rem;
     }
 
     .caption {
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       font-style: italic;
-      margin-top: 0.5rem;
-    }
-
-    .reflection {
-      background: var(--soft-accent);
-      border-radius: 22px;
-      padding: 1rem;
-      color: var(--accent-dark);
-      margin-top: 1rem;
-    }
-
-    .reflection p {
-      color: var(--accent-dark);
-      margin: 0;
     }
 
     footer {
-      padding: 2rem 1.25rem;
       text-align: center;
       color: var(--muted);
       font-size: 0.9rem;
-    }
-
-    @media (min-width: 760px) {
-      header {
-        padding: 1.5rem 2rem;
-      }
-
-      main {
-        padding-top: 4rem;
-      }
-
-      .entry {
-        padding: 1.75rem;
-      }
+      padding: 2rem 1rem 3rem;
     }
   </style>
 </head>
 
 <body>
   <header>
-    <a class="logo" href="/">JB WNDRS</a>
-    <nav>
-      <a href="/wanders.html">Wanders</a>
-      <a href="/wonders.html">Wonders</a>
-    </nav>
+    <a href="wonders.html">← Back to JB Wonders</a>
+    <h1>Sights & Sounds</h1>
+    <p class="intro">
+      A small log of passing moments — things seen, heard, noticed, or briefly held onto.
+    </p>
   </header>
 
   <main>
-    <a class="back-link" href="/wonders.html">← Back to JB Wonders</a>
+    <article class="sound-card">
+      <div class="video-wrapper">
+        <iframe
+          src="https://player.vimeo.com/video/1188333418"
+          title="Bird Reflection"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
 
-    <section class="hero">
-      <div class="eyebrow">Small moments</div>
-      <h1>Sights & Sounds</h1>
-      <p class="subtitle">
-        A running log of interesting things I notice, photograph, hear, or want to remember — moments that may not need a full essay, but still feel worth saving.
-      </p>
-    </section>
-
-    <article class="entry">
-      <div class="entry-meta">April 30, 2026 · Lunch walk</div>
-
-      <h2>The bird and the reflection</h2>
-
-      <p>
-        On a walk during lunch, I came across a bird fighting its own reflection — a tiny, strange, almost comic scene that lingered with me after I kept walking.
-      </p>
-
-      <video controls playsinline preload="metadata">
-        <source src="/images/bird_reflection.mov" type="video/quicktime">
-        Your browser does not support the video tag.
-      </video>
-
-      <p class="caption">
-        A bird, its reflection, and a surprisingly useful reminder.
-      </p>
-
-      <div class="reflection">
+      <div class="sound-content">
+        <div class="date">April 2026</div>
+        <h2>The Bird and Its Reflection</h2>
         <p>
-          Teaching moment: sometimes the thing we are fighting is only a reflection of ourselves. A reminder not to become our own worst enemy.
+          On a lunchtime walk, I paused to watch a bird fighting its own reflection.
+          It was funny at first, then oddly familiar — a tiny teaching moment about how
+          easily we can mistake ourselves for the enemy.
+        </p>
+        <p class="caption">
+          A brief encounter with a bird, a window, and the very human art of getting in our own way.
         </p>
       </div>
     </article>
   </main>
 
   <footer>
-    © 2026 JB WNDRS
+    <p>JB Wonders</p>
   </footer>
 </body>
 </html>

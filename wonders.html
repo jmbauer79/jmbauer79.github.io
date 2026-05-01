@@ -8,15 +8,12 @@
 
   <style>
     :root {
-      --bg: #f7f4ee;
-      --text: #1f2933;
-      --muted: #5f6b76;
+      --bg: #f7f3ec;
+      --text: #232323;
+      --muted: #666;
       --card: #ffffff;
-      --border: #e2ded6;
-      --accent: #7a4e2d;
-      --accent-dark: #4f321d;
-      --soft-accent: #efe2d3;
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --accent: #3f5f4b;
+      --border: rgba(0, 0, 0, 0.1);
     }
 
     * {
@@ -25,315 +22,199 @@
 
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: Georgia, "Times New Roman", serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
     header {
-      padding: 1.25rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      padding: 2rem 1.25rem 1.25rem;
+      text-align: center;
     }
 
-    .logo {
-      font-weight: 800;
-      letter-spacing: 0.08em;
-    }
-
-    nav a {
-      margin-left: 1rem;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    main {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 2rem 1.25rem 4rem;
-    }
-
-    .hero {
-      margin-bottom: 2rem;
-    }
-
-    .eyebrow {
+    header a {
       color: var(--accent);
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      margin-bottom: 0.75rem;
+      text-decoration: none;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.95rem;
     }
 
     h1 {
-      font-size: clamp(2.6rem, 13vw, 5.5rem);
-      line-height: 0.95;
-      margin: 0 0 1rem;
-      letter-spacing: -0.06em;
+      margin: 1rem 0 0.5rem;
+      font-size: clamp(2.5rem, 10vw, 5rem);
+      line-height: 1.05;
+      font-weight: normal;
     }
 
-    .subtitle {
+    .intro {
+      max-width: 680px;
+      margin: 0 auto;
       color: var(--muted);
-      font-size: 1.1rem;
-      max-width: 700px;
-      margin: 0;
+      font-size: 1.05rem;
+      padding: 0 1rem;
     }
 
-    .pinned-link {
-      background: var(--soft-accent);
-      border: 1px solid #dfcdb8;
-      border-radius: 28px;
+    main {
+      width: min(1040px, 100%);
+      margin: 0 auto;
       padding: 1.25rem;
-      margin: 0 0 2rem;
-      color: var(--accent-dark);
-      box-shadow: var(--shadow);
-    }
-
-    .pinned-label {
-      display: inline-block;
-      background: var(--card);
-      color: var(--accent);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 0.35rem 0.65rem;
-      font-size: 0.75rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 0.85rem;
-    }
-
-    .pinned-link h2 {
-      font-size: clamp(1.7rem, 7vw, 3rem);
-      line-height: 1;
-      letter-spacing: -0.05em;
-      margin: 0 0 0.75rem;
-    }
-
-    .pinned-link p {
-      margin: 0 0 1rem;
-      color: var(--accent-dark);
-      max-width: 720px;
     }
 
     .featured {
-      background: var(--card);
+      display: grid;
+      gap: 1.25rem;
+      margin: 1rem 0 2.5rem;
+    }
+
+    .feature-tile {
+      display: block;
+      position: relative;
+      min-height: 280px;
+      border-radius: 24px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      background:
+        linear-gradient(135deg, rgba(63,95,75,0.85), rgba(35,35,35,0.95));
       border: 1px solid var(--border);
-      border-radius: 28px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .feature-tile:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 34px rgba(0,0,0,0.12);
+    }
+
+    .tile-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    .tile-image.loaded {
+      opacity: 1;
+    }
+
+    .tile-overlay {
+      position: absolute;
+      inset: 0;
       padding: 1.5rem;
-      box-shadow: var(--shadow);
-      margin: 2rem 0;
-    }
-
-    .featured-label {
-      display: inline-block;
-      background: var(--soft-accent);
-      color: var(--accent-dark);
-      border-radius: 999px;
-      padding: 0.4rem 0.7rem;
-      font-size: 0.8rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 1rem;
-    }
-
-    .featured h2 {
-      font-size: clamp(2rem, 9vw, 4rem);
-      line-height: 0.95;
-      letter-spacing: -0.05em;
-      margin: 0 0 1rem;
-    }
-
-    .featured p {
-      color: var(--muted);
-      margin: 0 0 1.25rem;
-      font-size: 1.05rem;
-    }
-
-    .button {
-      display: inline-block;
-      background: var(--accent);
-      color: white;
-      padding: 0.8rem 1rem;
-      border-radius: 999px;
-      font-weight: 800;
-      font-size: 0.95rem;
-    }
-
-    .button:hover {
-      background: var(--accent-dark);
-    }
-
-    .secondary-button {
-      display: inline-block;
-      background: var(--accent-dark);
-      color: white;
-      padding: 0.75rem 1rem;
-      border-radius: 999px;
-      font-weight: 800;
-      font-size: 0.95rem;
-    }
-
-    .secondary-button:hover {
-      background: var(--accent);
-    }
-
-    .section-heading {
-      margin: 2.5rem 0 1rem;
-    }
-
-    .section-heading h2 {
-      font-size: 1.8rem;
-      line-height: 1;
-      margin: 0 0 0.5rem;
-      letter-spacing: -0.04em;
-    }
-
-    .section-heading p {
-      color: var(--muted);
-      margin: 0;
-    }
-
-    .filter-row {
       display: flex;
-      gap: 0.5rem;
-      overflow-x: auto;
-      padding: 0.25rem 0 1rem;
-      -webkit-overflow-scrolling: touch;
+      flex-direction: column;
+      justify-content: flex-end;
+      color: #fff;
+      background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.72),
+        rgba(0,0,0,0.22),
+        rgba(0,0,0,0.04)
+      );
     }
 
-    .filter-row button {
-      flex: 0 0 auto;
-      border: 1px solid var(--border);
-      background: var(--card);
-      color: var(--muted);
-      border-radius: 999px;
-      padding: 0.65rem 0.85rem;
-      font: inherit;
-      font-weight: 800;
-      cursor: pointer;
+    .tile-label {
+      margin: 0 0 0.35rem;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.75rem;
+      opacity: 0.9;
     }
 
-    .filter-row button.active {
-      background: var(--accent);
-      color: white;
-      border-color: var(--accent);
+    .tile-overlay h2 {
+      margin: 0 0 0.4rem;
+      font-size: 1.8rem;
+      line-height: 1.15;
+      font-weight: normal;
     }
 
-    .essay-list {
+    .tile-overlay p {
+      margin: 0;
+      max-width: 620px;
+      font-size: 1rem;
+    }
+
+    .essay-grid {
       display: grid;
       gap: 1rem;
+      margin: 1.5rem 0 2rem;
     }
 
     .essay-card {
+      display: block;
+      padding: 1.25rem;
+      border-radius: 22px;
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 1.25rem;
-      box-shadow: var(--shadow);
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .essay-meta {
+    .essay-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+    }
+
+    .essay-card .category {
+      margin: 0 0 0.4rem;
       color: var(--accent);
-      font-size: 0.82rem;
-      font-weight: 800;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 0.5rem;
+      letter-spacing: 0.08em;
+      font-size: 0.72rem;
+      font-weight: 700;
     }
 
-    .essay-card h3 {
-      font-size: 1.55rem;
-      line-height: 1.1;
-      margin: 0 0 0.75rem;
-      letter-spacing: -0.03em;
+    .essay-card h2 {
+      margin: 0 0 0.5rem;
+      font-size: 1.45rem;
+      line-height: 1.2;
+      font-weight: normal;
     }
 
     .essay-card p {
-      color: var(--muted);
-      margin: 0 0 1rem;
-    }
-
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-bottom: 1rem;
-    }
-
-    .tag {
-      display: inline-block;
-      background: #fbfaf7;
-      border: 1px solid var(--border);
-      color: var(--accent-dark);
-      border-radius: 999px;
-      padding: 0.35rem 0.55rem;
-      font-size: 0.78rem;
-      font-weight: 800;
-    }
-
-    .text-link {
-      color: var(--accent);
-      font-weight: 800;
-    }
-
-    .note-box {
-      background: var(--soft-accent);
-      border-radius: 22px;
-      padding: 1.25rem;
-      margin-top: 2rem;
-      color: var(--accent-dark);
-    }
-
-    .note-box h2 {
-      margin: 0 0 0.5rem;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-    }
-
-    .note-box p {
       margin: 0;
+      color: var(--muted);
+    }
+
+    .coming-soon {
+      opacity: 0.82;
     }
 
     footer {
-      padding: 2rem 1.25rem;
       text-align: center;
       color: var(--muted);
       font-size: 0.9rem;
+      padding: 2rem 1rem 3rem;
     }
 
     @media (min-width: 760px) {
       header {
-        padding: 1.5rem 2rem;
+        padding-top: 3rem;
       }
 
-      main {
-        padding-top: 4rem;
-      }
-
-      .pinned-link {
-        padding: 1.75rem;
-      }
-
-      .featured {
-        padding: 2.25rem;
-      }
-
-      .essay-list {
+      .essay-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .essay-card {
-        padding: 1.5rem;
+      .feature-tile {
+        min-height: 360px;
+      }
+
+      .tile-overlay {
+        padding: 2rem;
+      }
+
+      .tile-overlay h2 {
+        font-size: 2.2rem;
       }
     }
   </style>
@@ -341,165 +222,106 @@
 
 <body>
   <header>
-    <a class="logo" href="/">JB WNDRS</a>
-    <nav>
-      <a href="/wanders.html">Wanders</a>
-      <a href="/wonders.html">Wonders</a>
-    </nav>
+    <a href="index.html">← Back Home</a>
+    <h1>JB Wonders</h1>
+    <p class="intro">
+      Essays, reflections, small observations, and the occasional thing I could not stop thinking about.
+    </p>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="eyebrow">Musings</div>
-      <h1>JB Wonders</h1>
-      <p class="subtitle">
-        Essays, reflections, stray questions, and attempts to make sense of what keeps tugging at my attention.
-      </p>
+    <section class="featured" aria-label="Featured reflections">
+      <a class="feature-tile" href="sights-and-sounds.html">
+        <img
+          id="sights-sounds-thumbnail"
+          class="tile-image"
+          alt="Preview image from the latest Sights & Sounds entry"
+        >
+
+        <div class="tile-overlay">
+          <p class="tile-label">Ongoing Log</p>
+          <h2>Sights & Sounds</h2>
+          <p>
+            Brief moments seen, heard, noticed, or held onto — the small things that do not need a full essay.
+          </p>
+        </div>
+      </a>
     </section>
 
-    <section class="pinned-link">
-      <span class="pinned-label">Pinned</span>
-      <h2>Sights & Sounds</h2>
-      <p>
-        A running log of interesting things I notice, photograph, hear, or want to remember — moments that may not need a full essay, but still feel worth saving.
-      </p>
-      <a class="secondary-button" href="/sights-and-sounds.html">Open the log →</a>
-    </section>
+    <section class="essay-grid" aria-label="Essays and reflections">
+      <a class="essay-card coming-soon" href="#">
+        <p class="category">Essay</p>
+        <h2>Coming Soon</h2>
+        <p>
+          A place for longer reflections, essays, and thoughts that want a little more room to breathe.
+        </p>
+      </a>
 
-    <section class="featured" id="featuredEssay">
-      <!-- Featured essay is inserted here by JavaScript -->
-    </section>
-
-    <section class="section-heading">
-      <h2>Reflections</h2>
-      <p>Browse by theme, mood, or whatever question seems worth following.</p>
-    </section>
-
-    <section class="filter-row" aria-label="Filter essays">
-      <button class="active" type="button" data-filter="All">All</button>
-      <button type="button" data-filter="Place">Place</button>
-      <button type="button" data-filter="Faith">Faith</button>
-      <button type="button" data-filter="Work">Work</button>
-      <button type="button" data-filter="Queer Life">Queer Life</button>
-      <button type="button" data-filter="Questions">Questions</button>
-    </section>
-
-    <section id="essayList" class="essay-list"></section>
-
-    <section class="note-box">
-      <h2>More coming soon</h2>
-      <p>
-        This page is built so each new essay can be added to one list in the code and automatically appear here.
-      </p>
+      <a class="essay-card coming-soon" href="#">
+        <p class="category">Reflection</p>
+        <h2>Notes in Progress</h2>
+        <p>
+          Fragments, questions, and half-formed ideas waiting to become something more complete.
+        </p>
+      </a>
     </section>
   </main>
 
   <footer>
-    © 2026 JB WNDRS
+    <p>JB Wonders</p>
   </footer>
 
   <script>
-    const essays = [
-      {
-        title: "What Makes a Place Stay With You?",
-        date: "April 2026",
-        category: "Place",
-        excerpt: "Some places are beautiful. Others keep following you home. This is a reflection on the difference.",
-        url: "/essays/what-makes-a-place-stay.html",
-        tags: ["Place", "Memory", "Travel"],
-        featured: true
-      },
-      {
-        title: "On Getting Lost",
-        date: "April 2026",
-        category: "Questions",
-        excerpt: "A short meditation on wandering without a plan, and why not knowing exactly where you are can sometimes be the point.",
-        url: "/essays/on-getting-lost.html",
-        tags: ["Questions", "Wandering"]
-      },
-      {
-        title: "The Work We Carry",
-        date: "April 2026",
-        category: "Work",
-        excerpt: "A reflection on public service, responsibility, and the invisible weight of trying to make systems work better.",
-        url: "/essays/the-work-we-carry.html",
-        tags: ["Work", "Public Service"]
-      },
-      {
-        title: "Wonder as a Practice",
-        date: "April 2026",
-        category: "Faith",
-        excerpt: "Not all spiritual practices look like prayer. Some begin by paying better attention.",
-        url: "/essays/wonder-as-practice.html",
-        tags: ["Faith", "Attention", "Questions"]
-      },
-      {
-        title: "Notes on Queer Belonging",
-        date: "April 2026",
-        category: "Queer Life",
-        excerpt: "A reflection on chosen family, community, and the places where we learn to recognize ourselves.",
-        url: "/essays/queer-belonging.html",
-        tags: ["Queer Life", "Community"]
+    const thumbnailImg = document.getElementById("sights-sounds-thumbnail");
+
+    async function loadSightsAndSoundsPreview() {
+      try {
+        const response = await fetch("sights-and-sounds.html");
+        const htmlText = await response.text();
+
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(htmlText, "text/html");
+
+        const topItem = doc.querySelector(".sound-card");
+
+        if (!topItem) {
+          return;
+        }
+
+        const previewType = topItem.getAttribute("data-preview-type");
+        const previewSrc = topItem.getAttribute("data-preview-src");
+
+        if (!previewType || !previewSrc) {
+          return;
+        }
+
+        if (previewType === "image") {
+          thumbnailImg.src = previewSrc;
+          thumbnailImg.onload = () => {
+            thumbnailImg.classList.add("loaded");
+          };
+        }
+
+        if (previewType === "vimeo") {
+          const vimeoResponse = await fetch(
+            `https://vimeo.com/api/oembed.json?url=${encodeURIComponent(previewSrc)}`
+          );
+
+          const vimeoData = await vimeoResponse.json();
+
+          if (vimeoData.thumbnail_url) {
+            thumbnailImg.src = vimeoData.thumbnail_url;
+            thumbnailImg.onload = () => {
+              thumbnailImg.classList.add("loaded");
+            };
+          }
+        }
+      } catch (error) {
+        console.log("Sights & Sounds preview could not be loaded:", error);
       }
-    ];
-
-    const featuredEssayContainer = document.getElementById("featuredEssay");
-    const essayList = document.getElementById("essayList");
-    const filterButtons = document.querySelectorAll(".filter-row button");
-
-    function createEssayCard(essay) {
-      const article = document.createElement("article");
-      article.className = "essay-card";
-
-      const tags = essay.tags
-        .map((tag) => `<span class="tag">${tag}</span>`)
-        .join("");
-
-      article.innerHTML = `
-        <div class="essay-meta">${essay.date} · ${essay.category}</div>
-        <h3>${essay.title}</h3>
-        <div class="tag-row">${tags}</div>
-        <p>${essay.excerpt}</p>
-        <a class="text-link" href="${essay.url}">Read essay →</a>
-      `;
-
-      return article;
     }
 
-    function renderFeaturedEssay() {
-      const featuredEssay = essays.find((essay) => essay.featured) || essays[0];
-
-      featuredEssayContainer.innerHTML = `
-        <span class="featured-label">Featured Reflection</span>
-        <h2>${featuredEssay.title}</h2>
-        <p>${featuredEssay.excerpt}</p>
-        <a class="button" href="${featuredEssay.url}">Read featured essay</a>
-      `;
-    }
-
-    function renderEssays(filter = "All") {
-      essayList.innerHTML = "";
-
-      const filteredEssays =
-        filter === "All"
-          ? essays
-          : essays.filter((essay) => essay.category === filter || essay.tags.includes(filter));
-
-      filteredEssays.forEach((essay) => {
-        essayList.appendChild(createEssayCard(essay));
-      });
-    }
-
-    filterButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        filterButtons.forEach((btn) => btn.classList.remove("active"));
-        button.classList.add("active");
-        renderEssays(button.dataset.filter);
-      });
-    });
-
-    renderFeaturedEssay();
-    renderEssays();
+    loadSightsAndSoundsPreview();
   </script>
 </body>
 </html>

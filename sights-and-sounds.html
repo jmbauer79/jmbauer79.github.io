@@ -1,1 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <title>Sights & Sounds | JB WNDRS</title>
+
+  <style>
+    :root {
+      --bg: #f7f4ee;
+      --text: #1f2933;
+      --muted: #5f6b76;
+      --card: #ffffff;
+      --border: #e2ded6;
+      --accent: #7a4e2d;
+      --accent-dark: #4f321d;
+      --soft-accent: #efe2d3;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      padding: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    nav a {
+      margin-left: 1rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    .back-link {
+      display: inline-block;
+      color: var(--accent);
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 12vw, 5.25rem);
+      line-height: 0.95;
+      margin: 0 0 1rem;
+      letter-spacing: -0.06em;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 0 2rem;
+    }
+
+    .entry {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 1.25rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 1.5rem;
+    }
+
+    .entry-meta {
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.75rem;
+    }
+
+    .entry h2 {
+      font-size: clamp(1.8rem, 8vw, 3.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+      margin: 0 0 1rem;
+    }
+
+    .entry p {
+      color: var(--muted);
+      margin: 0 0 1rem;
+      font-size: 1.03rem;
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      max-height: 720px;
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      background: #000;
+      margin: 1rem 0;
+    }
+
+    .caption {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-style: italic;
+      margin-top: 0.5rem;
+    }
+
+    .reflection {
+      background: var(--soft-accent);
+      border-radius: 22px;
+      padding: 1rem;
+      color: var(--accent-dark);
+      margin-top: 1rem;
+    }
+
+    .reflection p {
+      color: var(--accent-dark);
+      margin: 0;
+    }
+
+    footer {
+      padding: 2rem 1.25rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (min-width: 760px) {
+      header {
+        padding: 1.5rem 2rem;
+      }
+
+      main {
+        padding-top: 4rem;
+      }
+
+      .entry {
+        padding: 1.75rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a class="logo" href="/">JB WNDRS</a>
+    <nav>
+      <a href="/wanders.html">Wanders</a>
+      <a href="/wonders.html">Wonders</a>
+    </nav>
+  </header>
+
+  <main>
+    <a class="back-link" href="/wonders.html">← Back to JB Wonders</a>
+
+    <section class="hero">
+      <div class="eyebrow">Small moments</div>
+      <h1>Sights & Sounds</h1>
+      <p class="subtitle">
+        A running log of interesting things I notice, photograph, hear, or want to remember — moments that may not need a full essay, but still feel worth saving.
+      </p>
+    </section>
+
+    <article class="entry">
+      <div class="entry-meta">April 30, 2026 · Lunch walk</div>
+
+      <h2>The bird and the reflection</h2>
+
+      <p>
+        On a walk during lunch, I came across a bird fighting its own reflection — a tiny, strange, almost comic scene that lingered with me after I kept walking.
+      </p>
+
+      <video controls playsinline preload="metadata">
+        <source src="/images/bird_reflection.mov" type="video/quicktime">
+        Your browser does not support the video tag.
+      </video>
+
+      <p class="caption">
+        A bird, its reflection, and a surprisingly useful reminder.
+      </p>
+
+      <div class="reflection">
+        <p>
+          Teaching moment: sometimes the thing we are fighting is only a reflection of ourselves. A reminder not to become our own worst enemy.
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    © 2026 JB WNDRS
+  </footer>
+</body>
+</html>

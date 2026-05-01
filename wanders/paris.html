@@ -144,6 +144,61 @@
       text-align: center;
     }
 
+    .travel-video-section {
+      background: #111;
+      padding: 1rem;
+      margin: 2rem 0;
+      border-radius: 18px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+    }
+
+    .travel-video-wrapper {
+      position: relative;
+      width: min(100%, 420px);
+      aspect-ratio: 9 / 16;
+      margin: 0 auto;
+      background: #000;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .travel-video-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .sound-toggle {
+      position: absolute;
+      right: 0.75rem;
+      bottom: 0.75rem;
+      z-index: 2;
+      border: none;
+      border-radius: 999px;
+      padding: 0.55rem 0.8rem;
+      background: rgba(0, 0, 0, 0.65);
+      color: #fff;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.85rem;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+    }
+
+    .sound-toggle:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .video-caption {
+      max-width: 560px;
+      margin: 0.85rem auto 0;
+      color: #f2f2f2;
+      font-size: 0.92rem;
+      line-height: 1.5;
+      font-style: italic;
+      text-align: center;
+    }
+
     .pull-quote {
       margin: 2rem 0;
       padding: 1.25rem;
@@ -243,6 +298,26 @@
           conversation between the past and the present.
         </p>
 
+        <section class="travel-video-section">
+          <div class="travel-video-wrapper" id="paris-video-wrapper">
+            <iframe
+              id="paris-video"
+              src="https://player.vimeo.com/video/1188515442?muted=1&autopause=0&playsinline=1&controls=0&loop=1"
+              title="Paris traffic from the Arc de Triomphe"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              allowfullscreen>
+            </iframe>
+
+            <button class="sound-toggle" id="paris-sound-toggle" type="button">
+              🔇 Muted
+            </button>
+          </div>
+
+          <p class="video-caption">
+            A mesmerizing view from the top of the Arc de Triomphe: traffic slowly circling below, with the Eiffel Tower in the background.
+          </p>
+        </section>
+
         <div class="pull-quote">
           Paris can feel overwhelming at first, but then one moment opens a door into another, and the city begins to feel personal.
         </div>
@@ -274,5 +349,53 @@
   <footer class="site-footer">
     <p>© 2026 JB Wanders</p>
   </footer>
+
+  <script src="https://player.vimeo.com/api/player.js"></script>
+
+  <script>
+    const parisIframe = document.getElementById("paris-video");
+    const parisWrapper = document.getElementById("paris-video-wrapper");
+    const parisSoundToggle = document.getElementById("paris-sound-toggle");
+
+    const parisPlayer = new Vimeo.Player(parisIframe);
+
+    let parisIsMuted = true;
+
+    parisPlayer.setMuted(true);
+
+    const parisObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            parisPlayer.play().catch(error => {
+              console.log("Autoplay was prevented:", error);
+            });
+          } else {
+            parisPlayer.pause();
+          }
+        });
+      },
+      {
+        threshold: 0.55
+      }
+    );
+
+    parisObserver.observe(parisWrapper);
+
+    parisSoundToggle.addEventListener("click", async () => {
+      parisIsMuted = !parisIsMuted;
+
+      await parisPlayer.setMuted(parisIsMuted);
+
+      if (parisIsMuted) {
+        parisSoundToggle.textContent = "🔇 Muted";
+      } else {
+        parisSoundToggle.textContent = "🔊 Sound on";
+        parisPlayer.play().catch(error => {
+          console.log("Playback was prevented:", error);
+        });
+      }
+    });
+  </script>
 </body>
 </html>

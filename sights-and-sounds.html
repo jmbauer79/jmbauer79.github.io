@@ -91,6 +91,26 @@
       display: block;
     }
 
+    .sound-toggle {
+      position: absolute;
+      right: 0.75rem;
+      bottom: 0.75rem;
+      z-index: 2;
+      border: none;
+      border-radius: 999px;
+      padding: 0.55rem 0.8rem;
+      background: rgba(0, 0, 0, 0.65);
+      color: #fff;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.85rem;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+    }
+
+    .sound-toggle:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+
     .sound-content {
       padding: 1.25rem;
     }
@@ -156,13 +176,18 @@
   <main>
     <article class="sound-card">
       <div class="video-area">
-        <div class="video-wrapper">
+        <div class="video-wrapper" id="bird-video-wrapper">
           <iframe
-            src="https://player.vimeo.com/video/1188333418"
+            id="bird-video"
+            src="https://player.vimeo.com/video/1188333418?muted=1&autopause=0&playsinline=1&controls=0&loop=1"
             title="Bird Reflection"
             allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
             allowfullscreen>
           </iframe>
+
+          <button class="sound-toggle" id="sound-toggle" type="button">
+            🔇 Muted
+          </button>
         </div>
       </div>
 
@@ -195,5 +220,53 @@
   <footer>
     <p>JB Wonders</p>
   </footer>
+
+  <script src="https://player.vimeo.com/api/player.js"></script>
+
+  <script>
+    const iframe = document.getElementById("bird-video");
+    const wrapper = document.getElementById("bird-video-wrapper");
+    const soundToggle = document.getElementById("sound-toggle");
+
+    const player = new Vimeo.Player(iframe);
+
+    let isMuted = true;
+
+    player.setMuted(true);
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            player.play().catch(error => {
+              console.log("Autoplay was prevented:", error);
+            });
+          } else {
+            player.pause();
+          }
+        });
+      },
+      {
+        threshold: 0.55
+      }
+    );
+
+    observer.observe(wrapper);
+
+    soundToggle.addEventListener("click", async () => {
+      isMuted = !isMuted;
+
+      await player.setMuted(isMuted);
+
+      if (isMuted) {
+        soundToggle.textContent = "🔇 Muted";
+      } else {
+        soundToggle.textContent = "🔊 Sound on";
+        player.play().catch(error => {
+          console.log("Playback was prevented:", error);
+        });
+      }
+    });
+  </script>
 </body>
 </html>

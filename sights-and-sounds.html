@@ -69,11 +69,19 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.06);
     }
 
+    .video-area {
+      background: #111;
+      padding: 1rem;
+    }
+
     .video-wrapper {
       position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
+      width: min(100%, 420px);
+      aspect-ratio: 9 / 16;
+      margin: 0 auto;
       background: #000;
+      border-radius: 16px;
+      overflow: hidden;
     }
 
     .video-wrapper iframe {
@@ -113,6 +121,20 @@
       font-style: italic;
     }
 
+    .vimeo-link {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .vimeo-link:hover {
+      text-decoration: underline;
+    }
+
     footer {
       text-align: center;
       color: var(--muted);
@@ -133,26 +155,39 @@
 
   <main>
     <article class="sound-card">
-      <div class="video-wrapper">
-        <iframe
-          src="https://player.vimeo.com/video/1188333418"
-          title="Bird Reflection"
-          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-          allowfullscreen>
-        </iframe>
+      <div class="video-area">
+        <div class="video-wrapper">
+          <iframe
+            src="https://player.vimeo.com/video/1188333418"
+            title="Bird Reflection"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
       </div>
 
       <div class="sound-content">
         <div class="date">April 2026</div>
+
         <h2>The Bird and Its Reflection</h2>
+
         <p>
           On a lunchtime walk, I paused to watch a bird fighting its own reflection.
           It was funny at first, then oddly familiar — a tiny teaching moment about how
           easily we can mistake ourselves for the enemy.
         </p>
+
         <p class="caption">
           A brief encounter with a bird, a window, and the very human art of getting in our own way.
         </p>
+
+        <a
+          class="vimeo-link"
+          href="https://vimeo.com/1188333418"
+          target="_blank"
+          rel="noopener">
+          Open video on Vimeo
+        </a>
       </div>
     </article>
   </main>

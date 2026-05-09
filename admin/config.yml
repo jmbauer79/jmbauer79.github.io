@@ -32,3 +32,15 @@ collections:
       - { label: "Featured Image", name: "featured_image", widget: "image", required: false }
       - { label: "Featured Image Caption", name: "featured_image_caption", widget: "string", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "test"
+    label: "Test Pages"
+    files:
+      - file: "content/test-page.md"
+        label: "Test Page"
+        name: "test_page"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Date", name: "date", widget: "datetime" }
+          - { label: "Description", name: "description", widget: "string", required: false }
+          - { label: "Body", name: "body", widget: "markdown" }

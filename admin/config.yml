@@ -6,6 +6,72 @@ media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 collections:
+  - name: "camino_entries"
+    label: "Camino Entries"
+    folder: "_camino_entries"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-stage-{{stage_number}}-{{slug}}"
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+
+      - label: "Stage Number"
+        name: "stage_number"
+        widget: "number"
+        value_type: "int"
+
+      - label: "Start Location"
+        name: "start_location"
+        widget: "string"
+
+      - label: "End Location"
+        name: "end_location"
+        widget: "string"
+
+      - label: "Latitude"
+        name: "latitude"
+        widget: "number"
+        value_type: "float"
+        required: false
+
+      - label: "Longitude"
+        name: "longitude"
+        widget: "number"
+        value_type: "float"
+        required: false
+
+      - label: "Distance in Miles"
+        name: "distance_miles"
+        widget: "number"
+        value_type: "float"
+        required: false
+
+      - label: "Featured Image"
+        name: "featured_image"
+        widget: "image"
+        required: false
+
+      - label: "Image Caption"
+        name: "image_caption"
+        widget: "string"
+        required: false
+
+      - label: "Short Excerpt"
+        name: "excerpt"
+        widget: "text"
+        required: false
+
+      - label: "Narrative"
+        name: "body"
+        widget: "markdown"
+
   - name: "wanders"
     label: "JB Wanders"
     folder: "content/wanders"

@@ -16,12 +16,4 @@ excerpt: |-
 ---
 This is a test narrative for Stage 1 of the Camino de Santiago.
 
-Eventually, this is where I’ll write about the day’s walk, what I saw, what I felt, and what I want to remember.
-
-with a tiny change
-
-TESTING
-
-
-
 CMS TEST: This sentence should appear on the individual Stage 1 page.

@@ -23,6 +23,24 @@ layout: default
     {% endif %}
   </p>
 
+  <!-- STEP 8 — stats block -->
+  {% if page.km_walked or page.elevation_gain or page.weather %}
+    <div class="camino-stats">
+      {% if page.km_walked %}
+        <span>📍 {{ page.km_walked }} km</span>
+      {% endif %}
+      {% if page.distance_miles %}
+        <span>🥾 {{ page.distance_miles }} mi</span>
+      {% endif %}
+      {% if page.elevation_gain %}
+        <span>⬆️ {{ page.elevation_gain }}m gain</span>
+      {% endif %}
+      {% if page.weather %}
+        <span>🌤 {{ page.weather }}</span>
+      {% endif %}
+    </div>
+  {% endif %}
+
   {% if page.featured_image %}
     <figure>
       <img src="{{ page.featured_image }}" alt="{{ page.title }}">
@@ -40,3 +58,20 @@ layout: default
     <a href="/wanders/camino-de-santiago.html">← Back to Camino page</a>
   </p>
 </article>
+
+<style>
+  .camino-stats {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    color: var(--muted, #888);
+    margin: 6px 0 18px;
+  }
+
+  .camino-stats span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+</style>

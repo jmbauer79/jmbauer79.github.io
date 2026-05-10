@@ -1,0 +1,14 @@
+title: JB Wanders
+description: Travel notes, reflections, and field journals by Jeremy Bauer
+
+collections:
+  camino_entries:
+    output: true
+    permalink: /wanders/camino-de-santiago/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: "camino_entries"
+    values:
+      layout: camino-entry

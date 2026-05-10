@@ -1,0 +1,81 @@
+---
+layout: default
+title: Camino de Santiago
+---
+
+<section class="camino-hero">
+  <h1>Camino de Santiago</h1>
+
+  <p>
+    A field journal from my walk across northern Spain, with daily entries,
+    photos, reflections, and a stage-by-stage map.
+  </p>
+
+  <div class="camino-view-toggle">
+    <button type="button" onclick="showCaminoView('chronological')">
+      Chronological View
+    </button>
+
+    <button type="button" onclick="showCaminoView('map')">
+      Map View
+    </button>
+  </div>
+</section>
+
+<section id="camino-chronological-view">
+  <h2>Latest Entries</h2>
+
+  {% assign entries = site.camino_entries | sort: "date" | reverse %}
+
+  <div class="camino-entry-list">
+    {% for entry in entries %}
+      <article class="camino-card">
+        {% if entry.featured_image %}
+          <a href="{{ entry.url }}">
+            <img src="{{ entry.featured_image }}" alt="{{ entry.title }}">
+          </a>
+        {% endif %}
+
+        <div class="camino-card-body">
+          <p class="camino-stage">Stage {{ entry.stage_number }}</p>
+
+          <h3>
+            <a href="{{ entry.url }}">{{ entry.title }}</a>
+          </h3>
+
+          <p class="camino-meta">
+            {{ entry.date | date: "%B %-d, %Y" }} ·
+            {{ entry.start_location }} to {{ entry.end_location }}
+          </p>
+
+          {% if entry.excerpt %}
+            <p>{{ entry.excerpt }}</p>
+          {% endif %}
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="camino-map-view" style="display: none;">
+  <h2>Map View</h2>
+  <p>
+    Eventually, this map will show each Camino stage as a clickable marker.
+    For now, this section confirms that the view switcher is working.
+  </p>
+</section>
+
+<script>
+  function showCaminoView(view) {
+    const chronological = document.getElementById('camino-chronological-view');
+    const map = document.getElementById('camino-map-view');
+
+    if (view === 'map') {
+      chronological.style.display = 'none';
+      map.style.display = 'block';
+    } else {
+      chronological.style.display = 'block';
+      map.style.display = 'none';
+    }
+  }
+</script>

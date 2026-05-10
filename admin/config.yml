@@ -56,6 +56,25 @@ collections:
         value_type: "float"
         required: false
 
+      # STEP 7 ADDITIONS
+      - label: "Distance in KM"
+        name: "km_walked"
+        widget: "number"
+        value_type: "float"
+        required: false
+
+      - label: "Elevation Gain (meters)"
+        name: "elevation_gain"
+        widget: "number"
+        value_type: "int"
+        required: false
+
+      - label: "Weather"
+        name: "weather"
+        widget: "string"
+        hint: "e.g. Sunny, Cool and cloudy, Light rain"
+        required: false
+
       - label: "Featured Image"
         name: "featured_image"
         widget: "image"
@@ -197,19 +216,4 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime" }
-      - { label: "Summary", name: "summary", widget: "text", required: false }
-      - { label: "Featured Image", name: "featured_image", widget: "image", required: false }
-      - { label: "Featured Image Caption", name: "featured_image_caption", widget: "string", required: false }
-      - { label: "Body", name: "body", widget: "markdown" }
-
-  - name: "test"
-    label: "Test Pages"
-    files:
-      - file: "content/test-page.md"
-        label: "Test Page"
-        name: "test_page"
-        fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Date", name: "date", widget: "datetime" }
-          - { label: "Description", name: "description", widget: "string", required: false }
-          - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Summary", name: "summary", widget: "text", required: false }​​​​​​​​​​​​​​​​

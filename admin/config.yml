@@ -22,18 +22,21 @@ collections:
         date_format: "YYYY-MM-DD"
         time_format: false
 
-      - label: "Stage Number"
+        - label: "Stage Number"
         name: "stage_number"
         widget: "number"
         value_type: "int"
+        required: false
 
       - label: "Start Location"
         name: "start_location"
         widget: "string"
+        required: false
 
       - label: "End Location"
         name: "end_location"
         widget: "string"
+        required: false
 
       - label: "Latitude"
         name: "latitude"

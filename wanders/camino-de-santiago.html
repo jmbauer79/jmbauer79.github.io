@@ -107,9 +107,10 @@ title: Camino de Santiago
     padding: 8px 14px;
     font-weight: 700;
     cursor: pointer;
+    transition: background 0.15s, color 0.15s;
   }
 
-  /* STEP 1 ADDITION */
+  /* STEP 1 */
   .camino-view-toggle button.active {
     background: var(--accent);
     color: var(--paper);
@@ -208,20 +209,28 @@ title: Camino de Santiago
     caminoMapInitialized = true;
   }
 
+  /* STEP 2 */
   function showCaminoView(view) {
     const chronological = document.getElementById('camino-chronological-view');
     const map = document.getElementById('camino-map-view');
+    const buttons = document.querySelectorAll('.camino-view-toggle button');
+
+    buttons.forEach(btn => btn.classList.remove('active'));
 
     if (view === 'map') {
       chronological.style.display = 'none';
       map.style.display = 'block';
-
-      setTimeout(function () {
-        initializeCaminoMap();
-      }, 100);
+      buttons[1].classList.add('active');
+      setTimeout(initializeCaminoMap, 100);
     } else {
       chronological.style.display = 'block';
       map.style.display = 'none';
+      buttons[0].classList.add('active');
     }
   }
+
+  /* STEP 2 — set initial active state on load */
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.camino-view-toggle button')[0].classList.add('active');
+  });
 </script>

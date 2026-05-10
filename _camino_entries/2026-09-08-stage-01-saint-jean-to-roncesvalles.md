@@ -21,3 +21,7 @@ Eventually, this is where I’ll write about the day’s walk, what I saw, what 
 with a tiny change
 
 TESTING
+
+
+
+CMS TEST: This sentence should appear on the individual Stage 1 page.

@@ -56,7 +56,6 @@ collections:
         value_type: "float"
         required: false
 
-      # STEP 7 ADDITIONS
       - label: "Distance in KM"
         name: "km_walked"
         widget: "number"
@@ -75,124 +74,115 @@ collections:
         hint: "e.g. Sunny, Cool and cloudy, Light rain"
         required: false
 
-      - label: "Featured Image"
-        name: "featured_image"
-        widget: "image"
+      - label: "Content Block 1"
+        name: "content_block_1"
+        widget: "object"
         required: false
+        fields:
+          - { label: "Narrative", name: "narrative", widget: "markdown", required: false }
+          - { label: "Photo", name: "photo", widget: "image", required: false }
+          - { label: "Photo Caption", name: "photo_caption", widget: "string", required: false }
+          - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
+          - { label: "Vimeo Caption", name: "vimeo_caption", widget: "string", required: false }
 
-      - label: "Image Caption"
-        name: "image_caption"
-        widget: "string"
+      - label: "Content Block 2"
+        name: "content_block_2"
+        widget: "object"
         required: false
+        fields:
+          - { label: "Narrative", name: "narrative", widget: "markdown", required: false }
+          - { label: "Photo", name: "photo", widget: "image", required: false }
+          - { label: "Photo Caption", name: "photo_caption", widget: "string", required: false }
+          - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
+          - { label: "Vimeo Caption", name: "vimeo_caption", widget: "string", required: false }
 
-      - label: "Short Excerpt"
-        name: "excerpt"
-        widget: "text"
+      - label: "Content Block 3"
+        name: "content_block_3"
+        widget: "object"
         required: false
+        fields:
+          - { label: "Narrative", name: "narrative", widget: "markdown", required: false }
+          - { label: "Photo", name: "photo", widget: "image", required: false }
+          - { label: "Photo Caption", name: "photo_caption", widget: "string", required: false }
+          - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
+          - { label: "Vimeo Caption", name: "vimeo_caption", widget: "string", required: false }
 
-      - label: "Narrative"
-        name: "body"
-        widget: "markdown"
-
-      - label: "Additional Media 1 - Photo"
-        name: "media_1_image"
-        widget: "image"
+      - label: "Content Block 4"
+        name: "content_block_4"
+        widget: "object"
         required: false
+        fields:
+          - { label: "Narrative", name: "narrative", widget: "markdown", required: false }
+          - { label: "Photo", name: "photo", widget: "image", required: false }
+          - { label: "Photo Caption", name: "photo_caption", widget: "string", required: false }
+          - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
+          - { label: "Vimeo Caption", name: "vimeo_caption", widget: "string", required: false }
 
-      - label: "Additional Media 1 - Photo Caption"
-        name: "media_1_image_caption"
-        widget: "string"
+      - label: "Content Block 5"
+        name: "content_block_5"
+        widget: "object"
         required: false
+        fields:
+          - { label: "Narrative", name: "narrative", widget: "markdown", required: false }
+          - { label: "Photo", name: "photo", widget: "image", required: false }
+          - { label: "Photo Caption", name: "photo_caption", widget: "string", required: false }
+          - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
+          - { label: "Vimeo Caption", name: "vimeo_caption", widget: "string", required: false }
 
-      - label: "Additional Media 1 - Vimeo ID"
-        name: "media_1_vimeo_id"
-        widget: "string"
+      - label: "Content Block 6"
+        name: "content_block_6"
+        widget: "object"
         required: false
+        fields:
+          - { label: "Narrative", name: "narrative", widget: "markdown", required: false }
+          - { label: "Photo", name: "photo", widget: "image", required: false }
+          - { label: "Photo Caption", name: "photo_caption", widget: "string", required: false }
+          - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
+          - { label: "Vimeo Caption", name: "vimeo_caption", widget: "string", required: false }
 
-      - label: "Additional Media 1 - Vimeo Caption"
-        name: "media_1_vimeo_caption"
-        widget: "string"
+      - label: "Content Block 7"
+        name: "content_block_7"
+        widget: "object"
         required: false
+        fields:
+          - { label: "Narrative", name: "narrative", widget: "markdown", required: false }
+          - { label: "Photo", name: "photo", widget: "image", required: false }
+          - { label: "Photo Caption", name: "photo_caption", widget: "string", required: false }
+          - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
+          - { label: "Vimeo Caption", name: "vimeo_caption", widget: "string", required: false }
 
-      - label: "Additional Media 2 - Photo"
-        name: "media_2_image"
-        widget: "image"
+      - label: "Content Block 8"
+        name: "content_block_8"
+        widget: "object"
         required: false
+        fields:
+          - { label: "Narrative", name: "narrative", widget: "markdown", required: false }
+          - { label: "Photo", name: "photo", widget: "image", required: false }
+          - { label: "Photo Caption", name: "photo_caption", widget: "string", required: false }
+          - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
+          - { label: "Vimeo Caption", name: "vimeo_caption", widget: "string", required: false }
 
-      - label: "Additional Media 2 - Photo Caption"
-        name: "media_2_image_caption"
-        widget: "string"
+      - label: "Content Block 9"
+        name: "content_block_9"
+        widget: "object"
         required: false
+        fields:
+          - { label: "Narrative", name: "narrative", widget: "markdown", required: false }
+          - { label: "Photo", name: "photo", widget: "image", required: false }
+          - { label: "Photo Caption", name: "photo_caption", widget: "string", required: false }
+          - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
+          - { label: "Vimeo Caption", name: "vimeo_caption", widget: "string", required: false }
 
-      - label: "Additional Media 2 - Vimeo ID"
-        name: "media_2_vimeo_id"
-        widget: "string"
+      - label: "Content Block 10"
+        name: "content_block_10"
+        widget: "object"
         required: false
-
-      - label: "Additional Media 2 - Vimeo Caption"
-        name: "media_2_vimeo_caption"
-        widget: "string"
-        required: false
-
-      - label: "Additional Media 3 - Photo"
-        name: "media_3_image"
-        widget: "image"
-        required: false
-
-      - label: "Additional Media 3 - Photo Caption"
-        name: "media_3_image_caption"
-        widget: "string"
-        required: false
-
-      - label: "Additional Media 3 - Vimeo ID"
-        name: "media_3_vimeo_id"
-        widget: "string"
-        required: false
-
-      - label: "Additional Media 3 - Vimeo Caption"
-        name: "media_3_vimeo_caption"
-        widget: "string"
-        required: false
-
-      - label: "Additional Media 4 - Photo"
-        name: "media_4_image"
-        widget: "image"
-        required: false
-
-      - label: "Additional Media 4 - Photo Caption"
-        name: "media_4_image_caption"
-        widget: "string"
-        required: false
-
-      - label: "Additional Media 4 - Vimeo ID"
-        name: "media_4_vimeo_id"
-        widget: "string"
-        required: false
-
-      - label: "Additional Media 4 - Vimeo Caption"
-        name: "media_4_vimeo_caption"
-        widget: "string"
-        required: false
-
-      - label: "Additional Media 5 - Photo"
-        name: "media_5_image"
-        widget: "image"
-        required: false
-
-      - label: "Additional Media 5 - Photo Caption"
-        name: "media_5_image_caption"
-        widget: "string"
-        required: false
-
-      - label: "Additional Media 5 - Vimeo ID"
-        name: "media_5_vimeo_id"
-        widget: "string"
-        required: false
-
-      - label: "Additional Media 5 - Vimeo Caption"
-        name: "media_5_vimeo_caption"
-        widget: "string"
-        required: false
+        fields:
+          - { label: "Narrative", name: "narrative", widget: "markdown", required: false }
+          - { label: "Photo", name: "photo", widget: "image", required: false }
+          - { label: "Photo Caption", name: "photo_caption", widget: "string", required: false }
+          - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
+          - { label: "Vimeo Caption", name: "vimeo_caption", widget: "string", required: false }
 
   - name: "wanders"
     label: "JB Wanders"

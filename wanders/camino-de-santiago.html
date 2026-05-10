@@ -174,12 +174,15 @@ title: Camino de Santiago
       return;
     }
 
-    caminoMap = L.map('camino-map').setView([42.9, -4.2], 7);
+    caminoMap = L.map('camino-map', { zoomControl: true });
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    /* STEP 3 — CartoDB light tile layer */
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
       maxZoom: 18,
-      attribution: '&copy; OpenStreetMap contributors'
+      attribution: '&copy; OpenStreetMap &copy; CARTO'
     }).addTo(caminoMap);
+
+    caminoMap.setView([42.9, -4.2], 7);
 
     caminoStages.forEach(function(stage) {
       const marker = L.marker([stage.lat, stage.lng]).addTo(caminoMap);
@@ -209,28 +212,4 @@ title: Camino de Santiago
     caminoMapInitialized = true;
   }
 
-  /* STEP 2 */
-  function showCaminoView(view) {
-    const chronological = document.getElementById('camino-chronological-view');
-    const map = document.getElementById('camino-map-view');
-    const buttons = document.querySelectorAll('.camino-view-toggle button');
-
-    buttons.forEach(btn => btn.classList.remove('active'));
-
-    if (view === 'map') {
-      chronological.style.display = 'none';
-      map.style.display = 'block';
-      buttons[1].classList.add('active');
-      setTimeout(initializeCaminoMap, 100);
-    } else {
-      chronological.style.display = 'block';
-      map.style.display = 'none';
-      buttons[0].classList.add('active');
-    }
-  }
-
-  /* STEP 2 — set initial active state on load */
-  document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.camino-view-toggle button')[0].classList.add('active');
-  });
-</script>
+  /* STEP 2​​​​​​​​​​​​​​​​

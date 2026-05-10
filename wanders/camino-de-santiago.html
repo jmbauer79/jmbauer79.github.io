@@ -50,16 +50,16 @@ permalink: /wanders/camino-de-santiago.html
             {% if entry.date %}
               {{ entry.date | date: "%B %-d, %Y" }}
             {% endif %}
-
-            {% if entry.end_date %}
-              · to {{ entry.end_date | date: "%B %-d, %Y" }}
-            {% endif %}
           </p>
 
           {% if entry.excerpt %}
-            <p class="camino-excerpt">{{ entry.excerpt | strip_html | truncate: 180 }}</p>
+            <p class="camino-excerpt">
+              {{ entry.excerpt | strip_html | truncate: 180 }}
+            </p>
           {% elsif entry.summary %}
-            <p class="camino-excerpt">{{ entry.summary }}</p>
+            <p class="camino-excerpt">
+              {{ entry.summary }}
+            </p>
           {% endif %}
         </div>
       </article>

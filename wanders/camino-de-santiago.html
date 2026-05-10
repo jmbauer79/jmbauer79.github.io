@@ -1,226 +1,221 @@
 ---
 layout: default
-title: Camino de Santiago | JB Wanders
-permalink: /wanders/camino-de-santiago.html
+title: Camino de Santiago
 ---
 
-<section class="camino-page">
-  <div class="camino-hero">
-    <p class="eyebrow">JB Wanders</p>
-    <h1>Camino de Santiago</h1>
-    <p class="intro">
-      Notes, photos, reflections, and moments from the road to Santiago.
-    </p>
-  </div>
+<section class="camino-hero">
+  <h1>Camino de Santiago</h1>
+
+  <p>
+    A field journal from my walk across northern Spain, with daily entries,
+    photos, reflections, and a stage-by-stage map.
+  </p>
 
   <div class="camino-view-toggle">
-    <a class="view-button active" href="#chronological">Chronological View</a>
-    <a class="view-button" href="#map">Map View</a>
+    <button type="button" onclick="showCaminoView('chronological')">
+      Chronological View
+    </button>
+
+    <button type="button" onclick="showCaminoView('map')">
+      Map View
+    </button>
   </div>
+</section>
 
-  <section id="chronological" class="camino-entries">
-    <h2>Latest Entries</h2>
+<section id="camino-chronological-view">
+  <h2>Latest Entries</h2>
 
-    {% assign camino_entries = site.camino | sort: "date" | reverse %}
+  {% if site.camino_entries %}
+    {% assign entries = site.camino_entries | sort: "date" | reverse %}
+  {% else %}
+    {% assign entries = "" | split: "," %}
+  {% endif %}
 
-    {% for entry in camino_entries %}
+  <div class="camino-entry-list">
+    {% for entry in entries %}
       <article class="camino-card">
         {% if entry.featured_image %}
-          <a href="{{ entry.url | relative_url }}">
-            <img
-              src="{{ entry.featured_image | relative_url }}"
-              alt="{{ entry.featured_image_alt | default: entry.title }}"
-              class="camino-card-image"
-            >
+          <a href="{{ entry.url }}">
+            <img src="{{ entry.featured_image }}" alt="{{ entry.title }}">
           </a>
         {% endif %}
 
         <div class="camino-card-body">
           {% if entry.stage_number %}
-            <p class="stage-label">Stage {{ entry.stage_number }}</p>
-          {% else %}
-            <p class="stage-label">Camino Notes</p>
+            <p class="camino-stage">Stage {{ entry.stage_number }}</p>
           {% endif %}
 
           <h3>
-            <a href="{{ entry.url | relative_url }}">{{ entry.title }}</a>
+            <a href="{{ entry.url }}">{{ entry.title }}</a>
           </h3>
 
-          <p class="camino-date">
-            {% if entry.date %}
-              {{ entry.date | date: "%B %-d, %Y" }}
+          <p class="camino-meta">
+            {{ entry.date | date: "%B %-d, %Y" }}
+            {% if entry.start_location and entry.end_location %}
+              · {{ entry.start_location }} to {{ entry.end_location }}
+            {% elsif entry.start_location %}
+              · {{ entry.start_location }}
+            {% elsif entry.end_location %}
+              · {{ entry.end_location }}
             {% endif %}
           </p>
 
           {% if entry.excerpt %}
-            <p class="camino-excerpt">
-              {{ entry.excerpt | strip_html | truncate: 180 }}
-            </p>
-          {% elsif entry.summary %}
-            <p class="camino-excerpt">
-              {{ entry.summary }}
-            </p>
+            <p>{{ entry.excerpt }}</p>
           {% endif %}
         </div>
       </article>
     {% endfor %}
-  </section>
 
-  <section id="map" class="camino-map-section">
-    <h2>Map View</h2>
-    <p>
-      Map view coming soon. This will eventually show each Camino entry by stage and location.
-    </p>
-  </section>
+    {% if entries.size == 0 %}
+      <p>
+        Camino entries will appear here soon.
+      </p>
+    {% endif %}
+  </div>
 </section>
 
+<section id="camino-map-view" style="display: none;">
+  <h2>Map View</h2>
+  <p>
+    Click a stage marker to open that day’s Camino entry.
+  </p>
+
+  <div id="camino-map"></div>
+</section>
+
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
 <style>
-  .camino-page {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 2rem 1rem 4rem;
-  }
-
-  .camino-hero {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-
-  .eyebrow {
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-size: 0.8rem;
-    color: #2f6f73;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-  }
-
-  .camino-hero h1 {
-    font-size: 2.3rem;
-    margin: 0 0 0.75rem;
-    color: #1f2933;
-  }
-
-  .intro {
-    font-size: 1.05rem;
-    color: #4b5563;
-    line-height: 1.6;
-    max-width: 560px;
-    margin: 0 auto;
-  }
-
   .camino-view-toggle {
     display: flex;
-    gap: 0.75rem;
-    justify-content: center;
-    margin: 2rem 0;
+    gap: 8px;
     flex-wrap: wrap;
+    margin: 18px 0 26px;
   }
 
-  .view-button {
-    border: 1px solid #2f6f73;
-    color: #2f6f73;
-    text-decoration: none;
-    padding: 0.65rem 1rem;
+  .camino-view-toggle button {
+    border: 1px solid var(--border);
+    background: var(--paper);
+    color: var(--accent);
     border-radius: 999px;
+    padding: 8px 14px;
     font-weight: 700;
-    font-size: 0.9rem;
+    cursor: pointer;
   }
 
-  .view-button.active,
-  .view-button:hover {
-    background: #2f6f73;
-    color: #ffffff;
-  }
-
-  .camino-entries h2,
-  .camino-map-section h2 {
-    font-size: 1.3rem;
-    margin: 2rem 0 1rem;
-    color: #1f2933;
+  .camino-entry-list {
+    display: grid;
+    gap: 18px;
   }
 
   .camino-card {
-    background: #ffffff;
-    border-radius: 1.4rem;
+    border-top: 1px solid var(--border);
+    padding-top: 18px;
+  }
+
+  #camino-map {
+    height: 520px;
+    border-radius: 18px;
+    border: 1px solid var(--border);
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
-    margin-bottom: 2rem;
+    margin-top: 18px;
   }
 
-  .camino-card-image {
-    width: 100%;
-    display: block;
-    object-fit: cover;
-  }
-
-  .camino-card-body {
-    padding: 1.4rem 1.3rem 1.6rem;
-  }
-
-  .stage-label {
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: #2f6f73;
-    font-size: 0.8rem;
-    font-weight: 800;
-    margin: 0 0 0.75rem;
-  }
-
-  .camino-card h3 {
-    font-size: 1.45rem;
-    margin: 0 0 0.6rem;
-    line-height: 1.2;
-  }
-
-  .camino-card h3 a {
-    color: #2f6f73;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-  }
-
-  .camino-date {
-    color: #6b7280;
-    font-size: 1rem;
-    margin: 0 0 1rem;
-  }
-
-  .camino-excerpt {
-    color: #1f2933;
-    font-size: 1.05rem;
-    line-height: 1.65;
-    margin: 0;
-  }
-
-  .camino-map-section {
-    margin-top: 3rem;
-    padding: 1.5rem;
-    border-radius: 1.2rem;
-    background: #ffffff;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  }
-
-  .camino-map-section p {
-    color: #4b5563;
-    line-height: 1.6;
-    margin-bottom: 0;
-  }
-
-  @media (max-width: 600px) {
-    .camino-page {
-      padding: 1.25rem 0.9rem 3rem;
-    }
-
-    .camino-hero h1 {
-      font-size: 2rem;
-    }
-
-    .camino-card-body {
-      padding: 1.25rem 1.1rem 1.45rem;
-    }
-
-    .camino-card h3 {
-      font-size: 1.35rem;
+  @media (max-width: 640px) {
+    #camino-map {
+      height: 420px;
     }
   }
 </style>
+
+<script>
+  const caminoStages = [
+    {% if site.camino_entries %}
+      {% assign map_entries = site.camino_entries | sort: "stage_number" %}
+    {% else %}
+      {% assign map_entries = "" | split: "," %}
+    {% endif %}
+
+    {% for entry in map_entries %}
+      {% if entry.latitude and entry.longitude %}
+        {
+          title: {{ entry.title | jsonify }},
+          stage: {{ entry.stage_number | jsonify }},
+          date: {{ entry.date | date: "%B %-d, %Y" | jsonify }},
+          start: {{ entry.start_location | jsonify }},
+          end: {{ entry.end_location | jsonify }},
+          lat: {{ entry.latitude | jsonify }},
+          lng: {{ entry.longitude | jsonify }},
+          url: {{ entry.url | jsonify }}
+        }{% unless forloop.last %},{% endunless %}
+      {% endif %}
+    {% endfor %}
+  ];
+
+  let caminoMapInitialized = false;
+  let caminoMap;
+
+  function initializeCaminoMap() {
+    if (caminoMapInitialized) {
+      caminoMap.invalidateSize();
+      return;
+    }
+
+    caminoMap = L.map('camino-map').setView([42.9, -4.2], 7);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(caminoMap);
+
+    caminoStages.forEach(function(stage) {
+      const marker = L.marker([stage.lat, stage.lng]).addTo(caminoMap);
+
+      let routeText = '';
+      if (stage.start && stage.end) {
+        routeText = `${stage.start} to ${stage.end}<br>`;
+      } else if (stage.start) {
+        routeText = `${stage.start}<br>`;
+      } else if (stage.end) {
+        routeText = `${stage.end}<br>`;
+      }
+
+      let stageText = '';
+      if (stage.stage) {
+        stageText = `Stage ${stage.stage}: `;
+      }
+
+      marker.bindPopup(`
+        <strong>${stageText}${stage.title}</strong><br>
+        ${stage.date}<br>
+        ${routeText}
+        <a href="${stage.url}">Read entry</a>
+      `);
+    });
+
+    caminoMapInitialized = true;
+  }
+
+  function showCaminoView(view) {
+    const chronological = document.getElementById('camino-chronological-view');
+    const map = document.getElementById('camino-map-view');
+
+    if (view === 'map') {
+      chronological.style.display = 'none';
+      map.style.display = 'block';
+
+      setTimeout(function () {
+        initializeCaminoMap();
+      }, 100);
+    } else {
+      chronological.style.display = 'block';
+      map.style.display = 'none';
+    }
+  }
+</script>

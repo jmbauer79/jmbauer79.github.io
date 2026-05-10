@@ -60,6 +60,20 @@ title: Camino de Santiago
             {% endif %}
           </p>
 
+          {% if entry.km_walked or entry.elevation_gain or entry.weather %}
+            <div class="camino-stats">
+              {% if entry.km_walked %}
+                <span>📍 {{ entry.km_walked }} km</span>
+              {% endif %}
+              {% if entry.elevation_gain %}
+                <span>⬆️ {{ entry.elevation_gain }}m gain</span>
+              {% endif %}
+              {% if entry.weather %}
+                <span>🌤 {{ entry.weather }}</span>
+              {% endif %}
+            </div>
+          {% endif %}
+
           {% if entry.excerpt %}
             <p>{{ entry.excerpt }}</p>
           {% endif %}
@@ -110,7 +124,6 @@ title: Camino de Santiago
     transition: background 0.15s, color 0.15s;
   }
 
-  /* STEP 1 */
   .camino-view-toggle button.active {
     background: var(--accent);
     color: var(--paper);
@@ -124,6 +137,21 @@ title: Camino de Santiago
   .camino-card {
     border-top: 1px solid var(--border);
     padding-top: 18px;
+  }
+
+  .camino-stats {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    color: var(--muted, #888);
+    margin: 6px 0 10px;
+  }
+
+  .camino-stats span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
   }
 
   #camino-map {
@@ -176,4 +204,91 @@ title: Camino de Santiago
 
     caminoMap = L.map('camino-map', { zoomControl: true });
 
-    /* STEP 3 — CartoDB light​​​​​​​​​​​​​​​​
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      maxZoom: 18,
+      attribution: '&copy; OpenStreetMap &copy; CARTO'
+    }).addTo(caminoMap);
+
+    if (caminoStages.length === 0) {
+      caminoMap.setView([42.9, -4.2], 7);
+      caminoMapInitialized = true;
+      return;
+    }
+
+    const stageIcon = L.divIcon({
+      className: '',
+      html: `<div style="
+        width: 14px; height: 14px;
+        background: #c0392b;
+        border: 2px solid white;
+        border-radius: 50%;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+      "></div>`,
+      iconSize: [14, 14],
+      iconAnchor: [7, 7]
+    });
+
+    if (caminoStages.length > 1) {
+      const latlngs = caminoStages.map(s => [s.lat, s.lng]);
+      L.polyline(latlngs, {
+        color: '#c0392b',
+        weight: 3,
+        opacity: 0.7,
+        dashArray: '6, 6'
+      }).addTo(caminoMap);
+    }
+
+    caminoStages.forEach(function(stage) {
+      const marker = L.marker([stage.lat, stage.lng], { icon: stageIcon }).addTo(caminoMap);
+
+      let routeText = '';
+      if (stage.start && stage.end) {
+        routeText = `${stage.start} to ${stage.end}<br>`;
+      } else if (stage.start) {
+        routeText = `${stage.start}<br>`;
+      } else if (stage.end) {
+        routeText = `${stage.end}<br>`;
+      }
+
+      let stageText = '';
+      if (stage.stage) {
+        stageText = `Stage ${stage.stage}: `;
+      }
+
+      marker.bindPopup(`
+        <strong>${stageText}${stage.title}</strong><br>
+        ${stage.date}<br>
+        ${routeText}
+        <a href="${stage.url}">Read entry</a>
+      `);
+    });
+
+    const bounds = L.latLngBounds(caminoStages.map(s => [s.lat, s.lng]));
+    caminoMap.fitBounds(bounds, { padding: [40, 40] });
+
+    caminoMapInitialized = true;
+  }
+
+  function showCaminoView(view) {
+    const chronological = document.getElementById('camino-chronological-view');
+    const map = document.getElementById('camino-map-view');
+    const buttons = document.querySelectorAll('.camino-view-toggle button');
+
+    buttons.forEach(btn => btn.classList.remove('active'));
+
+    if (view === 'map') {
+      chronological.style.display = 'none';
+      map.style.display = 'block';
+      buttons[1].classList.add('active');
+      setTimeout(initializeCaminoMap, 100);
+    } else {
+      chronological.style.display = 'block';
+      map.style.display = 'none';
+      buttons[0].classList.add('active');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.camino-view-toggle button')[0].classList.add('active');
+  });
+</script>

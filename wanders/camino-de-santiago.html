@@ -78,7 +78,7 @@ title: Camino de Santiago
 <section id="camino-map-view" style="display: none;">
   <h2>Map View</h2>
   <p>
-    Click a stage marker to open that day’s Camino entry.
+    Click a stage marker to open that day's Camino entry.
   </p>
 
   <div id="camino-map"></div>
@@ -107,6 +107,12 @@ title: Camino de Santiago
     padding: 8px 14px;
     font-weight: 700;
     cursor: pointer;
+  }
+
+  /* STEP 1 ADDITION */
+  .camino-view-toggle button.active {
+    background: var(--accent);
+    color: var(--paper);
   }
 
   .camino-entry-list {

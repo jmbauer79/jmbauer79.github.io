@@ -127,26 +127,4 @@ title: Camino de Santiago
   }
 
   #camino-map {
-    height: 520px;
-    border-radius: 18px;
-    border: 1px solid var(--border);
-    overflow: hidden;
-    margin-top: 18px;
-  }
-
-  @media (max-width: 640px) {
-    #camino-map {
-      height: 420px;
-    }
-  }
-</style>
-
-<script>
-  const caminoStages = [
-    {% if site.camino_entries %}
-      {% assign map_entries = site.camino_entries | sort: "stage_number" %}
-    {% else %}
-      {% assign map_entries = "" | split: "," %}
-    {% endif %}
-
-    {% for​​​​​​​​​​​​​​​​
+    height: 520​​​​​​​​​​​​​​​​

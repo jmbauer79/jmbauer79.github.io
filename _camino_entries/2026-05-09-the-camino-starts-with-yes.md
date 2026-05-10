@@ -1,5 +1,5 @@
 ---
-title: The Camino starts with yes
+title: The Camino Starts with Yes
 date: 2026-05-09
 featured_image: /images/uploads/img_0677.jpeg
 image_caption: "I’ve always enjoyed gathering clothing and gear for trips, but

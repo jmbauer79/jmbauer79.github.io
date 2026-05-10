@@ -1,6 +1,8 @@
 title: JB Wanders
 description: Travel notes, reflections, and field journals by Jeremy Bauer
 
+future: true
+
 collections:
   camino_entries:
     output: true

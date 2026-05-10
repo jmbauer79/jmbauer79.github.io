@@ -12,4 +12,4 @@ The Camino doesn’t begin when I set out from St. Jean, and it doesn’t end wh
 
 I started this page to capture thoughts, reflections, and imagery from my pilgrimage through Spain. 
 
-So much around me has felt nearly overwhelming lately, but even the anticipation of the peace I’ll feel in less than four months brings me peace.
+So much around me has felt nearly overwhelming lately, but even the anticipation of the peace I’ll feel in less than four months brings me comfort now.

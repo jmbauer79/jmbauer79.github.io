@@ -127,4 +127,53 @@ title: Camino de Santiago
   }
 
   #camino-map {
-    height: 520​​​​​​​​​​​​​​​​
+    height: 520px;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    margin-top: 18px;
+  }
+
+  @media (max-width: 640px) {
+    #camino-map {
+      height: 420px;
+    }
+  }
+</style>
+
+<script>
+  const caminoStages = [
+    {% if site.camino_entries %}
+      {% assign map_entries = site.camino_entries | sort: "stage_number" %}
+    {% else %}
+      {% assign map_entries = "" | split: "," %}
+    {% endif %}
+
+    {% for entry in map_entries %}
+      {% if entry.latitude and entry.longitude %}
+        {
+          title: {{ entry.title | jsonify }},
+          stage: {{ entry.stage_number | jsonify }},
+          date: {{ entry.date | date: "%B %-d, %Y" | jsonify }},
+          start: {{ entry.start_location | jsonify }},
+          end: {{ entry.end_location | jsonify }},
+          lat: {{ entry.latitude | jsonify }},
+          lng: {{ entry.longitude | jsonify }},
+          url: {{ entry.url | jsonify }}
+        }{% unless forloop.last %},{% endunless %}
+      {% endif %}
+    {% endfor %}
+  ];
+
+  let caminoMapInitialized = false;
+  let caminoMap;
+
+  function initializeCaminoMap() {
+    if (caminoMapInitialized) {
+      caminoMap.invalidateSize();
+      return;
+    }
+
+    caminoMap = L.map('camino-map', { zoomControl: true });
+
+    /* STEP 3 — CartoDB light​​​​​​​​​​​​​​​​

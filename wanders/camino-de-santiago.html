@@ -60,12 +60,111 @@ title: Camino de Santiago
 <section id="camino-map-view" style="display: none;">
   <h2>Map View</h2>
   <p>
-    Eventually, this map will show each Camino stage as a clickable marker.
-    For now, this section confirms that the view switcher is working.
+    Click a stage marker to open that day’s Camino entry.
   </p>
+
+  <div id="camino-map"></div>
 </section>
 
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<style>
+  .camino-view-toggle {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 18px 0 26px;
+  }
+
+  .camino-view-toggle button {
+    border: 1px solid var(--border);
+    background: var(--paper);
+    color: var(--accent);
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .camino-entry-list {
+    display: grid;
+    gap: 18px;
+  }
+
+  .camino-card {
+    border-top: 1px solid var(--border);
+    padding-top: 18px;
+  }
+
+  #camino-map {
+    height: 520px;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    margin-top: 18px;
+  }
+
+  @media (max-width: 640px) {
+    #camino-map {
+      height: 420px;
+    }
+  }
+</style>
+
 <script>
+  const caminoStages = [
+    {% assign map_entries = site.camino_entries | sort: "stage_number" %}
+    {% for entry in map_entries %}
+      {% if entry.latitude and entry.longitude %}
+        {
+          title: {{ entry.title | jsonify }},
+          stage: {{ entry.stage_number | jsonify }},
+          date: {{ entry.date | date: "%B %-d, %Y" | jsonify }},
+          start: {{ entry.start_location | jsonify }},
+          end: {{ entry.end_location | jsonify }},
+          lat: {{ entry.latitude | jsonify }},
+          lng: {{ entry.longitude | jsonify }},
+          url: {{ entry.url | jsonify }}
+        }{% unless forloop.last %},{% endunless %}
+      {% endif %}
+    {% endfor %}
+  ];
+
+  let caminoMapInitialized = false;
+  let caminoMap;
+
+  function initializeCaminoMap() {
+    if (caminoMapInitialized) {
+      caminoMap.invalidateSize();
+      return;
+    }
+
+    caminoMap = L.map('camino-map').setView([42.9, -4.2], 7);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(caminoMap);
+
+    caminoStages.forEach(function(stage) {
+      const marker = L.marker([stage.lat, stage.lng]).addTo(caminoMap);
+
+      marker.bindPopup(`
+        <strong>Stage ${stage.stage}: ${stage.title}</strong><br>
+        ${stage.date}<br>
+        ${stage.start} to ${stage.end}<br>
+        <a href="${stage.url}">Read entry</a>
+      `);
+    });
+
+    caminoMapInitialized = true;
+  }
+
   function showCaminoView(view) {
     const chronological = document.getElementById('camino-chronological-view');
     const map = document.getElementById('camino-map-view');
@@ -73,6 +172,10 @@ title: Camino de Santiago
     if (view === 'map') {
       chronological.style.display = 'none';
       map.style.display = 'block';
+
+      setTimeout(function () {
+        initializeCaminoMap();
+      }, 100);
     } else {
       chronological.style.display = 'block';
       map.style.display = 'none';

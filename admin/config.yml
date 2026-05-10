@@ -72,6 +72,106 @@ collections:
         name: "body"
         widget: "markdown"
 
+      - label: "Additional Media 1 - Photo"
+        name: "media_1_image"
+        widget: "image"
+        required: false
+
+      - label: "Additional Media 1 - Photo Caption"
+        name: "media_1_image_caption"
+        widget: "string"
+        required: false
+
+      - label: "Additional Media 1 - Vimeo ID"
+        name: "media_1_vimeo_id"
+        widget: "string"
+        required: false
+
+      - label: "Additional Media 1 - Vimeo Caption"
+        name: "media_1_vimeo_caption"
+        widget: "string"
+        required: false
+
+      - label: "Additional Media 2 - Photo"
+        name: "media_2_image"
+        widget: "image"
+        required: false
+
+      - label: "Additional Media 2 - Photo Caption"
+        name: "media_2_image_caption"
+        widget: "string"
+        required: false
+
+      - label: "Additional Media 2 - Vimeo ID"
+        name: "media_2_vimeo_id"
+        widget: "string"
+        required: false
+
+      - label: "Additional Media 2 - Vimeo Caption"
+        name: "media_2_vimeo_caption"
+        widget: "string"
+        required: false
+
+      - label: "Additional Media 3 - Photo"
+        name: "media_3_image"
+        widget: "image"
+        required: false
+
+      - label: "Additional Media 3 - Photo Caption"
+        name: "media_3_image_caption"
+        widget: "string"
+        required: false
+
+      - label: "Additional Media 3 - Vimeo ID"
+        name: "media_3_vimeo_id"
+        widget: "string"
+        required: false
+
+      - label: "Additional Media 3 - Vimeo Caption"
+        name: "media_3_vimeo_caption"
+        widget: "string"
+        required: false
+
+      - label: "Additional Media 4 - Photo"
+        name: "media_4_image"
+        widget: "image"
+        required: false
+
+      - label: "Additional Media 4 - Photo Caption"
+        name: "media_4_image_caption"
+        widget: "string"
+        required: false
+
+      - label: "Additional Media 4 - Vimeo ID"
+        name: "media_4_vimeo_id"
+        widget: "string"
+        required: false
+
+      - label: "Additional Media 4 - Vimeo Caption"
+        name: "media_4_vimeo_caption"
+        widget: "string"
+        required: false
+
+      - label: "Additional Media 5 - Photo"
+        name: "media_5_image"
+        widget: "image"
+        required: false
+
+      - label: "Additional Media 5 - Photo Caption"
+        name: "media_5_image_caption"
+        widget: "string"
+        required: false
+
+      - label: "Additional Media 5 - Vimeo ID"
+        name: "media_5_vimeo_id"
+        widget: "string"
+        required: false
+
+      - label: "Additional Media 5 - Vimeo Caption"
+        name: "media_5_vimeo_caption"
+        widget: "string"
+        required: false
+
   - name: "wanders"
     label: "JB Wanders"
     folder: "content/wanders"

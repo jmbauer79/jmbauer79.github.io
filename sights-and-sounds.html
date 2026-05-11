@@ -1,3 +1,6 @@
+---
+---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,11 +72,40 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.06);
     }
 
-    .video-area {
+    .media-carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
       background: #111;
-      padding: 1rem;
+      gap: 0;
+      -webkit-overflow-scrolling: touch;
     }
 
+    .media-carousel::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .media-carousel::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .media-carousel::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.35);
+      border-radius: 999px;
+    }
+
+    .media-slide {
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 320px;
+    }
+
+    .photo-wrapper,
     .video-wrapper {
       position: relative;
       width: min(100%, 420px);
@@ -82,6 +114,13 @@
       background: #000;
       border-radius: 16px;
       overflow: hidden;
+    }
+
+    .photo-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .video-wrapper iframe {
@@ -111,6 +150,16 @@
       background: rgba(0, 0, 0, 0.8);
     }
 
+    .carousel-hint {
+      color: rgba(255, 255, 255, 0.72);
+      background: #111;
+      text-align: center;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.8rem;
+      padding: 0 1rem 0.85rem;
+      margin-top: -0.25rem;
+    }
+
     .sound-content {
       padding: 1.25rem;
     }
@@ -124,35 +173,24 @@
       margin-bottom: 0.5rem;
     }
 
-    h2 {
-      margin: 0 0 0.75rem;
-      font-size: 1.6rem;
-      line-height: 1.2;
-      font-weight: normal;
-    }
-
     p {
       margin: 0 0 1rem;
     }
 
     .caption {
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.98rem;
       font-style: italic;
     }
 
-    .vimeo-link {
-      display: inline-block;
-      margin-top: 0.5rem;
-      color: var(--accent);
-      text-decoration: none;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 0.95rem;
-      font-weight: 600;
-    }
-
-    .vimeo-link:hover {
-      text-decoration: underline;
+    .empty-state {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 1.5rem;
+      margin: 1.5rem 0 2.5rem;
+      color: var(--muted);
+      text-align: center;
     }
 
     footer {
@@ -174,47 +212,86 @@
   </header>
 
   <main>
-    <article class="sound-card">
-      <div class="video-area">
-        <div class="video-wrapper" id="bird-video-wrapper">
-          <iframe
-            id="bird-video"
-            src="https://player.vimeo.com/video/1188333418?muted=1&autopause=0&playsinline=1&controls=0&loop=1"
-            title="Bird Reflection"
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-            allowfullscreen>
-          </iframe>
+    {% assign sound_entries = site.sights_sounds | sort: "date" | reverse %}
 
-          <button class="sound-toggle" id="sound-toggle" type="button">
-            🔇 Muted
-          </button>
-        </div>
+    {% if sound_entries.size > 0 %}
+      {% for entry in sound_entries %}
+        {% assign media_count = 0 %}
+
+        {% assign media_numbers = "1,2,3,4,5,6,7,8,9,10" | split: "," %}
+
+        {% for number in media_numbers %}
+          {% assign media_name = "media_" | append: number %}
+          {% assign media = entry[media_name] %}
+          {% if media.photo or media.photo_url or media.vimeo_id %}
+            {% assign media_count = media_count | plus: 1 %}
+          {% endif %}
+        {% endfor %}
+
+        <article class="sound-card">
+          {% if media_count > 0 %}
+            <div class="media-carousel" aria-label="Sights and Sounds media carousel">
+              {% for number in media_numbers %}
+                {% assign media_name = "media_" | append: number %}
+                {% assign media = entry[media_name] %}
+
+                {% if media.photo or media.photo_url or media.vimeo_id %}
+                  <section class="media-slide">
+                    {% if media.vimeo_id %}
+                      <div class="video-wrapper sound-video-wrapper">
+                        <iframe
+                          class="sound-vimeo"
+                          src="https://player.vimeo.com/video/{{ media.vimeo_id }}?muted=1&autopause=0&playsinline=1&controls=0&loop=1"
+                          title="{{ entry.caption | strip_html | truncate: 80 }}"
+                          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                          allowfullscreen>
+                        </iframe>
+
+                        <button class="sound-toggle" type="button">
+                          🔇 Muted
+                        </button>
+                      </div>
+                    {% elsif media.photo %}
+                      <div class="photo-wrapper">
+                        <img
+                          src="{{ media.photo }}"
+                          alt="{{ entry.caption | strip_html | truncate: 120 }}"
+                          loading="lazy">
+                      </div>
+                    {% elsif media.photo_url %}
+                      <div class="photo-wrapper">
+                        <img
+                          src="{{ media.photo_url }}"
+                          alt="{{ entry.caption | strip_html | truncate: 120 }}"
+                          loading="lazy">
+                      </div>
+                    {% endif %}
+                  </section>
+                {% endif %}
+              {% endfor %}
+            </div>
+
+            {% if media_count > 1 %}
+              <div class="carousel-hint">Swipe sideways to see more</div>
+            {% endif %}
+          {% endif %}
+
+          <div class="sound-content">
+            {% if entry.date %}
+              <div class="date">{{ entry.date | date: "%B %-d, %Y" }}</div>
+            {% endif %}
+
+            {% if entry.caption %}
+              <p class="caption">{{ entry.caption }}</p>
+            {% endif %}
+          </div>
+        </article>
+      {% endfor %}
+    {% else %}
+      <div class="empty-state">
+        <p>No Sights & Sounds entries yet.</p>
       </div>
-
-      <div class="sound-content">
-        <div class="date">April 2026</div>
-
-        <h2>The Bird and Its Reflection</h2>
-
-        <p>
-          On a lunchtime walk, I paused to watch a bird fighting its own reflection.
-          It was funny at first, then oddly familiar — a tiny teaching moment about how
-          easily we can mistake ourselves for the enemy.
-        </p>
-
-        <p class="caption">
-          A brief encounter with a bird, a window, and the very human art of getting in our own way.
-        </p>
-
-        <a
-          class="vimeo-link"
-          href="https://vimeo.com/1188333418"
-          target="_blank"
-          rel="noopener">
-          Open video on Vimeo
-        </a>
-      </div>
-    </article>
+    {% endif %}
   </main>
 
   <footer>
@@ -224,48 +301,56 @@
   <script src="https://player.vimeo.com/api/player.js"></script>
 
   <script>
-    const iframe = document.getElementById("bird-video");
-    const wrapper = document.getElementById("bird-video-wrapper");
-    const soundToggle = document.getElementById("sound-toggle");
+    document.addEventListener("DOMContentLoaded", function () {
+      const wrappers = document.querySelectorAll(".sound-video-wrapper");
 
-    const player = new Vimeo.Player(iframe);
+      wrappers.forEach((wrapper) => {
+        const iframe = wrapper.querySelector(".sound-vimeo");
+        const soundToggle = wrapper.querySelector(".sound-toggle");
 
-    let isMuted = true;
+        if (!iframe || !soundToggle || typeof Vimeo === "undefined") {
+          return;
+        }
 
-    player.setMuted(true);
+        const player = new Vimeo.Player(iframe);
+        let isMuted = true;
 
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            player.play().catch(error => {
-              console.log("Autoplay was prevented:", error);
+        player.setMuted(true);
+
+        const observer = new IntersectionObserver(
+          entries => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                player.play().catch(error => {
+                  console.log("Autoplay was prevented:", error);
+                });
+              } else {
+                player.pause();
+              }
             });
+          },
+          {
+            threshold: 0.55
+          }
+        );
+
+        observer.observe(wrapper);
+
+        soundToggle.addEventListener("click", async () => {
+          isMuted = !isMuted;
+
+          await player.setMuted(isMuted);
+
+          if (isMuted) {
+            soundToggle.textContent = "🔇 Muted";
           } else {
-            player.pause();
+            soundToggle.textContent = "🔊 Sound on";
+            player.play().catch(error => {
+              console.log("Playback was prevented:", error);
+            });
           }
         });
-      },
-      {
-        threshold: 0.55
-      }
-    );
-
-    observer.observe(wrapper);
-
-    soundToggle.addEventListener("click", async () => {
-      isMuted = !isMuted;
-
-      await player.setMuted(isMuted);
-
-      if (isMuted) {
-        soundToggle.textContent = "🔇 Muted";
-      } else {
-        soundToggle.textContent = "🔊 Sound on";
-        player.play().catch(error => {
-          console.log("Playback was prevented:", error);
-        });
-      }
+      });
     });
   </script>
 </body>

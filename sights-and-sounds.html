@@ -109,17 +109,20 @@
     .video-wrapper {
       position: relative;
       width: min(100%, 420px);
-      aspect-ratio: 9 / 16;
       margin: 0 auto;
       background: #000;
       border-radius: 16px;
       overflow: hidden;
     }
 
+    .video-wrapper {
+      aspect-ratio: 9 / 16;
+    }
+
     .photo-wrapper img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      max-height: 70vh;
+      object-fit: contain;
       display: block;
     }
 

@@ -7,6 +7,8 @@ collections:
   camino_entries:
     output: true
     permalink: /wanders/camino-de-santiago/:name/
+  sights_sounds:
+    output: false
 
 defaults:
   - scope:

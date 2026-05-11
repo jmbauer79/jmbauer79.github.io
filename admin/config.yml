@@ -198,6 +198,113 @@ collections:
       - { label: "Featured Image Caption", name: "featured_image_caption", widget: "string", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
 
+  - name: "sights_sounds"
+    label: "Sights & Sounds"
+    folder: "_sights_sounds"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+
+      - label: "Caption"
+        name: "caption"
+        widget: "text"
+        required: true
+
+      - label: "Media 1"
+        name: "media_1"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Photo", name: "photo", widget: "image", required: false }
+          - { label: "External Photo URL", name: "photo_url", widget: "string", required: false }
+          - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
+
+      - label: "Media 2"
+        name: "media_2"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Photo", name: "photo", widget: "image", required: false }
+          - { label: "External Photo URL", name: "photo_url", widget: "string", required: false }
+          - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
+
+      - label: "Media 3"
+        name: "media_3"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Photo", name: "photo", widget: "image", required: false }
+          - { label: "External Photo URL", name: "photo_url", widget: "string", required: false }
+          - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
+
+      - label: "Media 4"
+        name: "media_4"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Photo", name: "photo", widget: "image", required: false }
+          - { label: "External Photo URL", name: "photo_url", widget: "string", required: false }
+          - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
+
+      - label: "Media 5"
+        name: "media_5"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Photo", name: "photo", widget: "image", required: false }
+          - { label: "External Photo URL", name: "photo_url", widget: "string", required: false }
+          - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
+
+      - label: "Media 6"
+        name: "media_6"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Photo", name: "photo", widget: "image", required: false }
+          - { label: "External Photo URL", name: "photo_url", widget: "string", required: false }
+          - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
+
+      - label: "Media 7"
+        name: "media_7"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Photo", name: "photo", widget: "image", required: false }
+          - { label: "External Photo URL", name: "photo_url", widget: "string", required: false }
+          - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
+
+      - label: "Media 8"
+        name: "media_8"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Photo", name: "photo", widget: "image", required: false }
+          - { label: "External Photo URL", name: "photo_url", widget: "string", required: false }
+          - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
+
+      - label: "Media 9"
+        name: "media_9"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Photo", name: "photo", widget: "image", required: false }
+          - { label: "External Photo URL", name: "photo_url", widget: "string", required: false }
+          - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
+
+      - label: "Media 10"
+        name: "media_10"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Photo", name: "photo", widget: "image", required: false }
+          - { label: "External Photo URL", name: "photo_url", widget: "string", required: false }
+          - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
+
   - name: "wonders"
     label: "JB Wonders"
     folder: "content/wonders"

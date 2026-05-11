@@ -215,7 +215,11 @@
   </header>
 
   <main>
-    {% assign sound_entries = site.sights_sounds | sort: "date" | reverse %}
+    {% if site.sights_sounds %}
+      {% assign sound_entries = site.sights_sounds | sort: "date" | reverse %}
+    {% else %}
+      {% assign sound_entries = "" | split: "," %}
+    {% endif %}
 
     {% if sound_entries.size > 0 %}
       {% for entry in sound_entries %}

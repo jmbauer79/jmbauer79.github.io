@@ -1,6 +1,6 @@
 ---
 date: 2026-05-25
-caption: "I don’t go here often enough ☀️🌊🏖️ "
+caption: "I don’t go here often enough ☀️🌊🏖️  "
 location_name: Blacks Beach
 coordinates: 32.8955974, -117.2526839
 media_1:

@@ -215,6 +215,18 @@ collections:
         widget: "text"
         required: true
 
+      - label: "Location Name"
+        name: "location_name"
+        widget: "string"
+        required: false
+        hint: "Example: Balboa Park"
+
+      - label: "Coordinates"
+        name: "coordinates"
+        widget: "string"
+        required: false
+        hint: "Paste from Google Maps, e.g. 32.715736, -117.161087"
+
       - label: "Media 1"
         name: "media_1"
         widget: "object"

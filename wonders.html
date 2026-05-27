@@ -372,14 +372,7 @@
     .tile-cta::after { content: '→'; font-size: 0.9rem; }
 
     .tile-corner {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 52px;
-      height: 52px;
-      border-left: 1px solid rgba(201,168,124,0.3);
-      border-bottom: 1px solid rgba(201,168,124,0.3);
-      z-index: 3;
+      display: none;
     }
 
     .essay-grid {
@@ -616,7 +609,11 @@
       const vimeoId = tileImage.dataset.vimeoId;
       const backupImage = tileImage.dataset.backupImage;
       const fallbackVideo = document.getElementById("sights-tile-fallback-video");
-      const oembedUrl = "https://vimeo.com/api/oembed.json?url=" + encodeURIComponent("https://vimeo.com/" + vimeoId);
+
+      const oembedUrl =
+        "https://vimeo.com/api/oembed.json?url=" +
+        encodeURIComponent("https://vimeo.com/" + vimeoId) +
+        "&width=1600";
 
       fetch(oembedUrl)
         .then(response => {

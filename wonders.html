@@ -5,8 +5,9 @@
 {% assign latest_sight = sound_entries | first %}
 {% assign media_numbers = "1,2,3,4,5,6,7,8,9,10" | split: "," %}
 
-{% assign latest_tile_image = "" %}
-{% assign latest_tile_vimeo_id = "" %}
+{% assign first_media_type = "" %}
+{% assign first_media_image = "" %}
+{% assign first_media_vimeo_id = "" %}
 {% assign backup_tile_image = "" %}
 
 {% if latest_sight %}
@@ -14,43 +15,56 @@
     {% assign media_name = "media_" | append: number %}
     {% assign media = latest_sight[media_name] %}
 
-    {% if latest_tile_image == "" %}
+    {% if first_media_type == "" %}
       {% if media.photo %}
-        {% assign latest_tile_image = media.photo %}
+        {% assign first_media_type = "image" %}
+        {% assign first_media_image = media.photo %}
       {% elsif media.photo_url %}
-        {% assign latest_tile_image = media.photo_url %}
+        {% assign first_media_type = "image" %}
+        {% assign first_media_image = media.photo_url %}
+      {% elsif media.vimeo_id %}
+        {% assign first_media_type = "vimeo" %}
+        {% assign first_media_vimeo_id = media.vimeo_id %}
       {% endif %}
     {% endif %}
   {% endfor %}
 
-  {% for number in media_numbers %}
-    {% assign media_name = "media_" | append: number %}
-    {% assign media = latest_sight[media_name] %}
+  {% if first_media_type == "vimeo" %}
+    {% for number in media_numbers %}
+      {% assign media_name = "media_" | append: number %}
+      {% assign media = latest_sight[media_name] %}
 
-    {% if latest_tile_vimeo_id == "" and media.vimeo_id %}
-      {% assign latest_tile_vimeo_id = media.vimeo_id %}
-    {% endif %}
-  {% endfor %}
+      {% if backup_tile_image == "" %}
+        {% if media.photo %}
+          {% assign backup_tile_image = media.photo %}
+        {% elsif media.photo_url %}
+          {% assign backup_tile_image = media.photo_url %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
 {% endif %}
 
-{% for candidate in sound_entries %}
-  {% unless forloop.first %}
-    {% if backup_tile_image == "" %}
-      {% for number in media_numbers %}
-        {% assign media_name = "media_" | append: number %}
-        {% assign media = candidate[media_name] %}
+{% if backup_tile_image == "" %}
+  {% for candidate in sound_entries %}
+    {% unless candidate == latest_sight %}
+      {% if backup_tile_image == "" %}
+        {% for number in media_numbers %}
+          {% assign media_name = "media_" | append: number %}
+          {% assign media = candidate[media_name] %}
 
-        {% if backup_tile_image == "" %}
-          {% if media.photo %}
-            {% assign backup_tile_image = media.photo %}
-          {% elsif media.photo_url %}
-            {% assign backup_tile_image = media.photo_url %}
+          {% if backup_tile_image == "" %}
+            {% if media.photo %}
+              {% assign backup_tile_image = media.photo %}
+            {% elsif media.photo_url %}
+              {% assign backup_tile_image = media.photo_url %}
+            {% endif %}
           {% endif %}
-        {% endif %}
-      {% endfor %}
-    {% endif %}
-  {% endunless %}
-{% endfor %}
+        {% endfor %}
+      {% endif %}
+    {% endunless %}
+  {% endfor %}
+{% endif %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -509,28 +523,28 @@
 
     <a class="feature-tile" href="sights-and-sounds.html" aria-label="Sights and Sounds — ongoing log">
       <div class="tile-media">
-        {% if latest_tile_image != "" %}
+        {% if first_media_type == "image" %}
           <img
             id="sights-tile-image"
             class="tile-image"
-            src="{{ latest_tile_image | escape }}"
+            src="{{ first_media_image | escape }}"
             alt="{{ latest_sight.caption | default: 'Sights and Sounds' | strip_html | escape }}"
             loading="lazy">
 
-        {% elsif latest_tile_vimeo_id != "" %}
+        {% elsif first_media_type == "vimeo" %}
           <img
             id="sights-tile-image"
             class="tile-image"
             src="{% if backup_tile_image != "" %}{{ backup_tile_image | escape }}{% endif %}"
             alt="{{ latest_sight.caption | default: 'Sights and Sounds' | strip_html | escape }}"
-            data-vimeo-id="{{ latest_tile_vimeo_id | escape }}"
+            data-vimeo-id="{{ first_media_vimeo_id | escape }}"
             data-backup-image="{{ backup_tile_image | escape }}"
             {% if backup_tile_image == "" %}style="display: none;"{% endif %}
             loading="lazy">
 
           <div id="sights-tile-fallback-video" class="video-crop {% if backup_tile_image != '' %}is-hidden{% endif %}">
             <iframe
-              src="https://player.vimeo.com/video/{{ latest_tile_vimeo_id | escape }}?muted=1&autoplay=0&background=0&controls=0&playsinline=1"
+              src="https://player.vimeo.com/video/{{ first_media_vimeo_id | escape }}?muted=1&autoplay=0&background=0&controls=0&playsinline=1"
               title="{{ latest_sight.caption | default: 'Sights and Sounds' | strip_html | escape }}"
               allow="fullscreen; picture-in-picture"
               tabindex="-1">

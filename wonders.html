@@ -1,3 +1,57 @@
+---
+---
+
+{% assign sound_entries = site.sights_sounds | sort: "date" | reverse %}
+{% assign latest_sight = sound_entries | first %}
+{% assign media_numbers = "1,2,3,4,5,6,7,8,9,10" | split: "," %}
+
+{% assign latest_tile_image = "" %}
+{% assign latest_tile_vimeo_id = "" %}
+{% assign backup_tile_image = "" %}
+
+{% if latest_sight %}
+  {% for number in media_numbers %}
+    {% assign media_name = "media_" | append: number %}
+    {% assign media = latest_sight[media_name] %}
+
+    {% if latest_tile_image == "" %}
+      {% if media.photo %}
+        {% assign latest_tile_image = media.photo %}
+      {% elsif media.photo_url %}
+        {% assign latest_tile_image = media.photo_url %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+
+  {% for number in media_numbers %}
+    {% assign media_name = "media_" | append: number %}
+    {% assign media = latest_sight[media_name] %}
+
+    {% if latest_tile_vimeo_id == "" and media.vimeo_id %}
+      {% assign latest_tile_vimeo_id = media.vimeo_id %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% for candidate in sound_entries %}
+  {% unless forloop.first %}
+    {% if backup_tile_image == "" %}
+      {% for number in media_numbers %}
+        {% assign media_name = "media_" | append: number %}
+        {% assign media = candidate[media_name] %}
+
+        {% if backup_tile_image == "" %}
+          {% if media.photo %}
+            {% assign backup_tile_image = media.photo %}
+          {% elsif media.photo_url %}
+            {% assign backup_tile_image = media.photo_url %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endunless %}
+{% endfor %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +89,6 @@
       overflow-x: hidden;
     }
 
-    /* grain overlay */
     body::before {
       content: '';
       position: fixed;
@@ -47,7 +100,6 @@
       background-size: 200px 200px;
     }
 
-    /* ── NAV ── */
     nav {
       position: sticky;
       top: 0;
@@ -60,6 +112,7 @@
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
+
     .nav-logo {
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 700;
@@ -68,11 +121,13 @@
       color: var(--bark);
       text-decoration: none;
     }
+
     .nav-links {
       display: flex;
       gap: 2.5rem;
       list-style: none;
     }
+
     .nav-links a {
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 600;
@@ -84,16 +139,17 @@
       opacity: 0.7;
       transition: opacity 0.2s;
     }
+
     .nav-links a:hover,
     .nav-links a.active { opacity: 1; color: var(--accent); }
 
-    /* ── HERO ── */
     .hero {
       position: relative;
       padding: 5rem 3rem 4rem;
       overflow: hidden;
       border-bottom: 1px solid var(--border);
     }
+
     .hero-bg {
       position: absolute;
       inset: 0;
@@ -103,12 +159,14 @@
         var(--cream);
       z-index: 0;
     }
+
     .hero-content {
       position: relative;
       z-index: 1;
       max-width: 860px;
       margin: 0 auto;
     }
+
     .hero-eyebrow {
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 600;
@@ -120,6 +178,7 @@
       opacity: 0;
       animation: fade-up 0.7s 0.1s forwards;
     }
+
     .hero-title {
       font-family: 'Playfair Display', Georgia, serif;
       font-weight: 900;
@@ -131,10 +190,12 @@
       opacity: 0;
       animation: fade-up 0.8s 0.2s forwards;
     }
+
     .hero-title em {
       font-style: italic;
       color: var(--clay);
     }
+
     .hero-desc {
       font-size: 1rem;
       line-height: 1.75;
@@ -143,6 +204,7 @@
       opacity: 0;
       animation: fade-up 0.8s 0.35s forwards;
     }
+
     .hero-rule {
       margin-top: 2.5rem;
       height: 1px;
@@ -156,14 +218,12 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── MAIN ── */
     .page {
       max-width: 900px;
       margin: 0 auto;
       padding: 3.5rem 3rem 5rem;
     }
 
-    /* ── FEATURED TILE ── */
     .section-label {
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 0.7rem;
@@ -189,6 +249,7 @@
       opacity: 0;
       animation: fade-up 0.9s 0.5s forwards;
     }
+
     .feature-tile:hover {
       transform: translateY(-4px);
       box-shadow: 0 20px 56px rgba(59,47,30,0.2);
@@ -201,6 +262,16 @@
       height: 100%;
       overflow: hidden;
     }
+
+    .tile-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
     .video-crop {
       position: absolute;
       top: 50%;
@@ -211,12 +282,17 @@
       transform: translate(-50%, -50%);
       overflow: hidden;
     }
+
     .video-crop iframe {
       width: 100%;
       height: 100%;
       border: 0;
       display: block;
       pointer-events: none;
+    }
+
+    .is-hidden {
+      display: none !important;
     }
 
     .tile-overlay {
@@ -235,6 +311,7 @@
       );
       z-index: 2;
     }
+
     .tile-kicker {
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 0.68rem;
@@ -244,6 +321,7 @@
       color: var(--sand);
       margin-bottom: 0.5rem;
     }
+
     .tile-overlay h2 {
       font-family: 'Playfair Display', serif;
       font-weight: 700;
@@ -253,6 +331,7 @@
       color: var(--parchment);
       margin-bottom: 0.6rem;
     }
+
     .tile-overlay p {
       font-size: 0.95rem;
       line-height: 1.7;
@@ -260,6 +339,7 @@
       max-width: 520px;
       margin-bottom: 1.25rem;
     }
+
     .tile-cta {
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 700;
@@ -272,19 +352,22 @@
       gap: 0.4rem;
       transition: gap 0.2s ease;
     }
+
     .feature-tile:hover .tile-cta { gap: 0.75rem; }
+
     .tile-cta::after { content: '→'; font-size: 0.9rem; }
 
     .tile-corner {
       position: absolute;
-      top: 0; right: 0;
-      width: 52px; height: 52px;
+      top: 0;
+      right: 0;
+      width: 52px;
+      height: 52px;
       border-left: 1px solid rgba(201,168,124,0.3);
       border-bottom: 1px solid rgba(201,168,124,0.3);
       z-index: 3;
     }
 
-    /* ── ESSAY CARDS ── */
     .essay-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -303,6 +386,7 @@
       opacity: 0;
       animation: fade-up 0.8s forwards;
     }
+
     .essay-card:nth-child(1) { animation-delay: 0.65s; }
     .essay-card:nth-child(2) { animation-delay: 0.78s; }
 
@@ -310,6 +394,7 @@
       transform: translateY(-4px);
       box-shadow: 0 16px 48px rgba(59,47,30,0.12);
     }
+
     .essay-card.coming-soon:hover {
       transform: translateY(-2px);
     }
@@ -317,8 +402,10 @@
     .essay-card::after {
       content: '';
       position: absolute;
-      top: 0; right: 0;
-      width: 36px; height: 36px;
+      top: 0;
+      right: 0;
+      width: 36px;
+      height: 36px;
       border-left: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
     }
@@ -332,6 +419,7 @@
       color: var(--clay);
       margin-bottom: 0.6rem;
     }
+
     .essay-card h2 {
       font-family: 'Playfair Display', serif;
       font-weight: 700;
@@ -341,11 +429,13 @@
       color: var(--bark);
       margin-bottom: 0.65rem;
     }
+
     .essay-card p {
       font-size: 0.88rem;
       line-height: 1.75;
       color: rgba(28,23,18,0.62);
     }
+
     .coming-soon-badge {
       display: inline-block;
       font-family: 'Barlow Condensed', sans-serif;
@@ -359,7 +449,6 @@
       margin-top: 1rem;
     }
 
-    /* ── FOOTER ── */
     footer {
       background: var(--bark);
       padding: 2.5rem 3rem;
@@ -367,12 +456,14 @@
       justify-content: space-between;
       align-items: center;
     }
+
     .footer-logo {
       font-family: 'Playfair Display', serif;
       font-style: italic;
       font-size: 1.1rem;
       color: var(--sand);
     }
+
     .footer-copy {
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 0.7rem;
@@ -380,7 +471,6 @@
       color: rgba(201,168,124,0.5);
     }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
       nav { padding: 1rem 1.25rem; }
       .hero { padding: 3.5rem 1.25rem 2.5rem; }
@@ -394,7 +484,6 @@
 
 <body>
 
-  <!-- NAV -->
   <nav>
     <a href="index.html" class="nav-logo">JB WNDRS</a>
     <ul class="nav-links">
@@ -404,7 +493,6 @@
     </ul>
   </nav>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
@@ -415,22 +503,60 @@
     </div>
   </section>
 
-  <!-- MAIN -->
   <main class="page">
 
     <p class="section-label">Featured</p>
 
     <a class="feature-tile" href="sights-and-sounds.html" aria-label="Sights and Sounds — ongoing log">
       <div class="tile-media">
-        <div class="video-crop">
-          <iframe
-            src="https://player.vimeo.com/video/1188333418?muted=1&autoplay=0&background=0&controls=0&playsinline=1"
-            title="Bird Reflection"
-            allow="fullscreen; picture-in-picture"
-            tabindex="-1">
-          </iframe>
-        </div>
+        {% if latest_tile_image != "" %}
+          <img
+            id="sights-tile-image"
+            class="tile-image"
+            src="{{ latest_tile_image | escape }}"
+            alt="{{ latest_sight.caption | default: 'Sights and Sounds' | strip_html | escape }}"
+            loading="lazy">
+
+        {% elsif latest_tile_vimeo_id != "" %}
+          <img
+            id="sights-tile-image"
+            class="tile-image"
+            src="{% if backup_tile_image != "" %}{{ backup_tile_image | escape }}{% endif %}"
+            alt="{{ latest_sight.caption | default: 'Sights and Sounds' | strip_html | escape }}"
+            data-vimeo-id="{{ latest_tile_vimeo_id | escape }}"
+            data-backup-image="{{ backup_tile_image | escape }}"
+            {% if backup_tile_image == "" %}style="display: none;"{% endif %}
+            loading="lazy">
+
+          <div id="sights-tile-fallback-video" class="video-crop {% if backup_tile_image != '' %}is-hidden{% endif %}">
+            <iframe
+              src="https://player.vimeo.com/video/{{ latest_tile_vimeo_id | escape }}?muted=1&autoplay=0&background=0&controls=0&playsinline=1"
+              title="{{ latest_sight.caption | default: 'Sights and Sounds' | strip_html | escape }}"
+              allow="fullscreen; picture-in-picture"
+              tabindex="-1">
+            </iframe>
+          </div>
+
+        {% elsif backup_tile_image != "" %}
+          <img
+            id="sights-tile-image"
+            class="tile-image"
+            src="{{ backup_tile_image | escape }}"
+            alt="Sights and Sounds"
+            loading="lazy">
+
+        {% else %}
+          <div id="sights-tile-fallback-video" class="video-crop">
+            <iframe
+              src="https://player.vimeo.com/video/1188333418?muted=1&autoplay=0&background=0&controls=0&playsinline=1"
+              title="Bird Reflection"
+              allow="fullscreen; picture-in-picture"
+              tabindex="-1">
+            </iframe>
+          </div>
+        {% endif %}
       </div>
+
       <div class="tile-corner"></div>
       <div class="tile-overlay">
         <p class="tile-kicker">Ongoing Log</p>
@@ -460,11 +586,59 @@
 
   </main>
 
-  <!-- FOOTER -->
   <footer>
     <span class="footer-logo">JB Wonders</span>
     <span class="footer-copy">© 2026 JB WNDRS · Built with GitHub Pages</span>
   </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const tileImage = document.getElementById("sights-tile-image");
+
+      if (!tileImage || !tileImage.dataset.vimeoId) {
+        return;
+      }
+
+      const vimeoId = tileImage.dataset.vimeoId;
+      const backupImage = tileImage.dataset.backupImage;
+      const fallbackVideo = document.getElementById("sights-tile-fallback-video");
+      const oembedUrl = "https://vimeo.com/api/oembed.json?url=" + encodeURIComponent("https://vimeo.com/" + vimeoId);
+
+      fetch(oembedUrl)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Vimeo thumbnail lookup failed");
+          }
+
+          return response.json();
+        })
+        .then(data => {
+          if (!data.thumbnail_url) {
+            throw new Error("No Vimeo thumbnail returned");
+          }
+
+          tileImage.src = data.thumbnail_url;
+          tileImage.style.display = "block";
+
+          if (fallbackVideo) {
+            fallbackVideo.classList.add("is-hidden");
+          }
+        })
+        .catch(() => {
+          if (backupImage) {
+            tileImage.src = backupImage;
+            tileImage.style.display = "block";
+
+            if (fallbackVideo) {
+              fallbackVideo.classList.add("is-hidden");
+            }
+          } else if (fallbackVideo) {
+            tileImage.style.display = "none";
+            fallbackVideo.classList.remove("is-hidden");
+          }
+        });
+    });
+  </script>
 
 </body>
 </html>

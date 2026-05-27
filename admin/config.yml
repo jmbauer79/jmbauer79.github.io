@@ -235,7 +235,6 @@ collections:
           - { label: "Photo", name: "photo", widget: "image", required: false }
           - { label: "External Photo URL", name: "photo_url", widget: "string", required: false }
           - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
-          - { label: "Thumbnail Image", name: "thumbnail", widget: "image", required: false, hint: "Optional preview image, especially useful for Vimeo posts" }
 
       - label: "Media 2"
         name: "media_2"
@@ -245,7 +244,6 @@ collections:
           - { label: "Photo", name: "photo", widget: "image", required: false }
           - { label: "External Photo URL", name: "photo_url", widget: "string", required: false }
           - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
-          - { label: "Thumbnail Image", name: "thumbnail", widget: "image", required: false, hint: "Optional preview image, especially useful for Vimeo posts" }
 
       - label: "Media 3"
         name: "media_3"
@@ -255,7 +253,6 @@ collections:
           - { label: "Photo", name: "photo", widget: "image", required: false }
           - { label: "External Photo URL", name: "photo_url", widget: "string", required: false }
           - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
-          - { label: "Thumbnail Image", name: "thumbnail", widget: "image", required: false, hint: "Optional preview image, especially useful for Vimeo posts" }
 
       - label: "Media 4"
         name: "media_4"
@@ -265,7 +262,6 @@ collections:
           - { label: "Photo", name: "photo", widget: "image", required: false }
           - { label: "External Photo URL", name: "photo_url", widget: "string", required: false }
           - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
-          - { label: "Thumbnail Image", name: "thumbnail", widget: "image", required: false, hint: "Optional preview image, especially useful for Vimeo posts" }
 
       - label: "Media 5"
         name: "media_5"
@@ -275,7 +271,6 @@ collections:
           - { label: "Photo", name: "photo", widget: "image", required: false }
           - { label: "External Photo URL", name: "photo_url", widget: "string", required: false }
           - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
-          - { label: "Thumbnail Image", name: "thumbnail", widget: "image", required: false, hint: "Optional preview image, especially useful for Vimeo posts" }
 
       - label: "Media 6"
         name: "media_6"
@@ -285,7 +280,6 @@ collections:
           - { label: "Photo", name: "photo", widget: "image", required: false }
           - { label: "External Photo URL", name: "photo_url", widget: "string", required: false }
           - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
-          - { label: "Thumbnail Image", name: "thumbnail", widget: "image", required: false, hint: "Optional preview image, especially useful for Vimeo posts" }
 
       - label: "Media 7"
         name: "media_7"
@@ -295,7 +289,6 @@ collections:
           - { label: "Photo", name: "photo", widget: "image", required: false }
           - { label: "External Photo URL", name: "photo_url", widget: "string", required: false }
           - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
-          - { label: "Thumbnail Image", name: "thumbnail", widget: "image", required: false, hint: "Optional preview image, especially useful for Vimeo posts" }
 
       - label: "Media 8"
         name: "media_8"
@@ -305,7 +298,6 @@ collections:
           - { label: "Photo", name: "photo", widget: "image", required: false }
           - { label: "External Photo URL", name: "photo_url", widget: "string", required: false }
           - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
-          - { label: "Thumbnail Image", name: "thumbnail", widget: "image", required: false, hint: "Optional preview image, especially useful for Vimeo posts" }
 
       - label: "Media 9"
         name: "media_9"
@@ -315,7 +307,6 @@ collections:
           - { label: "Photo", name: "photo", widget: "image", required: false }
           - { label: "External Photo URL", name: "photo_url", widget: "string", required: false }
           - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
-          - { label: "Thumbnail Image", name: "thumbnail", widget: "image", required: false, hint: "Optional preview image, especially useful for Vimeo posts" }
 
       - label: "Media 10"
         name: "media_10"
@@ -325,7 +316,6 @@ collections:
           - { label: "Photo", name: "photo", widget: "image", required: false }
           - { label: "External Photo URL", name: "photo_url", widget: "string", required: false }
           - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
-          - { label: "Thumbnail Image", name: "thumbnail", widget: "image", required: false, hint: "Optional preview image, especially useful for Vimeo posts" }
 
   - name: "wonders"
     label: "JB Wonders"

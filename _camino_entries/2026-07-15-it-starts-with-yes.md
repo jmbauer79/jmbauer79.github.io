@@ -10,7 +10,7 @@ content_block_1:
     stories of our wanderings, both during and continuing after our time in
     Central America together.
   photo: /images/uploads/jeremy-and-julie-in-nicaragua.jpg
-  photo_caption: Julie and I being vagos in in Nicaragua, circa 2003.
+  photo_caption: Julie and I as Peace Corps volunteers in Nicaragua, circa 2003.
 content_block_2:
   narrative: >-
     I remember a conversation, more than 20 years, shortly after returning to

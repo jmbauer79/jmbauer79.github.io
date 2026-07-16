@@ -1,6 +1,7 @@
 ---
 title: The Camino Starts with Yes
 date: 2026-07-15
+featured_image: /images/uploads/jeremy-and-julie-in-nicaragua.jpg
 content_block_1:
   narrative: I first heard about the Camino de Santiago from my friend Julie in
     early 2005, shortly after she and I completed two years of service as Peace

@@ -1,18 +1,30 @@
 ---
-title: It Starts with Yes
+title: The Camino Starts with Yes
 date: 2026-07-15
 content_block_1:
+  narrative: I first heard about the Camino de Santiago from my friend Julie in
+    early 2005, shortly after she and I completed two years of service as Peace
+    Corps volunteers in Nicaragua. Among our many mutual areas of interest,
+    Julie and I shared alove of travel, often describing ourselves as *vago* or
+    *vaga*, Spanish words describing someone always leaving home. We bonded over
+    stories of our wanderings, both during and continuing after our time in
+    Central America together.
+  photo: /images/uploads/jeremy-and-julie-in-nicaragua.jpg
+  photo_caption: Julie and I being vagos in in Nicaragua, circa 2003.
+content_block_2:
   narrative: >-
-    I first heard about the Camino de Santiago from my friend Julie in early
-    2005, shortly after she and I completed two years of service as Peace Corps
-    volunteers in Nicaragua. Among our many mutual areas of interest, Julie and
-    I shared alove of travel, often describing ourselves as *vago* or *vaga*,
-    Spanish words describing someone always leaving home. We bonded over stories
-    of our wanderings, both during and continuing after our time in Central
-    America together.
-
-
-    I remember a conversation, more than 20 years, shortly after returning to the U.S., Julie described to me upcoming plans to join a friend in Spain to walk across the country to a church in Santiago. Although I continued to identify as *vago*, I also recall my mind losing interest at the time ass he explained the walk, the Camino de Santiago, is a traditional Christian pilgrimage with religious roots. Julie is a spiritual person who values her relationship with God and, though not Christian, she is the type of person to find deep meaning from walking the Camino. I too have always been spiritual and prayerful, but I had been going (and continue to go) through a complicated relationship with Catholicism and organized religion in general and was not quite in the mindset to learn more about the Camino at that time, so I filed it away, and the conversation moved on.
+    I remember a conversation, more than 20 years, shortly after returning to
+    the U.S., Julie described to me upcoming plans to join a friend in Spain to
+    walk across the country to a church in Santiago. Although I continued to
+    identify as *vago*, I also recall my mind losing interest at the time ass he
+    explained the walk, the Camino de Santiago, is a traditional Christian
+    pilgrimage with religious roots. Julie is a spiritual person who values her
+    relationship with God and, though not Christian, she is the type of person
+    to find deep meaning from walking the Camino. I too have always been
+    spiritual and prayerful, but I had been going (and continue to go) through a
+    complicated relationship with Catholicism and organized religion in general
+    and was not quite in the mindset to learn more about the Camino at that
+    time, so I filed it away, and the conversation moved on.
 
 
     Ten years would go by before I heard mention of the Camino again. My partner Jason was describing to me a book he had just finished reading, “I’ll Push You,” a personal narrative about two close friends, one wheelchair-bound and one able-bodied, who committed to walk the Camino together. One, facing a degenerative condition that had already taken his ability to walk and control most of his physical movements, caught story about the Camino on television. He shared with his best friend it was something he’d like to pursue. Without hesitation, the friend committed to joining him and seeing it through together. I read the book and learned they had also produced a documentary which I watched shortly after. The deeply moving story taught me the Camino is more than visiting an old Church in Spain. It this case, it included overcoming physical adversity, perseverance, faith, and both testing and deepening friendship and relationships. This is something I wanted to experience. I did not imagine at the time it was something I could do while working, so I put the Camino in the category of experiences I’d like “to do one day,” which essentially meant after retirement, if ever.  

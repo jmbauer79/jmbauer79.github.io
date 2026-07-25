@@ -3,10 +3,13 @@ title: What's the end game?
 date: 2026-07-25
 content_block_1:
   narrative: >-
-    What’s the end game? 
-
-
-    Knowing I would have a job waiting for me after wanderingthrough Europe for six weeks gave me confidence my journey wouldn’t ruin mefinancially and certainty it was happening. It felt real, and I becamecomfortable telling friends, family, and coworkers more broadly that, comeSeptember, I’d be flying across the globe to walk the Camino de Santiago, a pilgrimageof 500 miles by foot across Spain from the French border to the Cathedral ofSantiago de Compostela and beyond to the Atlantic coast. 
+    Knowing I would have a job waiting for me after wanderingthrough Europe for
+    six weeks gave me confidence my journey wouldn’t ruin mefinancially and
+    certainty it was happening. It felt real, and I becamecomfortable telling
+    friends, family, and coworkers more broadly that, comeSeptember, I’d be
+    flying across the globe to walk the Camino de Santiago, a pilgrimageof 500
+    miles by foot across Spain from the French border to the Cathedral
+    ofSantiago de Compostela and beyond to the Atlantic coast. 
 
 
     Reactions varied widely. Many got it right away, and I’vehad multiple deep, encouraging conversations with those friends and colleagues.On the other hand, the responses from those who didn’t quite understand are theones that perhaps have been the most important prompts to stimulate my personalreflections and considerations on my motivations and plans: 

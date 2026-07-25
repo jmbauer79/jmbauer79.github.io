@@ -24,7 +24,10 @@ content_block_1:
     “You’re gonna come back so fit!”
 
 
-    “I wanna go to Spain too but not where you'll be. You need to go to Barcelona.”
+    “I wanna go to Spain too but not where you'll be.” 
+
+
+    “You need to go to Barcelona.”
 
 
     “One night in Madrid is not enough.”

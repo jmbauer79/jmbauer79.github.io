@@ -28,12 +28,15 @@ layout: default
       {% if page.km_walked %}
         <span>📍 {{ page.km_walked }} km</span>
       {% endif %}
+
       {% if page.distance_miles %}
         <span>🥾 {{ page.distance_miles }} mi</span>
       {% endif %}
+
       {% if page.elevation_gain %}
         <span>⬆️ {{ page.elevation_gain }}m gain</span>
       {% endif %}
+
       {% if page.weather %}
         <span>🌤 {{ page.weather }}</span>
       {% endif %}
@@ -59,7 +62,11 @@ layout: default
 
           {% if block.photo %}
             <figure>
-              <img src="{{ block.photo }}" alt="{{ block.photo_caption | default: page.title }}">
+              <img
+                src="{{ block.photo }}"
+                alt="{{ block.photo_caption | default: page.title }}"
+              >
+
               {% if block.photo_caption %}
                 <figcaption>{{ block.photo_caption }}</figcaption>
               {% endif %}
@@ -105,8 +112,98 @@ layout: default
 
   </div>
 
-  <p>
-    <a href="/wanders/camino-de-santiago.html">← Back to Camino page</a>
+  <section class="camino-contact" aria-labelledby="camino-contact-title">
+    <div class="camino-contact-inner">
+      <p class="camino-contact-eyebrow">A note from you</p>
+
+      <h2 id="camino-contact-title">
+        Did something here resonate?
+      </h2>
+
+      <p class="camino-contact-intro">
+        I’d love to hear from you.
+      </p>
+
+      <form
+        class="camino-contact-form"
+        name="contact"
+        method="POST"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+      >
+        <input type="hidden" name="form-name" value="contact">
+
+        <input
+          type="hidden"
+          name="page-title"
+          value="{{ page.title | escape }}"
+        >
+
+        <input
+          type="hidden"
+          name="page-url"
+          value="{{ page.url | absolute_url }}"
+        >
+
+        <p hidden aria-hidden="true">
+          <label>
+            Leave this field empty:
+            <input
+              name="bot-field"
+              tabindex="-1"
+              autocomplete="off"
+            >
+          </label>
+        </p>
+
+        <div class="camino-form-field">
+          <label for="camino-contact-name">
+            Name <span>optional</span>
+          </label>
+
+          <input
+            type="text"
+            id="camino-contact-name"
+            name="name"
+            autocomplete="name"
+          >
+        </div>
+
+        <div class="camino-form-field">
+          <label for="camino-contact-email">
+            Email <span>optional</span>
+          </label>
+
+          <input
+            type="email"
+            id="camino-contact-email"
+            name="email"
+            autocomplete="email"
+          >
+        </div>
+
+        <div class="camino-form-field camino-form-field-wide">
+          <label for="camino-contact-message">Message</label>
+
+          <textarea
+            id="camino-contact-message"
+            name="message"
+            rows="5"
+            required
+          ></textarea>
+        </div>
+
+        <button class="camino-contact-submit" type="submit">
+          Send a note <span aria-hidden="true">→</span>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <p class="camino-back-link">
+    <a href="/wanders/camino-de-santiago.html">
+      ← Back to Camino page
+    </a>
   </p>
 </article>
 
@@ -185,7 +282,8 @@ layout: default
     padding: 0.55rem 0.8rem;
     background: rgba(0, 0, 0, 0.65);
     color: #fff;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      sans-serif;
     font-size: 0.85rem;
     cursor: pointer;
     backdrop-filter: blur(6px);
@@ -200,13 +298,152 @@ layout: default
     margin-top: 0.65rem;
     color: var(--accent, #3f5f4b);
     text-decoration: none;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      sans-serif;
     font-size: 0.95rem;
     font-weight: 600;
   }
 
   .vimeo-link:hover {
     text-decoration: underline;
+  }
+
+  /* CAMINO CONTACT FORM */
+
+  .camino-contact {
+    margin: 3.5rem 0 2.25rem;
+    padding: 2.25rem 1.25rem;
+    background: #faf7f0;
+    border-top: 1px solid rgba(24, 48, 68, 0.08);
+    border-bottom: 1px solid rgba(24, 48, 68, 0.08);
+  }
+
+  .camino-contact-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .camino-contact-eyebrow {
+    margin: 0 0 0.8rem;
+    color: #c18f32;
+    font-family: "Barlow Condensed", system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .camino-contact h2 {
+    margin: 0 0 0.45rem;
+    color: #183044;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(1.9rem, 8vw, 2.75rem);
+    font-weight: 500;
+    line-height: 1.12;
+  }
+
+  .camino-contact-intro {
+    margin: 0 0 1.5rem;
+    color: #183044;
+    font-size: 1rem;
+  }
+
+  .camino-contact-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+
+  .camino-form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .camino-form-field label {
+    color: #183044;
+    font-family: "Libre Baskerville", Georgia, serif;
+    font-size: 0.95rem;
+  }
+
+  .camino-form-field label span {
+    margin-left: 0.2rem;
+    color: #777;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      sans-serif;
+    font-size: 0.75rem;
+    font-style: italic;
+  }
+
+  .camino-form-field input,
+  .camino-form-field textarea {
+    width: 100%;
+    padding: 0.8rem 0.9rem;
+    border: 1px solid rgba(24, 48, 68, 0.35);
+    border-radius: 5px;
+    background: #fff;
+    color: #183044;
+    font: inherit;
+    font-size: 1rem;
+  }
+
+  .camino-form-field textarea {
+    min-height: 145px;
+    resize: vertical;
+  }
+
+  .camino-form-field input:focus,
+  .camino-form-field textarea:focus {
+    border-color: #c18f32;
+    outline: 3px solid rgba(193, 143, 50, 0.14);
+  }
+
+  .camino-contact-submit {
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.9rem;
+    min-height: 48px;
+    padding: 0.8rem 1.2rem;
+    border: 0;
+    border-radius: 5px;
+    background: #183044;
+    color: #fff;
+    font-family: "Barlow Condensed", system-ui, sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .camino-contact-submit span {
+    color: #e0ad43;
+    font-size: 1.1rem;
+  }
+
+  .camino-contact-submit:hover,
+  .camino-contact-submit:focus-visible {
+    background: #102639;
+  }
+
+  .camino-back-link {
+    margin-top: 2rem;
+  }
+
+  @media (min-width: 700px) {
+    .camino-contact {
+      padding: 3rem;
+    }
+
+    .camino-contact-form {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .camino-form-field-wide,
+    .camino-contact-submit {
+      grid-column: 1 / -1;
+    }
   }
 </style>
 
@@ -230,10 +467,10 @@ layout: default
       player.setMuted(true);
 
       const observer = new IntersectionObserver(
-        entries => {
-          entries.forEach(entry => {
+        (entries) => {
+          entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              player.play().catch(error => {
+              player.play().catch((error) => {
                 console.log("Autoplay was prevented:", error);
               });
             } else {
@@ -257,7 +494,8 @@ layout: default
           soundToggle.textContent = "🔇 Muted";
         } else {
           soundToggle.textContent = "🔊 Sound on";
-          player.play().catch(error => {
+
+          player.play().catch((error) => {
             console.log("Playback was prevented:", error);
           });
         }

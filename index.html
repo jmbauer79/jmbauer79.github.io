@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JB WNDRS</title>
-  <meta name="description" content="JB WNDRS to capture my travels, reflections, and moments, away from the noise." />
+  <meta name="description" content="JB WNDRS is a home for travel journals, reflections, and moments worth remembering." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -458,13 +458,13 @@
         </div>
 
         <h1 id="home-title">
-          A place to share<br />
-          my travels and reflections,<br />
-          away from the noise.
+          A home for where I go,<br />
+          what I wonder,<br />
+          and what stays with me.
         </h1>
 
         <div class="gold-rule"></div>
-        <p>Exploration. Ideas. Moments of Joy.</p>
+        <p>Travel journals. Ideas. Moments worth remembering.</p>
       </div>
     </section>
 
@@ -478,7 +478,7 @@
           <div class="featured-copy">
             <p class="eyebrow">Featured journey</p>
             <h2 id="camino-title">Camino de Santiago</h2>
-            <p>Capturing my journey on a timeless pilgrimage across Spain and beyond.</p>
+            <p>Preparing to walk across northern Spain, and documenting the journey from the first yes to the final step.</p>
             <div>
               <a class="primary-button" href="/wanders/camino-de-santiago.html">
                 Enter the Camino <span aria-hidden="true">→</span>
@@ -494,7 +494,7 @@
         <div class="section-heading">
           <h2 id="explore-title">Explore</h2>
           <div class="gold-rule"></div>
-          <p>Documenting explorations of both the mind and the world.</p>
+          <p>Two paths, one journal.</p>
         </div>
 
         <div class="explore-grid">
@@ -502,7 +502,7 @@
             <div class="explore-content">
               <div>
                 <h3>JB Wanders</h3>
-                <p>Stories away from home, both near and far.</p>
+                <p>Stories from the road.</p>
               </div>
               <span class="card-arrow" aria-hidden="true">→</span>
             </div>
@@ -512,7 +512,7 @@
             <div class="explore-content">
               <div>
                 <h3>JB Wonders</h3>
-                <p>Reflections, observations, and ideas.</p>
+                <p>Thoughts, ideas, and curiosity.</p>
               </div>
               <span class="card-arrow" aria-hidden="true">→</span>
             </div>
@@ -520,12 +520,80 @@
         </div>
       </div>
     </section>
+
+    <section class="contact-section" aria-labelledby="contact-title">
+      <div class="shell contact-inner">
+        <p class="eyebrow">A note from you</p>
+
+        <h2 id="contact-title">
+          Did something here resonate with you?
+        </h2>
+
+        <p class="contact-intro">
+          I’d love to hear what stayed with you.
+        </p>
+
+        <form
+          class="contact-form"
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+
+          <p class="honeypot" aria-hidden="true">
+            <label>
+              Don’t fill this out if you’re human:
+              <input name="bot-field" tabindex="-1" autocomplete="off" />
+            </label>
+          </p>
+
+          <div class="form-field">
+            <label for="contact-name">Name</label>
+            <input
+              type="text"
+              id="contact-name"
+              name="name"
+              autocomplete="name"
+              required
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="contact-email">Email</label>
+            <input
+              type="email"
+              id="contact-email"
+              name="email"
+              autocomplete="email"
+              required
+            />
+          </div>
+
+          <div class="form-field form-field-wide">
+            <label for="contact-message">Message</label>
+            <textarea
+              id="contact-message"
+              name="message"
+              rows="5"
+              required
+            ></textarea>
+          </div>
+
+          <button class="primary-button contact-submit" type="submit">
+            Send a note <span aria-hidden="true">→</span>
+          </button>
+        </form>
+      </div>
+    </section>
+
   </main>
 
   <footer>
     <div class="shell footer-inner">
       <span>© 2026 JB WNDRS</span>
-      <span>Built with humble curiosity and a willingness to learn.</span>
+      <span>Travel, reflection, and the moments between.</span>
       <span>San Diego, CA</span>
     </div>
   </footer>

@@ -1,0 +1,528 @@
+---
+layout: null
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Stories | JB WNDRS</title>
+  <meta
+    name="description"
+    content="Written and oral accountings of true events."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Libre+Baskerville&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --ink: #183044;
+      --ink-soft: #65717a;
+      --gold: #c79a45;
+      --cream: #fbf8f2;
+      --paper: #fffdf9;
+      --line: rgba(24, 48, 68, 0.12);
+      --shadow: 0 18px 45px rgba(24, 48, 68, 0.11);
+      --radius-lg: 22px;
+      --content: 1080px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "Libre Baskerville", Georgia, serif;
+      line-height: 1.65;
+    }
+
+    img,
+    iframe {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .shell {
+      width: min(calc(100% - 2rem), var(--content));
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      margin: 0;
+      color: var(--gold);
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .gold-rule {
+      width: 58px;
+      height: 2px;
+      margin: 1rem 0 1.25rem;
+      background: var(--gold);
+      border-radius: 999px;
+    }
+
+    /* HEADER */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(251, 248, 242, 0.92);
+      border-bottom: 1px solid transparent;
+      backdrop-filter: blur(14px);
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .site-header.scrolled {
+      border-color: var(--line);
+      box-shadow: 0 8px 24px rgba(24, 48, 68, 0.06);
+    }
+
+    .nav-wrap {
+      min-height: 76px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand {
+      justify-self: center;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(1.45rem, 6vw, 2.15rem);
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-decoration: none;
+      white-space: nowrap;
+      transform: translateX(0.14em);
+    }
+
+    .nav-links {
+      display: none;
+    }
+
+    .nav-icon {
+      display: inline-grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-icon svg {
+      width: 23px;
+      height: 23px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .nav-spacer {
+      width: 42px;
+      height: 42px;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 3.5rem 0 3rem;
+    }
+
+    .hero-inner {
+      max-width: 780px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2.7rem, 11vw, 5.25rem);
+      font-weight: 500;
+      line-height: 1.04;
+      letter-spacing: -0.025em;
+    }
+
+    .hero .gold-rule {
+      margin-inline: auto;
+    }
+
+    .hero-desc {
+      max-width: 650px;
+      margin: 0 auto;
+      color: var(--ink-soft);
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: clamp(1.05rem, 4.2vw, 1.3rem);
+    }
+
+    /* STORIES */
+    .stories-page {
+      padding: 0 0 4.75rem;
+    }
+
+    .stories-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .story-card {
+      overflow: hidden;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 10px 28px rgba(24, 48, 68, 0.07);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .story-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .story-media {
+      position: relative;
+      overflow: hidden;
+      background: var(--ink);
+      aspect-ratio: 16 / 9;
+    }
+
+    .story-media iframe,
+    .story-media img {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      object-fit: cover;
+    }
+
+    .story-image-link {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .story-image-link img {
+      transition: transform 0.45s ease;
+    }
+
+    .story-card:hover .story-image-link img {
+      transform: scale(1.025);
+    }
+
+    .story-content {
+      padding: 1.45rem 1.35rem 1.65rem;
+    }
+
+    .story-meta {
+      margin: 0 0 0.35rem;
+      color: var(--gold);
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .story-content h2 {
+      margin: 0 0 0.65rem;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2rem, 8vw, 3rem);
+      font-weight: 500;
+      line-height: 1.08;
+    }
+
+    .story-content p:not(.story-meta) {
+      margin: 0 0 1.2rem;
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+
+    .story-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .story-link::after {
+      content: "→";
+      color: var(--gold);
+      font-size: 1.1rem;
+      transition: transform 0.2s ease;
+    }
+
+    .story-link:hover::after,
+    .story-link:focus-visible::after {
+      transform: translateX(3px);
+    }
+
+    footer {
+      padding: 1.8rem 0 2rem;
+      border-top: 1px solid var(--line);
+      color: var(--ink-soft);
+      text-align: center;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 0.88rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (min-width: 700px) {
+      .shell {
+        width: min(calc(100% - 3rem), var(--content));
+      }
+
+      .nav-wrap {
+        min-height: 86px;
+      }
+
+      .nav-links {
+        display: flex;
+        justify-self: start;
+        gap: 1.4rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .nav-links a {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .nav-links a:hover,
+      .nav-links a:focus-visible,
+      .nav-links a.active {
+        color: var(--gold);
+      }
+
+      .mobile-menu {
+        display: none;
+      }
+
+      .hero {
+        padding: 4.75rem 0 4rem;
+      }
+
+      .stories-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .footer-inner {
+        flex-direction: row;
+        gap: 1rem;
+      }
+
+      .footer-inner span + span::before {
+        content: "•";
+        margin-right: 1rem;
+        color: var(--gold);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header" id="site-header">
+    <div class="shell nav-wrap">
+      <a
+        class="nav-icon mobile-menu"
+        href="#stories"
+        aria-label="Skip to stories"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16"></path>
+        </svg>
+      </a>
+
+      <ul class="nav-links" aria-label="Primary navigation">
+        <li><a href="/">Home</a></li>
+        <li><a href="/wanders.html">Wanders</a></li>
+        <li><a href="/wonders.html" class="active">Wonders</a></li>
+      </ul>
+
+      <a class="brand" href="/" aria-label="JB WNDRS home">JB WNDRS</a>
+      <span class="nav-spacer" aria-hidden="true"></span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="stories-title">
+      <div class="shell hero-inner">
+        <p class="eyebrow">JB Wonders</p>
+
+        <h1 id="stories-title">Stories</h1>
+
+        <div class="gold-rule"></div>
+
+        <p class="hero-desc">
+          Written and oral accountings of true events.
+        </p>
+      </div>
+    </section>
+
+    <section class="stories-page" id="stories">
+      <div class="shell stories-list">
+
+        <article
+          class="story-card"
+          data-story
+          data-date="2024-04-01"
+          data-youtube-url="https://www.youtube.com/watch?v=u9hb8lSdxDY"
+        >
+          <div class="story-media">
+            <iframe
+              src="https://www.youtube.com/embed/u9hb8lSdxDY"
+              title="Seeds of Change"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
+
+          <div class="story-content">
+            <p class="story-meta">Live storytelling · April 2024</p>
+            <h2>Seeds of Change</h2>
+            <p>
+              Twenty years after Peace Corps Nicaragua, I return to the
+              memories, people, and small beginnings that helped shape what
+              came next.
+            </p>
+            <a
+              class="story-link"
+              href="https://www.youtube.com/watch?v=u9hb8lSdxDY"
+              target="_blank"
+              rel="noopener"
+            >
+              Watch the story
+            </a>
+          </div>
+        </article>
+
+        <article
+          class="story-card"
+          data-story
+          data-date="2018-02-01"
+          data-image="https://thenarrators.org/wp-content/uploads/Jeremy-Bauer-and-Hershey.jpg"
+        >
+          <div class="story-media">
+            <a
+              class="story-image-link"
+              href="https://thenarrators.org/ep-159-jeremy-bauer/"
+              target="_blank"
+              rel="noopener"
+              aria-label="Listen to Hershey at The Narrators"
+            >
+              <img
+                src="https://thenarrators.org/wp-content/uploads/Jeremy-Bauer-and-Hershey.jpg"
+                alt="Jeremy with Hershey"
+                loading="lazy"
+              >
+            </a>
+          </div>
+
+          <div class="story-content">
+            <p class="story-meta">The Narrators · February 2018</p>
+            <h2>Hershey</h2>
+            <p>
+              My first story at The Narrators, told live in San Diego under
+              the theme “Warning Signs.”
+            </p>
+            <a
+              class="story-link"
+              href="https://thenarrators.org/ep-159-jeremy-bauer/"
+              target="_blank"
+              rel="noopener"
+            >
+              Listen to the story
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <span>© 2026 JB WNDRS</span>
+      <span>Travel, reflection, and the moments between.</span>
+      <span>San Diego, CA</span>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const header = document.getElementById("site-header");
+
+      const updateHeader = () => {
+        header.classList.toggle("scrolled", window.scrollY > 12);
+      };
+
+      updateHeader();
+      window.addEventListener("scroll", updateHeader, { passive: true });
+    });
+  </script>
+</body>
+</html>

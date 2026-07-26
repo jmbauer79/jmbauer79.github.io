@@ -4,509 +4,537 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JB WNDRS</title>
+  <meta name="description" content="JB WNDRS to capture my travels, reflections, and moments, away from the noise." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Libre+Baskerville:ital@0;1&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Libre+Baskerville:ital@0;1&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; }
 
     :root {
-      --ink:       #1c1712;
-      --bark:      #3b2f1e;
-      --clay:      #8b5e3c;
-      --sand:      #c9a87c;
-      --parchment: #f0e8d8;
-      --cream:     #faf6ef;
-      --moss:      #4a5a3a;
-      --sage:      #7a8f6a;
-      --sky:       #6b8fa8;
-      --accent:    #c05c2e;
+      --ink: #183044;
+      --ink-soft: #5f6870;
+      --gold: #c79a45;
+      --cream: #fbf8f2;
+      --paper: #fffdf9;
+      --line: rgba(24, 48, 68, 0.12);
+      --shadow: 0 18px 45px rgba(24, 48, 68, 0.12);
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --content: 1120px;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background-color: var(--cream);
+      margin: 0;
+      background: var(--cream);
       color: var(--ink);
-      font-family: 'Libre Baskerville', Georgia, serif;
-      min-height: 100vh;
+      font-family: "Libre Baskerville", Georgia, serif;
+      line-height: 1.6;
       overflow-x: hidden;
     }
 
-    /* ── GRAIN OVERLAY ── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1000;
-      opacity: 0.045;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      background-size: 200px 200px;
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+
+    .shell {
+      width: min(calc(100% - 2rem), var(--content));
+      margin-inline: auto;
     }
 
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.25rem 3rem;
-      background: transparent;
-      transition: background 0.4s ease, backdrop-filter 0.4s ease;
-    }
-    nav.scrolled {
-      background: rgba(28, 23, 18, 0.88);
-      backdrop-filter: blur(10px);
-    }
-    .nav-logo {
-      font-family: 'Barlow Condensed', sans-serif;
+    .eyebrow {
+      margin: 0;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 0.78rem;
       font-weight: 700;
-      font-size: 1.1rem;
-      letter-spacing: 0.25em;
-      color: var(--parchment);
-      text-decoration: none;
-    }
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
-    .nav-links a {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 600;
-      font-size: 0.8rem;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--parchment);
-      text-decoration: none;
-      opacity: 0.85;
-      transition: opacity 0.2s;
-    }
-    .nav-links a:hover { opacity: 1; }
-
-    /* ── HERO ── */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 0 3rem 5rem;
-      overflow: hidden;
+      color: var(--gold);
     }
 
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 60% 30%, rgba(107,143,168,0.35) 0%, transparent 70%),
-        radial-gradient(ellipse 120% 80% at 50% 110%, rgba(74,90,58,0.55) 0%, transparent 55%),
-        linear-gradient(170deg,
-          #2c3e2d 0%,
-          #3d5440 18%,
-          #5a6b42 32%,
-          #7a8f6a 44%,
-          #8b9e7a 50%,
-          #c9a87c 62%,
-          #d4b88a 70%,
-          #b8956a 78%,
-          #8b5e3c 88%,
-          #3b2f1e 100%
-        );
-      z-index: 0;
-    }
-
-    .hero-mountains {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      z-index: 1;
-    }
-
-    .hero-sun {
-      position: absolute;
-      top: 18%; right: 22%;
-      width: 120px; height: 120px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,210,120,0.7) 0%, rgba(240,160,60,0.35) 40%, transparent 70%);
-      z-index: 1;
-      animation: pulse-sun 6s ease-in-out infinite;
-    }
-    @keyframes pulse-sun {
-      0%,100% { transform: scale(1); opacity: 0.85; }
-      50% { transform: scale(1.08); opacity: 1; }
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 680px;
-    }
-
-    .hero-eyebrow {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 600;
-      font-size: 0.75rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--sand);
-      margin-bottom: 1rem;
-      opacity: 0;
-      animation: fade-up 0.8s 0.2s forwards;
-    }
-
-    .hero-title {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-weight: 900;
-      font-size: clamp(4rem, 10vw, 8rem);
-      line-height: 0.92;
-      color: var(--parchment);
-      letter-spacing: -0.02em;
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      animation: fade-up 0.9s 0.4s forwards;
-    }
-    .hero-title em {
-      font-style: italic;
-      color: var(--sand);
-    }
-
-    .hero-tagline {
-      font-size: 1.05rem;
-      line-height: 1.7;
-      color: rgba(240, 232, 216, 0.82);
-      max-width: 420px;
-      opacity: 0;
-      animation: fade-up 0.9s 0.6s forwards;
-    }
-
-    .hero-scroll {
-      position: absolute;
-      bottom: 2.5rem;
-      right: 3rem;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      opacity: 0;
-      animation: fade-up 0.9s 1s forwards;
-    }
-    .hero-scroll span {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.65rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--sand);
-      writing-mode: vertical-rl;
-    }
-    .scroll-line {
-      width: 1px;
-      height: 60px;
-      background: linear-gradient(to bottom, var(--sand), transparent);
-      animation: scroll-pulse 2s ease-in-out infinite;
-    }
-    @keyframes scroll-pulse {
-      0%,100% { opacity: 0.4; transform: scaleY(1); }
-      50% { opacity: 1; transform: scaleY(1.1); }
-    }
-
-    @keyframes fade-up {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ── DIVIDER RULE ── */
-    .rule {
-      width: 100%;
+    .gold-rule {
+      width: 58px;
       height: 2px;
-      background: linear-gradient(to right, transparent, var(--sand), transparent);
-      opacity: 0.4;
+      margin: 0.9rem auto 1.25rem;
+      background: var(--gold);
+      border-radius: 999px;
     }
 
-    /* ── SECTION: CARDS ── */
-    .cards-section {
-      background: var(--cream);
-      padding: 6rem 3rem;
-      position: relative;
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(251, 248, 242, 0.92);
+      border-bottom: 1px solid transparent;
+      backdrop-filter: blur(14px);
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
     }
 
-    .section-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: var(--clay);
-      text-align: center;
-      margin-bottom: 3.5rem;
+    .site-header.scrolled {
+      border-color: var(--line);
+      box-shadow: 0 8px 24px rgba(24, 48, 68, 0.06);
     }
 
-    .cards-grid {
+    .nav-wrap {
+      min-height: 76px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
-      max-width: 1000px;
-      margin: 0 auto;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 1rem;
     }
 
-    .card {
-      position: relative;
-      border: 1px solid rgba(139, 94, 60, 0.2);
-      overflow: hidden;
-      cursor: pointer;
+    .brand {
+      justify-self: center;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(1.45rem, 6vw, 2.15rem);
+      font-weight: 500;
+      letter-spacing: 0.28em;
       text-decoration: none;
-      color: inherit;
-      display: block;
-      background: var(--parchment);
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
-    }
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 60px rgba(59, 47, 30, 0.18);
+      white-space: nowrap;
+      transform: translateX(0.14em);
     }
 
-    .card-illustration {
+    .nav-links { display: none; }
+
+    .nav-icon {
+      display: inline-grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border: 0;
+      background: transparent;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-icon svg {
+      width: 23px;
+      height: 23px;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .nav-spacer { width: 42px; height: 42px; }
+
+    .hero {
+      padding: 3.25rem 0 2.75rem;
+      text-align: center;
+    }
+
+    .hero-shell { max-width: 840px; }
+
+    .shell-mark {
+      width: 38px;
+      margin: 0 auto 1.3rem;
+      color: var(--gold);
+    }
+
+    .shell-mark svg {
       width: 100%;
-      height: 220px;
+      height: auto;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.4;
+    }
+
+    .hero h1 {
+      max-width: 760px;
+      margin: 0 auto;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2.45rem, 10vw, 5rem);
+      font-weight: 500;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      max-width: 660px;
+      margin: 0 auto;
+      color: var(--ink-soft);
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: clamp(1.05rem, 4.3vw, 1.35rem);
+      letter-spacing: 0.015em;
+    }
+
+    .featured-section { padding: 0 0 4.5rem; }
+
+    .featured-card {
+      overflow: hidden;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+    }
+
+    .featured-media {
       position: relative;
+      min-height: 300px;
+      background: #d7d0c3;
       overflow: hidden;
     }
 
-    .card-wanders .card-illustration {
-      background:
-        radial-gradient(ellipse 70% 50% at 50% 80%, rgba(59,47,30,0.6) 0%, transparent 70%),
-        linear-gradient(170deg,
-          #6b8fa8 0%,
-          #8faabc 20%,
-          #c9a87c 42%,
-          #b07a48 58%,
-          #8b5e3c 72%,
-          #5a3a1e 100%
-        );
-    }
-
-    .card-wonders .card-illustration {
-      background:
-        radial-gradient(ellipse 70% 50% at 50% 80%, rgba(28,23,18,0.5) 0%, transparent 70%),
-        linear-gradient(170deg,
-          #2c3340 0%,
-          #3d4f5a 18%,
-          #4a6858 34%,
-          #5a7a5a 50%,
-          #6a8f68 65%,
-          #4a5a3a 80%,
-          #2c3a28 100%
-        );
-    }
-
-    .card-mountains {
+    .featured-media::after {
+      content: "";
       position: absolute;
-      bottom: 0; left: 0; right: 0;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(24, 48, 68, 0.03), rgba(24, 48, 68, 0.15));
+      pointer-events: none;
     }
 
-    .card-body {
-      padding: 2rem 2rem 2.25rem;
+    .featured-media img {
+      width: 100%;
+      height: 100%;
+      min-height: 300px;
+      object-fit: cover;
+      object-position: 42% 63%;
+      filter: saturate(0.86) contrast(0.96);
     }
 
-    .card-kicker {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--clay);
-      margin-bottom: 0.6rem;
+    .featured-copy { padding: 2rem 1.4rem 1.55rem; }
+
+    .featured-copy h2 {
+      margin: 0.4rem 0 0.8rem;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2.15rem, 9vw, 4rem);
+      font-weight: 500;
+      line-height: 1.05;
     }
 
-    .card-title {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-weight: 700;
-      font-size: 1.9rem;
-      line-height: 1.15;
-      color: var(--bark);
-      margin-bottom: 0.9rem;
-    }
-
-    .card-desc {
-      font-size: 0.9rem;
+    .featured-copy p:not(.eyebrow) {
+      margin: 0 0 1.35rem;
+      color: var(--ink-soft);
+      font-size: 0.98rem;
       line-height: 1.75;
-      color: rgba(28, 23, 18, 0.72);
-      margin-bottom: 1.5rem;
     }
 
-    .card-cta {
+    .primary-button {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 0.75rem;
-      letter-spacing: 0.25em;
+      justify-content: center;
+      gap: 0.85rem;
+      min-height: 52px;
+      padding: 0.85rem 1.25rem;
+      border-radius: 6px;
+      background: var(--ink);
+      color: #fff;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-decoration: none;
       text-transform: uppercase;
-      color: var(--accent);
-      transition: gap 0.2s ease;
-    }
-    .card:hover .card-cta { gap: 0.85rem; }
-    .card-cta::after {
-      content: '→';
-      font-size: 1rem;
+      transition: transform 0.2s ease, background 0.2s ease;
     }
 
-    .card-corner {
+    .primary-button:hover,
+    .primary-button:focus-visible {
+      background: #10283a;
+      transform: translateY(-2px);
+    }
+
+    .primary-button span { color: #e1b75e; font-size: 1.25rem; line-height: 1; }
+
+    .explore-section {
+      padding: 3.8rem 0 4.5rem;
+      background: rgba(255, 255, 255, 0.58);
+      border-top: 1px solid rgba(24, 48, 68, 0.05);
+    }
+
+    .section-heading { margin-bottom: 1.75rem; text-align: center; }
+
+    .section-heading h2 {
+      margin: 0;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2.25rem, 9vw, 3.5rem);
+      font-weight: 500;
+      line-height: 1.1;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 1.15rem;
+    }
+
+    .explore-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .explore-card {
+      position: relative;
+      min-height: 190px;
+      overflow: hidden;
+      border-radius: var(--radius-md);
+      color: #fff;
+      text-decoration: none;
+      box-shadow: 0 14px 32px rgba(24, 48, 68, 0.12);
+      isolation: isolate;
+    }
+
+    .explore-card::before {
+      content: "";
       position: absolute;
-      top: 0; right: 0;
-      width: 48px; height: 48px;
-      border-left: 1px solid rgba(139,94,60,0.25);
-      border-bottom: 1px solid rgba(139,94,60,0.25);
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(90deg, rgba(18, 31, 39, 0.74), rgba(18, 31, 39, 0.32)), var(--card-image) center / cover no-repeat;
+      transition: transform 0.45s ease;
     }
 
-    /* ── FOOTER ── */
-    footer {
-      background: var(--bark);
-      padding: 2.5rem 3rem;
-      display: flex;
-      justify-content: space-between;
+    .explore-card:hover::before,
+    .explore-card:focus-visible::before { transform: scale(1.035); }
+
+    .explore-content {
+      min-height: 190px;
+      display: grid;
+      grid-template-columns: 1fr auto;
       align-items: center;
-    }
-    .footer-logo {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 1.1rem;
-      color: var(--sand);
-    }
-    .footer-copy {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      color: rgba(201, 168, 124, 0.55);
+      gap: 1rem;
+      padding: 1.5rem;
     }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 680px) {
-      nav { padding: 1rem 1.5rem; }
-      .hero { padding: 0 1.5rem 4rem; }
-      .cards-section { padding: 4rem 1.5rem; }
-      .cards-grid { grid-template-columns: 1fr; gap: 1.75rem; }
-      footer { flex-direction: column; gap: 0.75rem; text-align: center; }
+    .explore-card h3 {
+      margin: 0 0 0.25rem;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(1.8rem, 7vw, 2.65rem);
+      font-weight: 500;
+      line-height: 1.1;
+    }
+
+    .explore-card p {
+      margin: 0;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 1.05rem;
+      letter-spacing: 0.01em;
+    }
+
+    .card-arrow {
+      display: grid;
+      place-items: center;
+      width: 50px;
+      height: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      border-radius: 50%;
+      font-size: 1.35rem;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .explore-card:hover .card-arrow,
+    .explore-card:focus-visible .card-arrow {
+      transform: translateX(3px);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .wanders { --card-image: url("/images/viewing_atacama.jpg"); }
+    .wonders { --card-image: url("/images/journal_home.jpeg"); }
+
+    footer {
+      padding: 1.8rem 0 2rem;
+      border-top: 1px solid var(--line);
+      color: var(--ink-soft);
+      text-align: center;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 0.88rem;
+      letter-spacing: 0.02em;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (min-width: 700px) {
+      .shell { width: min(calc(100% - 3rem), var(--content)); }
+      .nav-wrap { min-height: 86px; }
+
+      .nav-links {
+        display: flex;
+        justify-self: start;
+        gap: 1.4rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .nav-links a {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .nav-links a:hover,
+      .nav-links a:focus-visible { color: var(--gold); }
+
+      .mobile-menu { display: none; }
+      .hero { padding: 4.25rem 0 3.6rem; }
+
+      .featured-card {
+        display: grid;
+        grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
+        min-height: 470px;
+      }
+
+      .featured-media,
+      .featured-media img { min-height: 470px; }
+
+      .featured-copy {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 3rem clamp(2rem, 5vw, 3.5rem);
+      }
+
+      .explore-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+      .explore-card, .explore-content { min-height: 310px; }
+      .explore-content { align-items: end; padding: 2rem; }
+
+      .footer-inner { flex-direction: row; gap: 1rem; }
+      .footer-inner span + span::before {
+        content: "•";
+        margin-right: 1rem;
+        color: var(--gold);
+      }
+    }
+
+    @media (min-width: 1000px) {
+      .hero { padding-top: 5rem; }
+      .featured-section { padding-bottom: 5.5rem; }
+      .explore-section { padding: 4.5rem 0 5.25rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
     }
   </style>
 </head>
+
 <body>
-
-  <!-- NAV -->
-  <nav id="nav">
-    <a href="/" class="nav-logo">JB WNDRS</a>
-    <ul class="nav-links">
-      <li><a href="https://jbwndrs.com/wanders.html">Wanders</a></li>
-      <li><a href="https://jbwndrs.com/wonders.html">Wonders</a></li>
-    </ul>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-sun"></div>
-
-    <svg class="hero-mountains" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,220 L80,160 L160,195 L260,110 L360,155 L440,90 L540,135 L640,70 L720,115 L820,60 L900,100 L1000,50 L1100,95 L1200,75 L1300,110 L1440,80 L1440,320 L0,320 Z"
-            fill="rgba(42,55,45,0.55)" />
-      <path d="M0,260 L100,195 L180,230 L280,165 L380,205 L480,150 L560,185 L660,130 L740,170 L840,120 L940,160 L1040,115 L1140,155 L1240,135 L1340,165 L1440,145 L1440,320 L0,320 Z"
-            fill="rgba(36,47,35,0.75)" />
-      <path d="M0,290 L120,250 L240,270 L360,240 L480,265 L600,245 L720,260 L840,242 L960,258 L1080,245 L1200,262 L1320,248 L1440,260 L1440,320 L0,320 Z"
-            fill="rgba(28,36,26,0.92)" />
-      <path d="M0,308 L1440,308 L1440,320 L0,320 Z" fill="#1c2419" />
-    </svg>
-
-    <div class="hero-content">
-      <p class="hero-eyebrow">Travel &amp; Reflections</p>
-      <h1 class="hero-title">JB<br><em>WNDRS</em></h1>
-      <p class="hero-tagline">A home for where I go, what I notice, and what I keep thinking about afterward.</p>
-    </div>
-
-    <div class="hero-scroll">
-      <span>Explore</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
-
-  <!-- CARDS SECTION -->
-  <section class="cards-section">
-    <p class="section-label">Two paths, one journal</p>
-
-    <div class="cards-grid">
-
-      <!-- Wanders -->
-      <a href="https://jbwndrs.com/wanders.html" class="card card-wanders">
-        <div class="card-illustration">
-          <svg class="card-mountains" viewBox="0 0 400 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0,80 L50,45 L90,65 L140,20 L190,55 L240,30 L290,60 L340,35 L400,50 L400,120 L0,120 Z" fill="rgba(59,47,30,0.5)" />
-            <path d="M0,95 L60,70 L110,85 L160,55 L210,75 L270,50 L320,72 L370,60 L400,68 L400,120 L0,120 Z" fill="rgba(59,47,30,0.75)" />
-          </svg>
-        </div>
-        <div class="card-body">
-          <div class="card-corner"></div>
-          <p class="card-kicker">Travel</p>
-          <h2 class="card-title">JB Wanders</h2>
-          <p class="card-desc">Notes from the road, travel essays, itineraries, places worth lingering, and observations from near and far.</p>
-          <span class="card-cta">Set out</span>
-        </div>
+  <header class="site-header" id="site-header">
+    <div class="shell nav-wrap">
+      <a class="nav-icon mobile-menu" href="#explore" aria-label="Skip to site sections">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16"></path>
+        </svg>
       </a>
 
-      <!-- Wonders -->
-      <a href="https://jbwndrs.com/wonders.html" class="card card-wonders">
-        <div class="card-illustration">
-          <svg class="card-mountains" viewBox="0 0 400 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0,75 L60,40 L100,60 L150,25 L200,50 L250,15 L310,45 L360,30 L400,45 L400,120 L0,120 Z" fill="rgba(28,36,26,0.5)" />
-            <path d="M0,95 L70,68 L120,82 L170,55 L220,78 L275,48 L330,70 L380,58 L400,64 L400,120 L0,120 Z" fill="rgba(28,36,26,0.78)" />
+      <ul class="nav-links" aria-label="Primary navigation">
+        <li><a href="/wanders.html">Wanders</a></li>
+        <li><a href="/wonders.html">Wonders</a></li>
+      </ul>
+
+      <a class="brand" href="/" aria-label="JB WNDRS home">JB WNDRS</a>
+      <span class="nav-spacer" aria-hidden="true"></span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="home-title">
+      <div class="shell hero-shell">
+        <div class="shell-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 58">
+            <path d="M32 52 9 30C1 22 7 8 19 8c5 0 10 3 13 8 3-5 8-8 13-8 12 0 18 14 10 22L32 52Z"></path>
+            <path d="M32 16v36M20 12l12 40M44 12 32 52M12 22l20 30M52 22 32 52"></path>
           </svg>
         </div>
-        <div class="card-body">
-          <div class="card-corner"></div>
-          <p class="card-kicker">Musings &amp; Moments</p>
-          <h2 class="card-title">JB Wonders</h2>
-          <p class="card-desc">Reflections, essays, and stray thoughts — alongside snapshots of everyday life, small moments, and quiet curiosities caught outside the bigger adventures.</p>
-          <span class="card-cta">Look closer</span>
+
+        <h1 id="home-title">
+          A home for where I go,<br />
+          what I wonder,<br />
+          and what stays with me.
+        </h1>
+
+        <div class="gold-rule"></div>
+        <p>Travel journals. Ideas. Moments worth remembering.</p>
+      </div>
+    </section>
+
+    <section class="featured-section" aria-labelledby="camino-title">
+      <div class="shell">
+        <article class="featured-card">
+          <div class="featured-media">
+            <img src="/images/backpack_mission_trails.jpeg" alt="Blue backpack with a scallop shell resting beside a hiking trail" />
+          </div>
+
+          <div class="featured-copy">
+            <p class="eyebrow">Featured journey</p>
+            <h2 id="camino-title">Camino de Santiago</h2>
+            <p>Capturing my journey on a timeless pilgrimage across Spain and beyond.</p>
+            <div>
+              <a class="primary-button" href="/wanders/camino-de-santiago.html">
+                Enter the Camino <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="explore-section" id="explore" aria-labelledby="explore-title">
+      <div class="shell">
+        <div class="section-heading">
+          <h2 id="explore-title">Explore</h2>
+          <div class="gold-rule"></div>
+          <p>Capturing explorations of both the mind and the world.</p>
         </div>
-      </a>
 
-    </div>
-  </section>
+        <div class="explore-grid">
+          <a class="explore-card wanders" href="/wanders.html">
+            <div class="explore-content">
+              <div>
+                <h3>JB Wanders</h3>
+                <p>Stories away from home, both near and far.</p>
+              </div>
+              <span class="card-arrow" aria-hidden="true">→</span>
+            </div>
+          </a>
 
-  <div class="rule"></div>
+          <a class="explore-card wonders" href="/wonders.html">
+            <div class="explore-content">
+              <div>
+                <h3>JB Wonders</h3>
+                <p>Reflections, observations, and ideas.</p>
+              </div>
+              <span class="card-arrow" aria-hidden="true">→</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  <!-- FOOTER -->
   <footer>
-    <span class="footer-logo">JB Wndrs</span>
-    <span class="footer-copy">© 2026 JB WNDRS · Built with GitHub Pages</span>
+    <div class="shell footer-inner">
+      <span>© 2026 JB WNDRS</span>
+      <span>Built with humble curiosity and a willingness to learn.</span>
+      <span>San Diego, CA</span>
+    </div>
   </footer>
 
   <script>
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 60);
-    });
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-          e.target.style.transition = `opacity 0.7s ${i * 0.15}s ease, transform 0.7s ${i * 0.15}s ease`;
-          e.target.style.opacity = '1';
-          e.target.style.transform = 'translateY(0)';
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll('.card').forEach(card => {
-      card.style.opacity = '0';
-      card.style.transform = 'translateY(30px)';
-      observer.observe(card);
-    });
+    const header = document.getElementById("site-header");
+    const updateHeader = () => header.classList.toggle("scrolled", window.scrollY > 12);
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
   </script>
-
 </body>
 </html>

@@ -1,583 +1,709 @@
+---
+layout: null
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>JB Wanders</title>
+  <meta
+    name="description"
+    content="Travel journals, places, paths, and reflections from JB WNDRS."
+  />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Libre+Baskerville:ital@0;1&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Libre+Baskerville&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
 
-  <!-- Leaflet -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
 
     :root {
-      --ink:       #1c1712;
-      --bark:      #3b2f1e;
-      --clay:      #8b5e3c;
-      --sand:      #c9a87c;
-      --parchment: #f0e8d8;
-      --cream:     #faf6ef;
-      --moss:      #4a5a3a;
-      --sage:      #7a8f6a;
-      --accent:    #c05c2e;
-      --border:    rgba(139, 94, 60, 0.18);
+      --ink: #183044;
+      --ink-soft: #65717a;
+      --gold: #c79a45;
+      --cream: #fbf8f2;
+      --paper: #fffdf9;
+      --line: rgba(24, 48, 68, 0.12);
+      --shadow: 0 18px 45px rgba(24, 48, 68, 0.11);
+      --radius-lg: 22px;
+      --content: 1080px;
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
-      background: var(--cream);
-      color: var(--ink);
-      font-family: 'Libre Baskerville', Georgia, serif;
+      margin: 0;
       min-height: 100vh;
       overflow-x: hidden;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "Libre Baskerville", Georgia, serif;
+      line-height: 1.65;
     }
 
-    /* grain */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1000;
-      opacity: 0.04;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      background-size: 200px 200px;
+    img {
+      display: block;
+      max-width: 100%;
     }
 
-    /* ── NAV ── */
-    nav {
+    a {
+      color: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .shell {
+      width: min(calc(100% - 2rem), var(--content));
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      margin: 0;
+      color: var(--gold);
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .gold-rule {
+      width: 58px;
+      height: 2px;
+      margin: 1rem 0 1.25rem;
+      background: var(--gold);
+      border-radius: 999px;
+    }
+
+    .site-header {
       position: sticky;
       top: 0;
       z-index: 100;
-      display: flex;
-      justify-content: space-between;
+      background: rgba(251, 248, 242, 0.92);
+      border-bottom: 1px solid transparent;
+      backdrop-filter: blur(14px);
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .site-header.scrolled {
+      border-color: var(--line);
+      box-shadow: 0 8px 24px rgba(24, 48, 68, 0.06);
+    }
+
+    .nav-wrap {
+      min-height: 76px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
       align-items: center;
-      padding: 1.1rem 3rem;
-      background: rgba(250, 246, 239, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-logo {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 1.05rem;
-      letter-spacing: 0.25em;
-      color: var(--bark);
-      text-decoration: none;
-    }
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
-    .nav-links a {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 600;
-      font-size: 0.78rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--clay);
-      text-decoration: none;
-      opacity: 0.7;
-      transition: opacity 0.2s;
-    }
-    .nav-links a:hover,
-    .nav-links a.active { opacity: 1; color: var(--accent); }
-
-    /* ── HERO ── */
-    .hero {
-      position: relative;
-      padding: 5rem 3rem 4rem;
-      overflow: hidden;
-      border-bottom: 1px solid var(--border);
-    }
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 70% 90% at 100% 50%, rgba(201,168,124,0.18) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 60% at 0% 100%, rgba(74,90,58,0.12) 0%, transparent 55%),
-        var(--cream);
-      z-index: 0;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 860px;
-      margin: 0 auto;
-    }
-    .hero-eyebrow {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 600;
-      font-size: 0.72rem;
-      letter-spacing: 0.38em;
-      text-transform: uppercase;
-      color: var(--clay);
-      margin-bottom: 1rem;
-      opacity: 0;
-      animation: fade-up 0.7s 0.1s forwards;
-    }
-    .hero-title {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-weight: 900;
-      font-size: clamp(3rem, 8vw, 6rem);
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-      color: var(--bark);
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      animation: fade-up 0.8s 0.2s forwards;
-    }
-    .hero-title em {
-      font-style: italic;
-      color: var(--clay);
-    }
-    .hero-desc {
-      font-size: 1rem;
-      line-height: 1.75;
-      color: rgba(28,23,18,0.65);
-      max-width: 520px;
-      opacity: 0;
-      animation: fade-up 0.8s 0.35s forwards;
-    }
-
-    .hero-rule {
-      margin-top: 2.5rem;
-      height: 1px;
-      background: linear-gradient(to right, var(--sand), transparent);
-      opacity: 0;
-      animation: fade-up 0.8s 0.45s forwards;
-    }
-
-    @keyframes fade-up {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ── MAIN CONTENT ── */
-    .page {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 3rem 3rem 5rem;
-    }
-
-    /* ── TOGGLE ── */
-    .view-toggle {
-      display: inline-flex;
-      background: var(--parchment);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 4px;
-      margin-bottom: 3rem;
-      gap: 4px;
-    }
-    .view-toggle button {
-      appearance: none;
-      border: none;
-      background: transparent;
-      padding: 0.55rem 1.5rem;
-      border-radius: 999px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 0.78rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(28,23,18,0.5);
-      cursor: pointer;
-      transition: all 0.25s ease;
-    }
-    .view-toggle button.active {
-      background: var(--bark);
-      color: var(--parchment);
-      box-shadow: 0 2px 8px rgba(59,47,30,0.25);
-    }
-
-    /* ── SECTION HEADER ── */
-    .section-header {
-      margin-bottom: 2rem;
-      display: flex;
-      align-items: baseline;
       gap: 1rem;
     }
-    .section-header h2 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: 1.6rem;
-      color: var(--bark);
-      letter-spacing: -0.02em;
-    }
-    .section-header p {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--clay);
-      opacity: 0.7;
+
+    .brand {
+      justify-self: center;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(1.45rem, 6vw, 2.15rem);
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-decoration: none;
+      white-space: nowrap;
+      transform: translateX(0.14em);
     }
 
-    /* ── TRIP CARDS ── */
+    .nav-links {
+      display: none;
+    }
+
+    .nav-icon {
+      display: inline-grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-icon svg {
+      width: 23px;
+      height: 23px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .nav-spacer {
+      width: 42px;
+      height: 42px;
+    }
+
+    .hero {
+      padding: 3.5rem 0 3rem;
+    }
+
+    .hero-inner {
+      max-width: 760px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2.7rem, 11vw, 5.25rem);
+      font-weight: 500;
+      line-height: 1.04;
+      letter-spacing: -0.025em;
+    }
+
+    .hero .gold-rule {
+      margin-inline: auto;
+    }
+
+    .hero-desc {
+      max-width: 620px;
+      margin: 0 auto;
+      color: var(--ink-soft);
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: clamp(1.05rem, 4.2vw, 1.3rem);
+    }
+
+    .page {
+      padding: 0 0 4.5rem;
+    }
+
+    .toolbar {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2.25rem;
+    }
+
+    .view-toggle {
+      display: inline-flex;
+      gap: 4px;
+      padding: 4px;
+      background: rgba(24, 48, 68, 0.06);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+    }
+
+    .view-toggle button {
+      appearance: none;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink-soft);
+      cursor: pointer;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      padding: 0.65rem 1.2rem;
+      text-transform: uppercase;
+    }
+
+    .view-toggle button.active {
+      background: var(--ink);
+      color: #fff;
+      box-shadow: 0 6px 16px rgba(24, 48, 68, 0.16);
+    }
+
+    .section-heading {
+      margin-bottom: 1.5rem;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2rem, 8vw, 3rem);
+      font-weight: 500;
+      line-height: 1.1;
+    }
+
+    .section-heading p {
+      margin: 0.45rem 0 0;
+      color: var(--ink-soft);
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 1rem;
+    }
+
     .trip-list {
       display: grid;
-      gap: 1.5rem;
+      gap: 1.25rem;
     }
 
     .trip-card {
       display: block;
-      text-decoration: none;
-      color: inherit;
-      background: var(--parchment);
-      border: 1px solid var(--border);
       overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      opacity: 0;
-      transform: translateY(24px);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 10px 28px rgba(24, 48, 68, 0.07);
+      color: inherit;
+      text-decoration: none;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
-    .trip-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
-    }
-    .trip-card:hover {
+
+    .trip-card:hover,
+    .trip-card:focus-visible {
       transform: translateY(-4px);
-      box-shadow: 0 16px 48px rgba(59,47,30,0.14);
+      box-shadow: var(--shadow);
     }
 
     .trip-image-wrap {
-      width: 100%;
-      aspect-ratio: 16/9;
-      background:
-        radial-gradient(circle at 30% 40%, rgba(139,94,60,0.2), transparent 50%),
-        linear-gradient(135deg, #dbe4d8, #f0e8d8);
-      overflow: hidden;
       position: relative;
+      min-height: 245px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #d9e0df, #f0e8d8);
     }
+
+    .trip-image-wrap::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(24, 48, 68, 0),
+        rgba(24, 48, 68, 0.12)
+      );
+      pointer-events: none;
+    }
+
     .trip-image {
       width: 100%;
       height: 100%;
+      min-height: 245px;
       object-fit: cover;
-      display: block;
       opacity: 0;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.3s ease, transform 0.45s ease;
     }
-    .trip-image.loaded { opacity: 1; }
+
+    .trip-image.loaded {
+      opacity: 1;
+    }
+
+    .trip-card:hover .trip-image,
+    .trip-card:focus-visible .trip-image {
+      transform: scale(1.025);
+    }
 
     .trip-content {
-      padding: 1.5rem 1.75rem 1.75rem;
-      position: relative;
+      padding: 1.45rem 1.3rem 1.55rem;
     }
 
-    .trip-content::after {
-      content: '';
-      position: absolute;
-      top: 0; right: 0;
-      width: 40px; height: 40px;
-      border-left: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .trip-date-row {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      margin-bottom: 0.5rem;
-    }
     .trip-date {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.7rem;
+      margin: 0 0 0.35rem;
+      color: var(--gold);
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 0.78rem;
       font-weight: 700;
-      letter-spacing: 0.25em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--clay);
-    }
-    .pinned-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--parchment);
-      background: var(--accent);
-      border-radius: 2px;
-      padding: 0.15rem 0.5rem;
     }
 
     .trip-content h3 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: 1.6rem;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      color: var(--bark);
-      margin-bottom: 0.6rem;
+      margin: 0 0 0.55rem;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(1.8rem, 7vw, 2.45rem);
+      font-weight: 500;
+      line-height: 1.08;
     }
+
     .trip-content p {
-      font-size: 0.9rem;
+      margin: 0 0 1.15rem;
+      color: var(--ink-soft);
+      font-size: 0.95rem;
       line-height: 1.75;
-      color: rgba(28,23,18,0.65);
-      margin-bottom: 1.1rem;
     }
+
     .read-more {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 0.72rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent);
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      transition: gap 0.2s ease;
+      gap: 0.65rem;
+      color: var(--ink);
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
     }
-    .trip-card:hover .read-more { gap: 0.7rem; }
-    .read-more::after { content: '→'; font-size: 0.9rem; }
 
-    /* ── MAP PANEL ── */
-    .map-panel { display: none; }
+    .read-more::after {
+      content: "→";
+      color: var(--gold);
+      font-size: 1.1rem;
+    }
+
+    .map-panel {
+      display: none;
+    }
 
     #map {
       width: 100%;
-      height: 540px;
-      border: 1px solid var(--border);
+      height: 520px;
       overflow: hidden;
       background: #dbe4d8;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 10px 28px rgba(24, 48, 68, 0.07);
     }
 
     .leaflet-popup-content-wrapper {
-      background: var(--parchment) !important;
-      border: 1px solid var(--border) !important;
-      border-radius: 0 !important;
-      box-shadow: 0 8px 32px rgba(59,47,30,0.18) !important;
-      font-family: 'Libre Baskerville', Georgia, serif !important;
+      background: var(--paper) !important;
+      border: 1px solid var(--line) !important;
+      border-radius: 12px !important;
+      box-shadow: 0 12px 30px rgba(24, 48, 68, 0.16) !important;
+      font-family: "Libre Baskerville", Georgia, serif !important;
     }
+
     .leaflet-popup-tip {
-      background: var(--parchment) !important;
+      background: var(--paper) !important;
     }
+
     .popup-title {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: 1rem;
-      color: var(--bark);
       margin-bottom: 0.2rem;
-    }
-    .popup-date {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.72rem;
+      color: var(--ink);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.05rem;
       font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--clay);
-      margin-bottom: 0.6rem;
     }
-    .popup-link {
-      font-family: 'Barlow Condensed', sans-serif;
+
+    .popup-date {
+      margin-bottom: 0.6rem;
+      color: var(--gold);
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 0.75rem;
       font-weight: 700;
-      font-size: 0.72rem;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--accent);
+    }
+
+    .popup-link {
+      color: var(--ink);
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
       text-decoration: none;
+      text-transform: uppercase;
     }
 
     .map-help {
-      margin-top: 1rem;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      color: rgba(28,23,18,0.4);
+      margin: 0.9rem 0 0;
+      color: var(--ink-soft);
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 0.82rem;
     }
 
-    /* ── FOOTER ── */
+    .hidden {
+      display: none !important;
+    }
+
     footer {
-      background: var(--bark);
-      padding: 2.5rem 3rem;
+      padding: 1.8rem 0 2rem;
+      border-top: 1px solid var(--line);
+      color: var(--ink-soft);
+      text-align: center;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 0.88rem;
+    }
+
+    .footer-inner {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
+      gap: 0.35rem;
       align-items: center;
-    }
-    .footer-logo {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 1.1rem;
-      color: var(--sand);
-    }
-    .footer-copy {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      color: rgba(201,168,124,0.5);
+      justify-content: center;
     }
 
-    .hidden { display: none; }
+    @media (min-width: 700px) {
+      .shell {
+        width: min(calc(100% - 3rem), var(--content));
+      }
 
-    /* ── RESPONSIVE ── */
-    @media (min-width: 680px) {
+      .nav-wrap {
+        min-height: 86px;
+      }
+
+      .nav-links {
+        display: flex;
+        justify-self: start;
+        gap: 1.4rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .nav-links a {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .nav-links a:hover,
+      .nav-links a:focus-visible,
+      .nav-links a.active {
+        color: var(--gold);
+      }
+
+      .mobile-menu {
+        display: none;
+      }
+
+      .hero {
+        padding: 4.75rem 0 4rem;
+      }
+
       .trip-card {
         display: grid;
-        grid-template-columns: 260px 1fr;
+        grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1.1fr);
+        min-height: 290px;
       }
-      .trip-image-wrap {
-        aspect-ratio: unset;
-        height: 100%;
-        min-height: 220px;
-      }
-    }
 
-    @media (max-width: 600px) {
-      nav { padding: 1rem 1.25rem; }
-      .hero { padding: 3.5rem 1.25rem 2.5rem; }
-      .page { padding: 2rem 1.25rem 4rem; }
-      footer { flex-direction: column; gap: 0.75rem; text-align: center; }
+      .trip-image-wrap,
+      .trip-image {
+        min-height: 290px;
+      }
+
+      .trip-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2.25rem;
+      }
+
+      .footer-inner {
+        flex-direction: row;
+        gap: 1rem;
+      }
+
+      .footer-inner span + span::before {
+        content: "•";
+        margin-right: 1rem;
+        color: var(--gold);
+      }
     }
   </style>
 </head>
 
 <body>
+  <header class="site-header" id="site-header">
+    <div class="shell nav-wrap">
+      <a
+        class="nav-icon mobile-menu"
+        href="#trips"
+        aria-label="Skip to travel journals"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16"></path>
+        </svg>
+      </a>
 
-  <!-- NAV -->
-  <nav>
-    <a href="index.html" class="nav-logo">JB WNDRS</a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="wanders.html" class="active">Wanders</a></li>
-      <li><a href="wonders.html">Wonders</a></li>
-    </ul>
-  </nav>
+      <ul class="nav-links" aria-label="Primary navigation">
+        <li><a href="/">Home</a></li>
+        <li><a href="/wanders.html" class="active">Wanders</a></li>
+        <li><a href="/wonders.html">Wonders</a></li>
+      </ul>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-content">
-      <p class="hero-eyebrow">JB Wanders</p>
-      <h1 class="hero-title">Places, paths,<br><em>and passing thoughts.</em></h1>
-      <p class="hero-desc">A travel journal organized by time and place — part photo album, part field notes, part reflection on the beauty and strangeness of wandering.</p>
-      <div class="hero-rule"></div>
+      <a class="brand" href="/" aria-label="JB WNDRS home">JB WNDRS</a>
+      <span class="nav-spacer" aria-hidden="true"></span>
     </div>
-  </section>
+  </header>
 
-  <!-- MAIN -->
-  <main class="page">
+  <main>
+    <section class="hero" aria-labelledby="wanders-title">
+      <div class="shell hero-inner">
+        <p class="eyebrow">JB Wanders</p>
 
-    <!-- Toggle -->
-    <div class="view-toggle" aria-label="Choose view">
-      <button id="chronologicalBtn" class="active" type="button">Chronological</button>
-      <button id="mapBtn" type="button">Map View</button>
-    </div>
+        <h1 id="wanders-title">
+          Places, paths,<br />
+          and passing thoughts.
+        </h1>
 
-    <!-- Chronological -->
-    <section id="chronologicalView">
-      <div class="section-header">
-        <h2>Chronological</h2>
-        <p>Pinned first, then newest</p>
+        <div class="gold-rule"></div>
+
+        <p class="hero-desc">
+          Travel journals organized by time and place, part photo album,
+          part field notes, part reflection.
+        </p>
       </div>
-      <div id="tripList" class="trip-list"></div>
     </section>
 
-    <!-- Map -->
-    <section id="mapView" class="map-panel">
-      <div class="section-header">
-        <h2>Map View</h2>
-        <p>Tap a marker to open the article</p>
-      </div>
-      <div id="map"></div>
-      <p class="map-help">Map tiles from OpenStreetMap. May not appear on restricted networks.</p>
-    </section>
+    <section class="page" id="trips">
+      <div class="shell">
+        <div class="toolbar">
+          <div class="view-toggle" aria-label="Choose view">
+            <button
+              id="chronologicalBtn"
+              class="active"
+              type="button"
+              aria-pressed="true"
+            >
+              Chronological
+            </button>
 
+            <button
+              id="mapBtn"
+              type="button"
+              aria-pressed="false"
+            >
+              Map View
+            </button>
+          </div>
+        </div>
+
+        <section id="chronologicalView">
+          <div class="section-heading">
+            <h2>Travel journals</h2>
+            <p>Camino first, followed by the newest journeys.</p>
+          </div>
+
+          <div id="tripList" class="trip-list"></div>
+        </section>
+
+        <section id="mapView" class="map-panel">
+          <div class="section-heading">
+            <h2>Map view</h2>
+            <p>Tap a marker to open the journey.</p>
+          </div>
+
+          <div id="map"></div>
+
+          <p class="map-help">
+            Map tiles from OpenStreetMap. They may not appear on restricted networks.
+          </p>
+        </section>
+      </div>
+    </section>
   </main>
 
-  <!-- FOOTER -->
   <footer>
-    <span class="footer-logo">JB Wanders</span>
-    <span class="footer-copy">© 2026 JB WNDRS · Built with GitHub Pages</span>
+    <div class="shell footer-inner">
+      <span>© 2026 JB WNDRS</span>
+      <span>Travel, reflection, and the moments between.</span>
+      <span>San Diego, CA</span>
+    </div>
   </footer>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
   <script>
+    const caminoTrip = {
+      title: "Camino de Santiago",
+      date: "2026-09-01",
+      displayDate: "Coming September 2026",
+      description:
+        "A pilgrimage across northern Spain, with preparation, reflections, and eventually dispatches from the road.",
+      url: "/wanders/camino-de-santiago.html",
+      lat: 42.8782,
+      lng: -8.5448,
+      pinned: true
+    };
+
+    const jacumbaTrip = {
+      title: "Jacumba Wilderness",
+      date: "2022-03-22",
+      displayDate: "March 2022",
+      description:
+        "Desert quiet, rugged trails, strange rock formations, and the feeling of being very far away while still close to home.",
+      url: "/wanders/jacumba-wilderness.html",
+      manualImage: "/images/petroglyph_selfie.jpeg",
+      lat: 32.655,
+      lng: -116.165
+    };
+
+    /*
+      Existing older trips are intentionally excluded for now.
+      New Decap posts saved in content/wanders will be added automatically.
+    */
+    const hiddenExistingTrips = new Set([
+      "paris",
+      "amsterdam",
+      "brussels",
+      "san-pedro-de-atacama",
+      "patagonia"
+    ]);
+
+    const decapTrips = [
+      {% assign wander_pages = site.pages
+        | where_exp: "item", "item.path contains 'content/wanders/'"
+        | sort: "date"
+        | reverse
+      %}
+
+      {% for wander in wander_pages %}
+        {% assign wander_slug = wander.path
+          | split: "/"
+          | last
+          | remove: ".md"
+          | remove: ".markdown"
+          | remove: ".html"
+        %}
+
+        {% unless hiddenExistingTrips contains wander_slug %}
+        {
+          title: {{ wander.title | default: wander_slug | jsonify }},
+          date: {{ wander.date | date: "%Y-%m-%d" | jsonify }},
+          displayDate: {{ wander.date | date: "%B %Y" | jsonify }},
+          description: {{ wander.summary | default: wander.excerpt | strip_html | strip_newlines | truncate: 180 | jsonify }},
+          url: {{ wander.url | relative_url | jsonify }},
+          manualImage: {{ wander.featured_image | default: "" | jsonify }},
+          lat: {% if wander.latitude %}{{ wander.latitude | jsonify }}{% else %}null{% endif %},
+          lng: {% if wander.longitude %}{{ wander.longitude | jsonify }}{% else %}null{% endif %},
+          slug: {{ wander_slug | jsonify }}
+        }{% unless forloop.last %},{% endunless %}
+        {% endunless %}
+      {% endfor %}
+    ].filter((trip) => {
+      return (
+        trip &&
+        trip.title &&
+        !hiddenExistingTrips.has(trip.slug) &&
+        trip.title !== "Camino de Santiago" &&
+        trip.title !== "Jacumba Wilderness"
+      );
+    });
+
+    const chronologicalTrips = [
+      jacumbaTrip,
+      ...decapTrips
+    ].sort((a, b) => new Date(b.date) - new Date(a.date));
+
     const trips = [
-      {
-        title: "Jacumba Wilderness",
-        date: "2022-03-22",
-        displayDate: "March 2022",
-        description: "Desert quiet, rugged trails, strange rock formations, and the feeling of being very far away while still close to home.",
-        url: "wanders/jacumba-wilderness.html",
-        manualImage: "images/petroglyph_selfie.jpeg",
-        lat: 32.655,
-        lng: -116.165,
-        pinned: true
-      },
-      {
-        title: "Camino de Santiago",
-        date: "2026-09-01",
-        displayDate: "Coming September 2026",
-        description: "A future pilgrimage across northern Spain — with planning notes, reflections, questions, and eventually dispatches from the road.",
-        url: "wanders/camino-de-santiago.html",
-        lat: 42.8782,
-        lng: -8.5448,
-      },
-      {
-        title: "Paris",
-        date: "2025-11-25",
-        displayDate: "November 2025",
-        description: "Reflections, photos, and small moments from Paris.",
-        url: "wanders/paris.html",
-        lat: 48.8566,
-        lng: 2.3522
-      },
-      {
-        title: "Amsterdam",
-        date: "2025-11-22",
-        displayDate: "November 2025",
-        description: "Canals, winter light, museums, and wandering.",
-        url: "wanders/amsterdam.html",
-        lat: 52.3676,
-        lng: 4.9041
-      },
-      {
-        title: "Brussels",
-        date: "2025-11-19",
-        displayDate: "November 2025",
-        description: "A few days in Brussels at the start and end of the trip.",
-        url: "wanders/brussels.html",
-        lat: 50.8503,
-        lng: 4.3517
-      },
-      {
-        title: "San Pedro de Atacama",
-        date: "2024-11-18",
-        displayDate: "November 2024",
-        description: "Desert landscapes, flamingos, hot springs, and stargazing.",
-        url: "wanders/san-pedro-de-atacama.html",
-        lat: -22.9087,
-        lng: -68.1997
-      },
-      {
-        title: "Patagonia",
-        date: "2024-11-23",
-        displayDate: "November 2024",
-        description: "Glaciers, mountain light, windswept trails, and the vast southern edge of the world.",
-        url: "wanders/patagonia.html",
-        lat: -50.9423,
-        lng: -73.4068
-      }
+      caminoTrip,
+      ...chronologicalTrips
     ];
 
     const tripList = document.getElementById("tripList");
 
-    function sortTrips(a, b) {
-      if (a.pinned && !b.pinned) return -1;
-      if (!a.pinned && b.pinned) return 1;
-      return new Date(b.date) - new Date(a.date);
-    }
-
     function resolveUrl(path, baseUrl) {
-      try { return new URL(path, baseUrl).href; }
-      catch { return path; }
+      try {
+        return new URL(path, baseUrl).href;
+      } catch {
+        return path;
+      }
     }
 
     function showFallback(image) {
@@ -589,15 +715,29 @@
     async function findFirstArticleImage(articleUrl) {
       try {
         const response = await fetch(articleUrl);
-        if (!response.ok) return null;
+
+        if (!response.ok) {
+          return null;
+        }
+
         const html = await response.text();
         const doc = new DOMParser().parseFromString(html, "text/html");
-        const firstImage = doc.querySelector("img");
-        if (!firstImage) return null;
+        const firstImage = doc.querySelector("article img, main img, img");
+
+        if (!firstImage) {
+          return null;
+        }
+
         const imageSrc = firstImage.getAttribute("src");
-        if (!imageSrc) return null;
+
+        if (!imageSrc) {
+          return null;
+        }
+
         return resolveUrl(imageSrc, articleUrl);
-      } catch { return null; }
+      } catch {
+        return null;
+      }
     }
 
     async function loadCardImage(image, trip) {
@@ -607,45 +747,39 @@
         image.src = trip.manualImage;
         return;
       }
+
       const articleImage = await findFirstArticleImage(trip.url);
-      if (!articleImage) { showFallback(image); return; }
+
+      if (!articleImage) {
+        showFallback(image);
+        return;
+      }
+
       image.onload = () => image.classList.add("loaded");
       image.onerror = () => showFallback(image);
       image.src = articleImage;
     }
 
-    const cardObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add("visible"), i * 80);
-          cardObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    trips.sort(sortTrips).forEach(trip => {
+    trips.forEach((trip) => {
       const card = document.createElement("a");
       card.className = "trip-card";
       card.href = trip.url;
-      card.setAttribute("aria-label", `Read about ${trip.title}`);
+      card.setAttribute("aria-label", `Open ${trip.title}`);
 
       card.innerHTML = `
         <div class="trip-image-wrap">
           <img alt="${trip.title}" class="trip-image">
         </div>
+
         <div class="trip-content">
-          <div class="trip-date-row">
-            <span class="trip-date">${trip.displayDate}</span>
-            ${trip.pinned ? `<span class="pinned-label">Pinned</span>` : ``}
-          </div>
+          <p class="trip-date">${trip.displayDate}</p>
           <h3>${trip.title}</h3>
-          <p>${trip.description}</p>
-          <span class="read-more">Read the article</span>
+          <p>${trip.description || ""}</p>
+          <span class="read-more">Open journey</span>
         </div>
       `;
 
       tripList.appendChild(card);
-      cardObserver.observe(card);
 
       const image = card.querySelector(".trip-image");
       loadCardImage(image, trip);
@@ -656,7 +790,8 @@
     const chronologicalView = document.getElementById("chronologicalView");
     const mapView = document.getElementById("mapView");
 
-    let map, mapInitialized = false;
+    let map;
+    let mapInitialized = false;
 
     function initializeMap() {
       if (mapInitialized) {
@@ -664,7 +799,9 @@
         return;
       }
 
-      map = L.map("map", { scrollWheelZoom: false });
+      map = L.map("map", {
+        scrollWheelZoom: false
+      });
 
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 18,
@@ -672,14 +809,17 @@
       }).addTo(map);
 
       const customIcon = L.divIcon({
-        className: '',
-        html: `<div style="
-          width: 14px; height: 14px;
-          background: #c05c2e;
-          border: 2px solid #f0e8d8;
-          border-radius: 50%;
-          box-shadow: 0 2px 8px rgba(59,47,30,0.4);
-        "></div>`,
+        className: "",
+        html: `
+          <div style="
+            width: 14px;
+            height: 14px;
+            background: #c79a45;
+            border: 2px solid #fffdf9;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(24,48,68,0.35);
+          "></div>
+        `,
         iconSize: [14, 14],
         iconAnchor: [7, 7],
         popupAnchor: [0, -10]
@@ -687,22 +827,33 @@
 
       const bounds = [];
 
-      trips.forEach(trip => {
-        if (typeof trip.lat !== "number" || typeof trip.lng !== "number") return;
+      trips.forEach((trip) => {
+        if (
+          typeof trip.lat !== "number" ||
+          typeof trip.lng !== "number"
+        ) {
+          return;
+        }
 
-        const marker = L.marker([trip.lat, trip.lng], { icon: customIcon }).addTo(map);
+        const marker = L.marker(
+          [trip.lat, trip.lng],
+          { icon: customIcon }
+        ).addTo(map);
 
         marker.bindPopup(`
           <div class="popup-title">${trip.title}</div>
           <div class="popup-date">${trip.displayDate}</div>
-          <a class="popup-link" href="${trip.url}">Open article →</a>
+          <a class="popup-link" href="${trip.url}">Open journey →</a>
         `);
 
         bounds.push([trip.lat, trip.lng]);
       });
 
       if (bounds.length > 0) {
-        map.fitBounds(bounds, { padding: [40, 40], maxZoom: 5 });
+        map.fitBounds(bounds, {
+          padding: [40, 40],
+          maxZoom: 5
+        });
       } else {
         map.setView([20, 0], 2);
       }
@@ -714,6 +865,8 @@
     chronologicalBtn.addEventListener("click", () => {
       chronologicalBtn.classList.add("active");
       mapBtn.classList.remove("active");
+      chronologicalBtn.setAttribute("aria-pressed", "true");
+      mapBtn.setAttribute("aria-pressed", "false");
       chronologicalView.classList.remove("hidden");
       mapView.style.display = "none";
     });
@@ -721,10 +874,21 @@
     mapBtn.addEventListener("click", () => {
       mapBtn.classList.add("active");
       chronologicalBtn.classList.remove("active");
+      mapBtn.setAttribute("aria-pressed", "true");
+      chronologicalBtn.setAttribute("aria-pressed", "false");
       chronologicalView.classList.add("hidden");
       mapView.style.display = "block";
       initializeMap();
     });
+
+    const header = document.getElementById("site-header");
+
+    const updateHeader = () => {
+      header.classList.toggle("scrolled", window.scrollY > 12);
+    };
+
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
   </script>
 </body>
 </html>

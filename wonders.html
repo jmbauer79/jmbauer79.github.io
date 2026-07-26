@@ -519,6 +519,39 @@ layout: null
       margin: 0;
     }
 
+
+    .contact-section {
+      width: 100%;
+      padding: 0 1rem 4.5rem;
+    }
+
+    .contact-inner {
+      width: 100%;
+      max-width: 900px;
+      margin-inline: auto;
+    }
+
+    .contact-fields-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .contact-field {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-field input,
+    .contact-field textarea {
+      width: 100%;
+    }
+
+    @media (max-width: 699px) {
+      .contact-fields-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
     footer {
       padding: 1.8rem 0 2rem;
       border-top: 1px solid var(--line);
@@ -797,6 +830,81 @@ layout: null
             </div>
           </a>
         </section>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="contact-inner">
+
+        <p class="contact-eyebrow">A NOTE FROM YOU</p>
+
+        <h2>Did something here resonate?</h2>
+
+        <p class="contact-intro">I’d love to hear from you.</p>
+
+        <form
+          class="contact-form"
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+        >
+          <input type="hidden" name="form-name" value="contact">
+
+          <p class="honeypot" hidden aria-hidden="true">
+            <label>
+              Don’t fill this out:
+              <input name="bot-field" tabindex="-1" autocomplete="off">
+            </label>
+          </p>
+
+          <div class="contact-fields-row">
+
+            <div class="contact-field">
+              <label for="contact-name">
+                Name <span class="optional">(optional)</span>
+              </label>
+
+              <input
+                type="text"
+                id="contact-name"
+                name="name"
+                autocomplete="name"
+              >
+            </div>
+
+            <div class="contact-field">
+              <label for="contact-email">
+                Email <span class="optional">(optional)</span>
+              </label>
+
+              <input
+                type="email"
+                id="contact-email"
+                name="email"
+                autocomplete="email"
+              >
+            </div>
+
+          </div>
+
+          <div class="contact-field">
+            <label for="contact-message">Message</label>
+
+            <textarea
+              id="contact-message"
+              name="message"
+              rows="7"
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="contact-submit">
+            SEND A NOTE <span aria-hidden="true">→</span>
+          </button>
+
+        </form>
+
       </div>
     </section>
   </main>

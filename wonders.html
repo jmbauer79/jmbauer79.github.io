@@ -285,6 +285,14 @@ layout: null
       margin-bottom: 4rem;
     }
 
+    .coming-soon-section {
+      margin-bottom: 4rem;
+    }
+
+    .stories-section {
+      margin-bottom: 0;
+    }
+
     .feature-card {
       display: block;
       position: relative;
@@ -735,69 +743,61 @@ layout: null
             </div>
           </a>
         </section>
-{% comment %}
-        <section aria-labelledby="essays-title">
+        <section
+          class="coming-soon-section"
+          aria-labelledby="reflections-title"
+        >
           <div class="section-heading">
-            <h2 id="essays-title">Reflections</h2>
-            <p>Essays and ideas. Coming soon.</p>
+            <h2 id="reflections-title">Reflections</h2>
+            <p>Essays, analysis, and musings. Coming soon.</p>
+          </div>
+        </section>
+
+        <section
+          class="feature-section stories-section"
+          aria-labelledby="stories-title"
+        >
+          <div class="section-heading">
+            <h2 id="stories-title">Stories</h2>
+            <p>Written and oral accountings of true events.</p>
           </div>
 
-          {% if wonder_pages.size > 0 %}
-            <div class="essay-grid">
-              {% for wonder in wonder_pages %}
-                {% assign wonder_slug = wonder.path
-                  | split: "/"
-                  | last
-                  | remove: ".md"
-                  | remove: ".markdown"
-                  | remove: ".html"
-                %}
+          <a
+            class="feature-card"
+            href="/stories.html"
+            aria-label="Open Stories"
+          >
+            <div class="feature-media">
+              <img
+                id="stories-tile-image"
+                class="feature-image"
+                alt="Stories"
+                loading="lazy"
+                style="display: none;"
+              >
 
-                <a
-                  class="essay-card"
-                  href="{{ wonder.url | relative_url }}"
-                  aria-label="Open {{ wonder.title | default: wonder_slug | escape }}"
-                  data-essay-url="{{ wonder.url | relative_url }}"
-                  data-manual-image="{{ wonder.featured_image | default: '' | escape }}"
-                >
-                  <div class="essay-image-wrap">
-                    <img
-                      class="essay-image"
-                      alt="{{ wonder.title | default: wonder_slug | escape }}"
-                      loading="lazy"
-                    >
-                  </div>
-
-                  <div class="essay-content">
-                    <p class="essay-date">
-                      {{ wonder.date | date: "%B %Y" }}
-                    </p>
-
-                    <h3>
-                      {{ wonder.title | default: wonder_slug }}
-                    </h3>
-
-                    <p>
-                      {{ wonder.summary
-                        | default: wonder.excerpt
-                        | strip_html
-                        | strip_newlines
-                        | truncate: 180
-                      }}
-                    </p>
-
-                    <span class="essay-cta">Read the reflection</span>
-                  </div>
-                </a>
-              {% endfor %}
+              <div
+                id="stories-tile-fallback"
+                class="feature-image"
+                aria-hidden="true"
+                style="
+                  background:
+                    linear-gradient(135deg, rgba(24, 48, 68, 0.96), rgba(101, 113, 122, 0.7)),
+                    radial-gradient(circle at 25% 25%, rgba(199, 154, 69, 0.35), transparent 40%);
+                "
+              ></div>
             </div>
-          {% else %}
-            <div class="empty-state">
-              <p>Essays and reflections will appear here as they are published.</p>
+
+            <div class="feature-overlay">
+              <p class="eyebrow">True Accounts</p>
+              <h2>Stories</h2>
+              <p>
+                Written and oral accountings of true events.
+              </p>
+              <span class="feature-cta">Explore the stories</span>
             </div>
-          {% endif %}
+          </a>
         </section>
-        {% endcomment %}
       </div>
     </section>
   </main>
@@ -882,7 +882,154 @@ layout: null
       image.src = articleImage;
     }
 
+    function extractYouTubeId(value) {
+      if (!value) {
+        return null;
+      }
+
+      try {
+        const url = new URL(value, window.location.origin);
+
+        if (url.hostname.includes("youtu.be")) {
+          return url.pathname.split("/").filter(Boolean)[0] || null;
+        }
+
+        if (url.hostname.includes("youtube.com")) {
+          if (url.pathname.startsWith("/watch")) {
+            return url.searchParams.get("v");
+          }
+
+          const parts = url.pathname.split("/").filter(Boolean);
+          const videoIndex = parts.findIndex((part) =>
+            ["embed", "shorts", "live"].includes(part)
+          );
+
+          if (videoIndex >= 0 && parts[videoIndex + 1]) {
+            return parts[videoIndex + 1];
+          }
+        }
+      } catch {
+        return null;
+      }
+
+      return null;
+    }
+
+    function getStoryDate(story) {
+      const rawDate =
+        story.dataset.date ||
+        story.querySelector("time")?.getAttribute("datetime") ||
+        "";
+
+      const timestamp = Date.parse(rawDate);
+      return Number.isNaN(timestamp) ? 0 : timestamp;
+    }
+
+    function findStoryVisual(story, pageUrl) {
+      const directImage =
+        story.dataset.image ||
+        story.querySelector("img")?.getAttribute("src");
+
+      if (directImage) {
+        return resolveUrl(directImage, pageUrl);
+      }
+
+      const youtubeValue =
+        story.dataset.youtubeUrl ||
+        story.querySelector(
+          'a[href*="youtube.com"], a[href*="youtu.be"], iframe[src*="youtube.com"]'
+        )?.getAttribute("href") ||
+        story.querySelector(
+          'iframe[src*="youtube.com"]'
+        )?.getAttribute("src");
+
+      const youtubeId = extractYouTubeId(youtubeValue);
+
+      if (youtubeId) {
+        return "https://img.youtube.com/vi/" + youtubeId + "/maxresdefault.jpg";
+      }
+
+      return null;
+    }
+
+    async function loadStoriesTileImage() {
+      const image = document.getElementById("stories-tile-image");
+      const fallback = document.getElementById("stories-tile-fallback");
+
+      if (!image) {
+        return;
+      }
+
+      try {
+        const storiesUrl = resolveUrl("/stories.html", window.location.origin);
+        const response = await fetch(storiesUrl);
+
+        if (!response.ok) {
+          throw new Error("Stories page could not be loaded.");
+        }
+
+        const html = await response.text();
+        const doc = new DOMParser().parseFromString(html, "text/html");
+
+        const stories = Array.from(
+          doc.querySelectorAll(
+            "[data-story], .story-card, article.story, .stories-list article"
+          )
+        ).sort((a, b) => getStoryDate(b) - getStoryDate(a));
+
+        let selectedImage = null;
+
+        for (const story of stories) {
+          selectedImage = findStoryVisual(story, storiesUrl);
+
+          if (selectedImage) {
+            break;
+          }
+        }
+
+        if (!selectedImage) {
+          const pageImage = doc.querySelector(
+            'meta[property="og:image"], meta[name="twitter:image"]'
+          )?.getAttribute("content");
+
+          if (pageImage) {
+            selectedImage = resolveUrl(pageImage, storiesUrl);
+          }
+        }
+
+        if (!selectedImage) {
+          throw new Error("No story image was found.");
+        }
+
+        image.onload = () => {
+          image.style.display = "block";
+
+          if (fallback) {
+            fallback.style.display = "none";
+          }
+        };
+
+        image.onerror = () => {
+          image.style.display = "none";
+
+          if (fallback) {
+            fallback.style.display = "block";
+          }
+        };
+
+        image.src = selectedImage;
+      } catch {
+        image.style.display = "none";
+
+        if (fallback) {
+          fallback.style.display = "block";
+        }
+      }
+    }
+
     document.addEventListener("DOMContentLoaded", function () {
+      loadStoriesTileImage();
+
       const tileImage = document.getElementById("sights-tile-image");
 
       if (tileImage && tileImage.dataset.vimeoId) {

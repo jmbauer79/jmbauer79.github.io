@@ -418,6 +418,39 @@ layout: null
       display: none !important;
     }
 
+
+    .contact-section {
+      width: 100%;
+      padding: 0 1rem 4.5rem;
+    }
+
+    .contact-inner {
+      width: 100%;
+      max-width: 900px;
+      margin-inline: auto;
+    }
+
+    .contact-fields-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .contact-field {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-field input,
+    .contact-field textarea {
+      width: 100%;
+    }
+
+    @media (max-width: 699px) {
+      .contact-fields-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
     footer {
       padding: 1.8rem 0 2rem;
       border-top: 1px solid var(--line);
@@ -626,7 +659,7 @@ layout: null
 
         <div class="contact-field">
           <label for="contact-name">
-            Name <span class="optional">optional</span>
+            Name <span class="optional">(optional)</span>
           </label>
 
           <input
@@ -639,7 +672,7 @@ layout: null
 
         <div class="contact-field">
           <label for="contact-email">
-            Email <span class="optional">optional</span>
+            Email <span class="optional">(optional)</span>
           </label>
 
           <input

@@ -1,4 +1,5 @@
 ---
+layout: null
 ---
 
 {% assign sound_entries = site.sights_sounds | sort: "date" | reverse %}
@@ -66,233 +67,273 @@
   {% endfor %}
 {% endif %}
 
+{% assign wonder_pages = site.pages
+  | where_exp: "item", "item.path contains 'content/wonders/'"
+  | sort: "date"
+  | reverse
+%}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>JB Wonders</title>
+  <meta
+    name="description"
+    content="Essays, reflections, and brief moments that stayed with me."
+  />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Libre+Baskerville:ital@0;1&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Libre+Baskerville&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
 
     :root {
-      --ink:       #1c1712;
-      --bark:      #3b2f1e;
-      --clay:      #8b5e3c;
-      --sand:      #c9a87c;
-      --parchment: #f0e8d8;
-      --cream:     #faf6ef;
-      --moss:      #4a5a3a;
-      --sage:      #7a8f6a;
-      --accent:    #c05c2e;
-      --border:    rgba(139, 94, 60, 0.18);
+      --ink: #183044;
+      --ink-soft: #65717a;
+      --gold: #c79a45;
+      --cream: #fbf8f2;
+      --paper: #fffdf9;
+      --line: rgba(24, 48, 68, 0.12);
+      --shadow: 0 18px 45px rgba(24, 48, 68, 0.11);
+      --radius-lg: 22px;
+      --content: 1080px;
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
-      background: var(--cream);
-      color: var(--ink);
-      font-family: 'Libre Baskerville', Georgia, serif;
+      margin: 0;
       min-height: 100vh;
       overflow-x: hidden;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "Libre Baskerville", Georgia, serif;
+      line-height: 1.65;
     }
 
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1000;
-      opacity: 0.04;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      background-size: 200px 200px;
+    img {
+      display: block;
+      max-width: 100%;
     }
 
-    nav {
+    a {
+      color: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .shell {
+      width: min(calc(100% - 2rem), var(--content));
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      margin: 0;
+      color: var(--gold);
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .gold-rule {
+      width: 58px;
+      height: 2px;
+      margin: 1rem 0 1.25rem;
+      background: var(--gold);
+      border-radius: 999px;
+    }
+
+    /* HEADER */
+    .site-header {
       position: sticky;
       top: 0;
       z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.1rem 3rem;
-      background: rgba(250, 246, 239, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+      background: rgba(251, 248, 242, 0.92);
+      border-bottom: 1px solid transparent;
+      backdrop-filter: blur(14px);
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
     }
 
-    .nav-logo {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 1.05rem;
-      letter-spacing: 0.25em;
-      color: var(--bark);
+    .site-header.scrolled {
+      border-color: var(--line);
+      box-shadow: 0 8px 24px rgba(24, 48, 68, 0.06);
+    }
+
+    .nav-wrap {
+      min-height: 76px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand {
+      justify-self: center;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(1.45rem, 6vw, 2.15rem);
+      font-weight: 500;
+      letter-spacing: 0.28em;
       text-decoration: none;
+      white-space: nowrap;
+      transform: translateX(0.14em);
     }
 
     .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
+      display: none;
     }
 
-    .nav-links a {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 600;
-      font-size: 0.78rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--clay);
+    .nav-icon {
+      display: inline-grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      color: var(--ink);
       text-decoration: none;
-      opacity: 0.7;
-      transition: opacity 0.2s;
     }
 
-    .nav-links a:hover,
-    .nav-links a.active { opacity: 1; color: var(--accent); }
+    .nav-icon svg {
+      width: 23px;
+      height: 23px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
 
+    .nav-spacer {
+      width: 42px;
+      height: 42px;
+    }
+
+    /* HERO */
     .hero {
-      position: relative;
-      padding: 5rem 3rem 4rem;
-      overflow: hidden;
-      border-bottom: 1px solid var(--border);
+      padding: 3.5rem 0 3rem;
     }
 
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 60% 80% at 100% 40%, rgba(74,90,58,0.13) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 60% at 0% 100%, rgba(201,168,124,0.14) 0%, transparent 55%),
-        var(--cream);
-      z-index: 0;
+    .hero-inner {
+      max-width: 780px;
+      text-align: center;
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 860px;
-      margin: 0 auto;
+    .hero h1 {
+      margin: 0;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2.7rem, 11vw, 5.25rem);
+      font-weight: 500;
+      line-height: 1.04;
+      letter-spacing: -0.025em;
     }
 
-    .hero-eyebrow {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 600;
-      font-size: 0.72rem;
-      letter-spacing: 0.38em;
-      text-transform: uppercase;
-      color: var(--clay);
-      margin-bottom: 1rem;
-      opacity: 0;
-      animation: fade-up 0.7s 0.1s forwards;
-    }
-
-    .hero-title {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-weight: 900;
-      font-size: clamp(3rem, 8vw, 6rem);
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-      color: var(--bark);
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      animation: fade-up 0.8s 0.2s forwards;
-    }
-
-    .hero-title em {
-      font-style: italic;
-      color: var(--clay);
+    .hero .gold-rule {
+      margin-inline: auto;
     }
 
     .hero-desc {
-      font-size: 1rem;
-      line-height: 1.75;
-      color: rgba(28,23,18,0.65);
-      max-width: 520px;
-      opacity: 0;
-      animation: fade-up 0.8s 0.35s forwards;
-    }
-
-    .hero-rule {
-      margin-top: 2.5rem;
-      height: 1px;
-      background: linear-gradient(to right, var(--sand), transparent);
-      opacity: 0;
-      animation: fade-up 0.8s 0.45s forwards;
-    }
-
-    @keyframes fade-up {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .page {
-      max-width: 900px;
+      max-width: 650px;
       margin: 0 auto;
-      padding: 3.5rem 3rem 5rem;
+      color: var(--ink-soft);
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: clamp(1.05rem, 4.2vw, 1.3rem);
     }
 
-    .section-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: var(--clay);
-      margin-bottom: 1.25rem;
-      opacity: 0.75;
+    /* PAGE */
+    .page {
+      padding: 0 0 4.75rem;
     }
 
-    .feature-tile {
+    .section-heading {
+      margin-bottom: 1.5rem;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2rem, 8vw, 3rem);
+      font-weight: 500;
+      line-height: 1.1;
+    }
+
+    .section-heading p {
+      margin: 0.45rem 0 0;
+      color: var(--ink-soft);
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 1rem;
+    }
+
+    /* FEATURE */
+    .feature-section {
+      margin-bottom: 4rem;
+    }
+
+    .feature-card {
       display: block;
       position: relative;
       min-height: 420px;
       overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--ink);
+      color: #fff;
       text-decoration: none;
-      color: inherit;
-      background: var(--bark);
-      border: 1px solid var(--border);
-      margin-bottom: 3rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      opacity: 0;
-      animation: fade-up 0.9s 0.5s forwards;
+      box-shadow: var(--shadow);
+      isolation: isolate;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
-    .feature-tile:hover {
+    .feature-card:hover,
+    .feature-card:focus-visible {
       transform: translateY(-4px);
-      box-shadow: 0 20px 56px rgba(59,47,30,0.2);
+      box-shadow: 0 24px 55px rgba(24, 48, 68, 0.17);
     }
 
-    .tile-media {
+    .feature-media {
       position: absolute;
       inset: 0;
-      width: 100%;
-      height: 100%;
       overflow: hidden;
+      z-index: -2;
     }
 
-    .tile-image {
+    .feature-image {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
+      filter: saturate(0.86) contrast(0.95);
+      transition: transform 0.5s ease;
+    }
+
+    .feature-card:hover .feature-image,
+    .feature-card:focus-visible .feature-image {
+      transform: scale(1.025);
     }
 
     .video-crop {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 100%;
-      max-width: 430px;
-      aspect-ratio: 9/16;
+      width: min(100%, 430px);
+      aspect-ratio: 9 / 16;
       transform: translate(-50%, -50%);
       overflow: hidden;
     }
@@ -309,347 +350,600 @@
       display: none !important;
     }
 
-    .tile-overlay {
-      position: absolute;
-      inset: 0;
-      padding: 2rem 2.25rem;
+    .feature-overlay {
+      min-height: 420px;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      color: var(--parchment);
+      padding: 1.75rem 1.4rem;
       background: linear-gradient(
         to top,
-        rgba(28, 18, 10, 0.82) 0%,
-        rgba(28, 18, 10, 0.35) 45%,
-        rgba(28, 18, 10, 0.08) 100%
+        rgba(12, 28, 40, 0.9) 0%,
+        rgba(12, 28, 40, 0.46) 48%,
+        rgba(12, 28, 40, 0.08) 100%
       );
-      z-index: 2;
     }
 
-    .tile-kicker {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--sand);
-      margin-bottom: 0.5rem;
+    .feature-overlay h2 {
+      margin: 0.35rem 0 0.55rem;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2.15rem, 9vw, 3.65rem);
+      font-weight: 500;
+      line-height: 1.05;
     }
 
-    .tile-overlay h2 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      color: var(--parchment);
-      margin-bottom: 0.6rem;
-    }
-
-    .tile-overlay p {
+    .feature-overlay p:not(.eyebrow) {
+      max-width: 600px;
+      margin: 0 0 1.15rem;
+      color: rgba(255, 255, 255, 0.78);
       font-size: 0.95rem;
-      line-height: 1.7;
-      color: rgba(240,232,216,0.78);
-      max-width: 520px;
-      margin-bottom: 1.25rem;
+      line-height: 1.75;
     }
 
-    .tile-cta {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 0.72rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--sand);
+    .feature-cta,
+    .essay-cta {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      transition: gap 0.2s ease;
+      gap: 0.65rem;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
     }
 
-    .feature-tile:hover .tile-cta { gap: 0.75rem; }
-
-    .tile-cta::after { content: '→'; font-size: 0.9rem; }
-
-    .tile-corner {
-      display: none;
+    .feature-cta::after,
+    .essay-cta::after {
+      content: "→";
+      color: var(--gold);
+      font-size: 1.1rem;
+      transition: transform 0.2s ease;
     }
 
+    .feature-card:hover .feature-cta::after,
+    .feature-card:focus-visible .feature-cta::after,
+    .essay-card:hover .essay-cta::after,
+    .essay-card:focus-visible .essay-cta::after {
+      transform: translateX(3px);
+    }
+
+    /* ESSAYS */
     .essay-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
     }
 
     .essay-card {
       display: block;
-      text-decoration: none;
+      overflow: hidden;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 10px 28px rgba(24, 48, 68, 0.07);
       color: inherit;
-      background: var(--parchment);
-      border: 1px solid var(--border);
-      padding: 1.75rem 1.75rem 2rem;
-      position: relative;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      opacity: 0;
-      animation: fade-up 0.8s forwards;
+      text-decoration: none;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
-    .essay-card:nth-child(1) { animation-delay: 0.65s; }
-    .essay-card:nth-child(2) { animation-delay: 0.78s; }
-
-    .essay-card:hover {
+    .essay-card:hover,
+    .essay-card:focus-visible {
       transform: translateY(-4px);
-      box-shadow: 0 16px 48px rgba(59,47,30,0.12);
+      box-shadow: var(--shadow);
     }
 
-    .essay-card.coming-soon:hover {
-      transform: translateY(-2px);
+    .essay-image-wrap {
+      position: relative;
+      min-height: 220px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #d9e0df, #f0e8d8);
     }
 
-    .essay-card::after {
-      content: '';
+    .essay-image-wrap::after {
+      content: "";
       position: absolute;
-      top: 0;
-      right: 0;
-      width: 36px;
-      height: 36px;
-      border-left: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(24, 48, 68, 0),
+        rgba(24, 48, 68, 0.12)
+      );
+      pointer-events: none;
     }
 
-    .card-kicker {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.65rem;
+    .essay-image {
+      width: 100%;
+      height: 100%;
+      min-height: 220px;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.45s ease;
+    }
+
+    .essay-image.loaded {
+      opacity: 1;
+    }
+
+    .essay-card:hover .essay-image,
+    .essay-card:focus-visible .essay-image {
+      transform: scale(1.025);
+    }
+
+    .essay-content {
+      padding: 1.4rem 1.3rem 1.55rem;
+    }
+
+    .essay-date {
+      margin: 0 0 0.35rem;
+      color: var(--gold);
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 0.78rem;
       font-weight: 700;
-      letter-spacing: 0.35em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--clay);
-      margin-bottom: 0.6rem;
     }
 
-    .essay-card h2 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: 1.5rem;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      color: var(--bark);
-      margin-bottom: 0.65rem;
+    .essay-content h3 {
+      margin: 0 0 0.55rem;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(1.75rem, 7vw, 2.35rem);
+      font-weight: 500;
+      line-height: 1.08;
     }
 
-    .essay-card p {
-      font-size: 0.88rem;
+    .essay-content p {
+      margin: 0 0 1.1rem;
+      color: var(--ink-soft);
+      font-size: 0.94rem;
       line-height: 1.75;
-      color: rgba(28,23,18,0.62);
     }
 
-    .coming-soon-badge {
-      display: inline-block;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(28,23,18,0.35);
-      border: 1px solid rgba(139,94,60,0.2);
-      padding: 0.15rem 0.5rem;
-      margin-top: 1rem;
+    .empty-state {
+      padding: 2rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.48);
+      color: var(--ink-soft);
+      text-align: center;
+    }
+
+    .empty-state p {
+      margin: 0;
     }
 
     footer {
-      background: var(--bark);
-      padding: 2.5rem 3rem;
+      padding: 1.8rem 0 2rem;
+      border-top: 1px solid var(--line);
+      color: var(--ink-soft);
+      text-align: center;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 0.88rem;
+    }
+
+    .footer-inner {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
+      gap: 0.35rem;
       align-items: center;
+      justify-content: center;
     }
 
-    .footer-logo {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 1.1rem;
-      color: var(--sand);
+    @media (min-width: 700px) {
+      .shell {
+        width: min(calc(100% - 3rem), var(--content));
+      }
+
+      .nav-wrap {
+        min-height: 86px;
+      }
+
+      .nav-links {
+        display: flex;
+        justify-self: start;
+        gap: 1.4rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .nav-links a {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .nav-links a:hover,
+      .nav-links a:focus-visible,
+      .nav-links a.active {
+        color: var(--gold);
+      }
+
+      .mobile-menu {
+        display: none;
+      }
+
+      .hero {
+        padding: 4.75rem 0 4rem;
+      }
+
+      .feature-card,
+      .feature-overlay {
+        min-height: 520px;
+      }
+
+      .feature-overlay {
+        padding: 2.5rem;
+      }
+
+      .essay-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
+      }
+
+      .footer-inner {
+        flex-direction: row;
+        gap: 1rem;
+      }
+
+      .footer-inner span + span::before {
+        content: "•";
+        margin-right: 1rem;
+        color: var(--gold);
+      }
     }
 
-    .footer-copy {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      color: rgba(201,168,124,0.5);
-    }
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
 
-    @media (max-width: 600px) {
-      nav { padding: 1rem 1.25rem; }
-      .hero { padding: 3.5rem 1.25rem 2.5rem; }
-      .page { padding: 2rem 1.25rem 4rem; }
-      .essay-grid { grid-template-columns: 1fr; }
-      .feature-tile { min-height: 340px; }
-      footer { flex-direction: column; gap: 0.75rem; text-align: center; }
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
     }
   </style>
 </head>
 
 <body>
-
-  <nav>
-    <a href="index.html" class="nav-logo">JB WNDRS</a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="wanders.html">Wanders</a></li>
-      <li><a href="wonders.html" class="active">Wonders</a></li>
-    </ul>
-  </nav>
-
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-content">
-      <p class="hero-eyebrow">JB Wonders</p>
-      <h1 class="hero-title">Musings, moments,<br><em>and passing curiosities.</em></h1>
-      <p class="hero-desc">Essays, reflections, small observations, and the occasional thing I could not stop thinking about — alongside photos from daily life.</p>
-      <div class="hero-rule"></div>
-    </div>
-  </section>
-
-  <main class="page">
-
-    <p class="section-label">Featured</p>
-
-    <a class="feature-tile" href="sights-and-sounds.html" aria-label="Sights and Sounds — ongoing log">
-      <div class="tile-media">
-        {% if first_media_type == "image" %}
-          <img
-            id="sights-tile-image"
-            class="tile-image"
-            src="{{ first_media_image | escape }}"
-            alt="{{ latest_sight.caption | default: 'Sights and Sounds' | strip_html | escape }}"
-            loading="lazy">
-
-        {% elsif first_media_type == "vimeo" %}
-          <img
-            id="sights-tile-image"
-            class="tile-image"
-            src="{% if backup_tile_image != "" %}{{ backup_tile_image | escape }}{% endif %}"
-            alt="{{ latest_sight.caption | default: 'Sights and Sounds' | strip_html | escape }}"
-            data-vimeo-id="{{ first_media_vimeo_id | escape }}"
-            data-backup-image="{{ backup_tile_image | escape }}"
-            {% if backup_tile_image == "" %}style="display: none;"{% endif %}
-            loading="lazy">
-
-          <div id="sights-tile-fallback-video" class="video-crop {% if backup_tile_image != '' %}is-hidden{% endif %}">
-            <iframe
-              src="https://player.vimeo.com/video/{{ first_media_vimeo_id | escape }}?muted=1&autoplay=0&background=0&controls=0&playsinline=1"
-              title="{{ latest_sight.caption | default: 'Sights and Sounds' | strip_html | escape }}"
-              allow="fullscreen; picture-in-picture"
-              tabindex="-1">
-            </iframe>
-          </div>
-
-        {% elsif backup_tile_image != "" %}
-          <img
-            id="sights-tile-image"
-            class="tile-image"
-            src="{{ backup_tile_image | escape }}"
-            alt="Sights and Sounds"
-            loading="lazy">
-
-        {% else %}
-          <div id="sights-tile-fallback-video" class="video-crop">
-            <iframe
-              src="https://player.vimeo.com/video/1188333418?muted=1&autoplay=0&background=0&controls=0&playsinline=1"
-              title="Bird Reflection"
-              allow="fullscreen; picture-in-picture"
-              tabindex="-1">
-            </iframe>
-          </div>
-        {% endif %}
-      </div>
-
-      <div class="tile-corner"></div>
-      <div class="tile-overlay">
-        <p class="tile-kicker">Ongoing Log</p>
-        <h2>Sights &amp; Sounds</h2>
-        <p>Brief moments seen, heard, noticed, or held onto — the small things that do not need a full essay.</p>
-        <span class="tile-cta">Explore the log</span>
-      </div>
-    </a>
-
-    <p class="section-label">Essays &amp; Reflections</p>
-
-    <div class="essay-grid">
-      <a class="essay-card coming-soon" href="#" aria-label="Coming soon — Essays">
-        <p class="card-kicker">Essay</p>
-        <h2>Coming Soon</h2>
-        <p>A place for longer reflections, essays, and thoughts that want a little more room to breathe.</p>
-        <span class="coming-soon-badge">In progress</span>
+  <header class="site-header" id="site-header">
+    <div class="shell nav-wrap">
+      <a
+        class="nav-icon mobile-menu"
+        href="#featured"
+        aria-label="Skip to Wonders content"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16"></path>
+        </svg>
       </a>
 
-      <a class="essay-card coming-soon" href="#" aria-label="Notes in Progress">
-        <p class="card-kicker">Reflection</p>
-        <h2>Notes in Progress</h2>
-        <p>Fragments, questions, and half-formed ideas waiting to become something more complete.</p>
-        <span class="coming-soon-badge">In progress</span>
-      </a>
-    </div>
+      <ul class="nav-links" aria-label="Primary navigation">
+        <li><a href="/">Home</a></li>
+        <li><a href="/wanders.html">Wanders</a></li>
+        <li><a href="/wonders.html" class="active">Wonders</a></li>
+      </ul>
 
+      <a class="brand" href="/" aria-label="JB WNDRS home">JB WNDRS</a>
+      <span class="nav-spacer" aria-hidden="true"></span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="wonders-title">
+      <div class="shell hero-inner">
+        <p class="eyebrow">JB Wonders</p>
+
+        <h1 id="wonders-title">
+          Thoughts, ideas,<br />
+          and things worth noticing.
+        </h1>
+
+        <div class="gold-rule"></div>
+
+        <p class="hero-desc">
+          Essays, reflections, and brief moments that stayed with me.
+        </p>
+      </div>
+    </section>
+
+    <section class="page" id="featured">
+      <div class="shell">
+        <section class="feature-section" aria-labelledby="featured-title">
+          <div class="section-heading">
+            <h2 id="featured-title">Featured</h2>
+            <p>An ongoing collection of small moments.</p>
+          </div>
+
+          <a
+            class="feature-card"
+            href="/sights-and-sounds.html"
+            aria-label="Open Sights and Sounds"
+          >
+            <div class="feature-media">
+              {% if first_media_type == "image" %}
+                <img
+                  id="sights-tile-image"
+                  class="feature-image"
+                  src="{{ first_media_image | escape }}"
+                  alt="{{ latest_sight.caption | default: 'Sights and Sounds' | strip_html | escape }}"
+                  loading="lazy"
+                >
+
+              {% elsif first_media_type == "vimeo" %}
+                <img
+                  id="sights-tile-image"
+                  class="feature-image"
+                  src="{% if backup_tile_image != '' %}{{ backup_tile_image | escape }}{% endif %}"
+                  alt="{{ latest_sight.caption | default: 'Sights and Sounds' | strip_html | escape }}"
+                  data-vimeo-id="{{ first_media_vimeo_id | escape }}"
+                  data-backup-image="{{ backup_tile_image | escape }}"
+                  {% if backup_tile_image == "" %}style="display: none;"{% endif %}
+                  loading="lazy"
+                >
+
+                <div
+                  id="sights-tile-fallback-video"
+                  class="video-crop {% if backup_tile_image != '' %}is-hidden{% endif %}"
+                >
+                  <iframe
+                    src="https://player.vimeo.com/video/{{ first_media_vimeo_id | escape }}?muted=1&autoplay=0&background=0&controls=0&playsinline=1"
+                    title="{{ latest_sight.caption | default: 'Sights and Sounds' | strip_html | escape }}"
+                    allow="fullscreen; picture-in-picture"
+                    tabindex="-1">
+                  </iframe>
+                </div>
+
+              {% elsif backup_tile_image != "" %}
+                <img
+                  id="sights-tile-image"
+                  class="feature-image"
+                  src="{{ backup_tile_image | escape }}"
+                  alt="Sights and Sounds"
+                  loading="lazy"
+                >
+
+              {% else %}
+                <div
+                  id="sights-tile-fallback-video"
+                  class="video-crop"
+                >
+                  <iframe
+                    src="https://player.vimeo.com/video/1188333418?muted=1&autoplay=0&background=0&controls=0&playsinline=1"
+                    title="Sights and Sounds"
+                    allow="fullscreen; picture-in-picture"
+                    tabindex="-1">
+                  </iframe>
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="feature-overlay">
+              <p class="eyebrow">Ongoing log</p>
+              <h2>Sights &amp; Sounds</h2>
+              <p>
+                Brief moments seen, heard, noticed, or held onto, the small
+                things that do not need a full essay.
+              </p>
+              <span class="feature-cta">Explore the log</span>
+            </div>
+          </a>
+        </section>
+
+        <section aria-labelledby="essays-title">
+          <div class="section-heading">
+            <h2 id="essays-title">Essays &amp; reflections</h2>
+            <p>Newest first.</p>
+          </div>
+
+          {% if wonder_pages.size > 0 %}
+            <div class="essay-grid">
+              {% for wonder in wonder_pages %}
+                {% assign wonder_slug = wonder.path
+                  | split: "/"
+                  | last
+                  | remove: ".md"
+                  | remove: ".markdown"
+                  | remove: ".html"
+                %}
+
+                <a
+                  class="essay-card"
+                  href="{{ wonder.url | relative_url }}"
+                  aria-label="Open {{ wonder.title | default: wonder_slug | escape }}"
+                  data-essay-url="{{ wonder.url | relative_url }}"
+                  data-manual-image="{{ wonder.featured_image | default: '' | escape }}"
+                >
+                  <div class="essay-image-wrap">
+                    <img
+                      class="essay-image"
+                      alt="{{ wonder.title | default: wonder_slug | escape }}"
+                      loading="lazy"
+                    >
+                  </div>
+
+                  <div class="essay-content">
+                    <p class="essay-date">
+                      {{ wonder.date | date: "%B %Y" }}
+                    </p>
+
+                    <h3>
+                      {{ wonder.title | default: wonder_slug }}
+                    </h3>
+
+                    <p>
+                      {{ wonder.summary
+                        | default: wonder.excerpt
+                        | strip_html
+                        | strip_newlines
+                        | truncate: 180
+                      }}
+                    </p>
+
+                    <span class="essay-cta">Read the reflection</span>
+                  </div>
+                </a>
+              {% endfor %}
+            </div>
+          {% else %}
+            <div class="empty-state">
+              <p>Essays and reflections will appear here as they are published.</p>
+            </div>
+          {% endif %}
+        </section>
+      </div>
+    </section>
   </main>
 
   <footer>
-    <span class="footer-logo">JB Wonders</span>
-    <span class="footer-copy">© 2026 JB WNDRS · Built with GitHub Pages</span>
+    <div class="shell footer-inner">
+      <span>© 2026 JB WNDRS</span>
+      <span>Travel, reflection, and the moments between.</span>
+      <span>San Diego, CA</span>
+    </div>
   </footer>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const tileImage = document.getElementById("sights-tile-image");
+    function resolveUrl(path, baseUrl) {
+      try {
+        return new URL(path, baseUrl).href;
+      } catch {
+        return path;
+      }
+    }
 
-      if (!tileImage || !tileImage.dataset.vimeoId) {
+    function hideEssayImage(image) {
+      const wrap = image.closest(".essay-image-wrap");
+
+      if (wrap) {
+        wrap.style.display = "none";
+      }
+    }
+
+    async function findFirstArticleImage(articleUrl) {
+      try {
+        const response = await fetch(articleUrl);
+
+        if (!response.ok) {
+          return null;
+        }
+
+        const html = await response.text();
+        const doc = new DOMParser().parseFromString(html, "text/html");
+        const firstImage = doc.querySelector("article img, main img, img");
+
+        if (!firstImage) {
+          return null;
+        }
+
+        const imageSrc = firstImage.getAttribute("src");
+
+        if (!imageSrc) {
+          return null;
+        }
+
+        return resolveUrl(imageSrc, articleUrl);
+      } catch {
+        return null;
+      }
+    }
+
+    async function loadEssayCardImage(card) {
+      const image = card.querySelector(".essay-image");
+      const articleUrl = card.dataset.essayUrl;
+      const manualImage = card.dataset.manualImage;
+
+      if (!image) {
         return;
       }
 
-      const vimeoId = tileImage.dataset.vimeoId;
-      const backupImage = tileImage.dataset.backupImage;
-      const fallbackVideo = document.getElementById("sights-tile-fallback-video");
+      image.onload = () => image.classList.add("loaded");
+      image.onerror = () => hideEssayImage(image);
 
-      const oembedUrl =
-        "https://vimeo.com/api/oembed.json?url=" +
-        encodeURIComponent("https://vimeo.com/" + vimeoId) +
-        "&width=1600";
+      if (manualImage) {
+        image.src = manualImage;
+        return;
+      }
 
-      fetch(oembedUrl)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error("Vimeo thumbnail lookup failed");
-          }
+      const articleImage = await findFirstArticleImage(articleUrl);
 
-          return response.json();
-        })
-        .then(data => {
-          if (!data.thumbnail_url) {
-            throw new Error("No Vimeo thumbnail returned");
-          }
+      if (!articleImage) {
+        hideEssayImage(image);
+        return;
+      }
 
-          tileImage.src = data.thumbnail_url;
-          tileImage.style.display = "block";
+      image.src = articleImage;
+    }
 
-          if (fallbackVideo) {
-            fallbackVideo.classList.add("is-hidden");
-          }
-        })
-        .catch(() => {
-          if (backupImage) {
-            tileImage.src = backupImage;
+    document.addEventListener("DOMContentLoaded", function () {
+      const tileImage = document.getElementById("sights-tile-image");
+
+      if (tileImage && tileImage.dataset.vimeoId) {
+        const vimeoId = tileImage.dataset.vimeoId;
+        const backupImage = tileImage.dataset.backupImage;
+        const fallbackVideo = document.getElementById(
+          "sights-tile-fallback-video"
+        );
+
+        const oembedUrl =
+          "https://vimeo.com/api/oembed.json?url=" +
+          encodeURIComponent("https://vimeo.com/" + vimeoId) +
+          "&width=1600";
+
+        fetch(oembedUrl)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Vimeo thumbnail lookup failed");
+            }
+
+            return response.json();
+          })
+          .then((data) => {
+            if (!data.thumbnail_url) {
+              throw new Error("No Vimeo thumbnail returned");
+            }
+
+            tileImage.src = data.thumbnail_url;
             tileImage.style.display = "block";
 
             if (fallbackVideo) {
               fallbackVideo.classList.add("is-hidden");
             }
-          } else if (fallbackVideo) {
-            tileImage.style.display = "none";
-            fallbackVideo.classList.remove("is-hidden");
-          }
-        });
+          })
+          .catch(() => {
+            if (backupImage) {
+              tileImage.src = backupImage;
+              tileImage.style.display = "block";
+
+              if (fallbackVideo) {
+                fallbackVideo.classList.add("is-hidden");
+              }
+            } else if (fallbackVideo) {
+              tileImage.style.display = "none";
+              fallbackVideo.classList.remove("is-hidden");
+            }
+          });
+      }
+
+      document
+        .querySelectorAll(".essay-card")
+        .forEach((card) => loadEssayCardImage(card));
+
+      const header = document.getElementById("site-header");
+
+      const updateHeader = () => {
+        header.classList.toggle("scrolled", window.scrollY > 12);
+      };
+
+      updateHeader();
+      window.addEventListener("scroll", updateHeader, { passive: true });
     });
   </script>
-
 </body>
 </html>

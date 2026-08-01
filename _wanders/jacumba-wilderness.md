@@ -11,7 +11,7 @@ content_block_1:
     sense of distance await beyond the first bend in the trail.
   photo: /images/uploads/jacumba_area_map.jpg
   photo_caption: "Map view of San Diego County and the Mexico Border region with
-    relative location of Jacumba Wilderness (lower left hand area of image). "
+    relative location of Jacumba Wilderness (lower right hand area of image). "
 content_block_2:
   narrative: >-
     The area boasts steep rocky ridges, a vast hidden valley, fenced and

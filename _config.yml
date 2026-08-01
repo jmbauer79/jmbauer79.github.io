@@ -9,6 +9,9 @@ collections:
     permalink: /wanders/camino-de-santiago/:name/
   sights_sounds:
     output: false
+  wanders:
+    output: true
+    permalink: /wanders/:name.html
 
 defaults:
   - scope:

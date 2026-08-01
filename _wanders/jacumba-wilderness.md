@@ -47,7 +47,7 @@ content_block_4:
     its name. Both wild horses and people are able to cross freely from Mexico
     to the U.S., and vice-versa. In fact, with no fence covering parts of the
     border, I may have inadvertently walked well into Mexico the first time I
-    hike the trail alone. 
+    hiked the trail alone. 
 
 
     Friends often ask me about my hikes, whether for recommendationsor just to hear what I’ve been up to. In one of these conversations, my friendOmar alerted me to the presence of petroglyphs in the area. I hadn’t yet seenthem, but I was intrigued. There’s something about ancient drawings I findsacred, and I felt drawn to learn more. 

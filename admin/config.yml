@@ -186,7 +186,7 @@ collections:
 
   - name: "wanders"
     label: "JB Wanders"
-    folder: "content/wanders"
+    folder: "_wanders"
     create: true
     slug: "{{slug}}"
     fields:

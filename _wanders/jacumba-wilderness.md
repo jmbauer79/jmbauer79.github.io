@@ -88,8 +88,9 @@ content_block_6:
     injuries, wild animals, potential migrant traffic, no cell service, and no
     other hikers – I recruited two good friends to join me on this adventure.
   photo: /images/uploads/sean-michael-and-jeremy.jpg
-  photo_caption: "My good friends (from left) Sean and Michael who joined me on a
-    journey to the Jacumba Wilderness. "
+  photo_caption: "My good friends (from left) Sean and Michael agreed to join me
+    on an overnight journey to the Jacumba Wilderness to see the legendary
+    Spanish ship petroglyphs. "
 content_block_7:
-  narrative: More to come...
+  narrative: Rest of the story coming soon...
 ---

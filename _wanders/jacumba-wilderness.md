@@ -50,13 +50,13 @@ content_block_4:
     hiked the trail alone. 
 
 
-    Friends often ask me about my hikes, whether for recommendationsor just to hear what I’ve been up to. In one of these conversations, my friendOmar alerted me to the presence of petroglyphs in the area. I hadn’t yet seenthem, but I was intrigued. There’s something about ancient drawings I findsacred, and I felt drawn to learn more. 
+    Friends often ask me about my hikes, whether for recommendations or just to hear what I’ve been up to. In one of these conversations, my friend Omar alerted me to the presence of petroglyphs in the area. I hadn’t yet seen them, but I was intrigued. There’s something about ancient drawings I find sacred, and I felt drawn to learn more. 
 
 
     Whether through the tracking of my internet searches or listening to my conversations, my social media algorithms caught on. I began to see posts on Facebook about the petroglyphs in Jacumba and other sites in Southern California near San Diego. The more I engaged with the content, the more I would see. I wanted to learn more, but, even more so, I wanted to be in the presence of these drawings, to feel the energy of walking where the artists walked, standing where they stood, and seeing their works with my own eyes. 
 
 
-    One image in particular caught my attention. Accordingto local lore, the image portrays the arrival of the Spanish in the 16thcentury and, if the interpretation is accurate, would constitute the oldestwritten or visual record of that event.
+    One image in particular caught my attention. According to local lore, the image portrays the arrival of the Spanish in the 16thcentury and, if the interpretation is accurate, would constitute the oldest written or visual record of that event.
   photo: /images/uploads/ship_downtown.jpeg
   photo_caption: Engraved terrazzo map marking the 1542 arrival of the Spanish
     expedition in the region now known as San Diego. The image depicts the *San

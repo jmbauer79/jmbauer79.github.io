@@ -58,9 +58,11 @@ content_block_4:
 
     One image in particular caught my attention. According to local lore, the image portrays the arrival of the Spanish in the 16thcentury and, if the interpretation is accurate, would constitute the oldest written or visual record of that event.
   photo: /images/uploads/ship_downtown.jpeg
-  photo_caption: Engraved terrazzo map marking the 1542 arrival of the Spanish
-    expedition in the region now known as San Diego. The image depicts the *San
-    Salvador*, the flagship commanded by Juan Rodríguez Cabrillo.
+  photo_caption: Engraved terrazzo map in downtown San Diego marking the 1542
+    arrival of the Spanish expedition in the region now known as San Diego. The
+    image depicts the *San Salvador*, the flagship commanded by Juan Rodríguez
+    Cabrillo. Some say this is the same ship that appears on the Jacumba
+    petroglyphs.
 content_block_5:
   narrative: >-
     Consistently, social media content pertaining to the ship drawing or other

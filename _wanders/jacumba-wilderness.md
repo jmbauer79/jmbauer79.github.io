@@ -22,7 +22,7 @@ content_block_2:
     irreversible consequences.
 
 
-    Despite the proximity to the freeway, the area is generally silent, broken only by the occasional wren or raven. The jagged mountains separate sight and sound between these mysterious passageways from the rest of civilization, a quality that may help to explain past and present appeal. Usage of the trails has endured from the historic nomadic movements of the Kumeyaay between the desert and the mountains to the wanderings of modern hikes seeking adventure, solitude, and a sense of wonder. Countless migrants have long found these canyons to serve a convenient entrance to the U.S. unseen and unheard, though their innumerable footprints betray their desire to pass without a trace.  
+    Despite the proximity to the freeway, the area is generally silent, broken only by the occasional wren or raven. The jagged mountains separate sight and sound between these mysterious passageways from the rest of civilization, a quality that may help to explain past and present appeal. Usage of the trails has endured from the historic nomadic movements of the Kumeyaay between the desert and the mountains to the wanderings of modern hikers seeking adventure, solitude, and a sense of wonder. Countless migrants have long found these canyons to serve a convenient entrance to the U.S. unseen and unheard, though their innumerable footprints betray their desire to pass without a trace.  
 
 
     I first became aware of this mountain range and canyon network around 2015, when a new job I took that June had me driving regularly from San Diego to the Calexico and Mexicali areas, down in the valley an hour east of Jacumba. The freeway cut directly through the landscape, yet the wilderness beyond always seemed distant and untouchable. Yet each time I drove through, I observed thousands of footprints in the sandy washes, intriguing me. Who made them? Where did they come from? Where were they headed? 
@@ -43,7 +43,7 @@ content_block_4:
     The steady winds have shaped the brittle granite, with holes and small
     enclosures, generating forms like hardened sponge or eerily reminiscent of
     skulls and eye sockets. Surprisingly, a small grassy meadow covers the upper
-    valley, surrounded by otherworldly-rock formations, for which the trail gets
+    valley, surrounded by otherworldly rock formations, for which the trail gets
     its name. Both wild horses and people are able to cross freely from Mexico
     to the U.S., and vice-versa. In fact, with no fence covering parts of the
     border, I may have inadvertently walked well into Mexico the first time I
@@ -56,7 +56,7 @@ content_block_4:
     Whether through the tracking of my internet searches or listening to my conversations, my social media algorithms caught on. I began to see posts on Facebook about the petroglyphs in Jacumba and other sites in Southern California near San Diego. The more I engaged with the content, the more I would see. I wanted to learn more, but, even more so, I wanted to be in the presence of these drawings, to feel the energy of walking where the artists walked, standing where they stood, and seeing their works with my own eyes. 
 
 
-    One image in particular caught my attention. According to local lore, the image portrays the arrival of the Spanish in the 16thcentury and, if the interpretation is accurate, would constitute the oldest written or visual record of that event.
+    One image in particular caught my attention. According to local lore, the image portrays the arrival of the Spanish in the 16th century and, if the interpretation is accurate, would constitute the oldest written or visual record of that event.
   photo: /images/uploads/ship_downtown.jpeg
   photo_caption: Engraved terrazzo map in downtown San Diego marking the 1542
     arrival of the Spanish expedition in the region now known as San Diego. The
@@ -69,18 +69,18 @@ content_block_5:
     petroglyphs or sacred sites excluded precise location information. I
     understand and appreciate this. Leaving the exact location out preserves the
     integrity of the sites and reduces the risk of vandalism. Those who truly
-    desire to seethe sites must do their research. Putting the work in first
+    desire to see the sites must do their research. Putting the work in first
     encourages those who are successful to better appreciate their experiences. 
 
 
-    My research gave me advice on navigating the USGS map to the approximate location of the pictographs in Pinto Canyon. While the guidance from the article got me close, additional research led me to amore precise endpoint to use.
+    My research gave me advice on navigating the USGS map to the approximate location of the pictographs in Pinto Canyon. While the guidance from the article got me close, additional research led me to a more precise endpoint to use.
   photo: /images/uploads/jacumba_usgs_map.jpg
   photo_caption: "USGS map of the region. "
 content_block_6:
   narrative: From there came fun with Google Earth. Using the aerial imagery, I
     traced multiple, potential pathways to arrive at the ship drawing,
     accounting for elevation changes and length of the potential routes. I even
-    went on a few day hikes to test different entry ways, in some cases reaching
+    went on a few day hikes to test different entryways, in some cases reaching
     dead-ends like ancient, dry waterfalls, or insurmountable boulders.
     Ultimately, from the desktop map exercises and day hike trial runs, I found
     a route I believed could work, but it would require an overnight stay due to

@@ -25,9 +25,9 @@ content_block_3:
     I wanted to understand more about the origin and symbolism of the iconic
     scallop shell before traveling to Spain next month. I quickly learned the
     relationship between the Camino de Santiago and the scallop shell is not a
-    recent trend. In fact, the earliest evidence I found goes back to the
-    12thcentury, around the time visits to the legendary tomb of St. James
-    started to take off across Europe. 
+    recent trend. In fact, the earliest evidence I found goes back to the 12th
+    century, around the time visits to the legendary tomb of St. James started
+    to take off across Europe. 
 
 
     Written accounts around this time included the Liber Sancti Jacobi / Codex Calixtinus, a five-book compilation about Saint James and the route to Santiago, published between 1138 and 1145. The work describes the Camino and includes prayers, pilgrimage travel guidance, and stories of miracles associated with Saint James and pilgrim “souvenirs” from Santiago. For example, in one instance included, said to have occurred in 1106, a knight suffering from a severe throat ailment was cured after appealing to St. James and being touched with a scallop shell that a neighbor had brought back from a pilgrimage to Santiago. According to the account, the knight was healed and subsequently inspired to make his own pilgrimage to the tomb of St. James.
@@ -53,4 +53,7 @@ content_block_5:
 
 
     My next question was: When did the shell turn sideways?
+
+
+    I love the metaphor of the shell and its ribs representing multiple roads or routes converging to Santiago. I was surprised to find no evidence of this symbolism in medieval times. Rather, it seems to have originated relatively recently in the 1980s.
 ---

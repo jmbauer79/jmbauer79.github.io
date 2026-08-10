@@ -8,9 +8,10 @@ content_block_1:
     hanging from many if not most pilgrims themselves walking to or from
     Santiago.
   photo: /images/uploads/back_pack_setup.jpeg
-  photo_caption: I’ve attached a scallop I found here along the Pacific to my pack
-    for my training hikes here in San Diego and for journey to Spain. I may add
-    or swap for a local shell once I arrive in Saint-Jean.
+  photo_caption: I’ve attached a scallop I found here along the Pacific coast to
+    my pack for my training hikes here in San Diego and for the journey to
+    Spain. I may add or swap that shell for a local one once I arrive in
+    Saint-Jean, and maybe again at the Atlantic coast in Fisterra.
 content_block_2:
   narrative: The shell is clearly visible on movie posters for “The Way” and other
     films about the Camino. It shows up throughout Camino travel books. It
@@ -49,7 +50,7 @@ content_block_4:
 content_block_5:
   narrative: >-
     The orientation of the shells is notable. The umbo, or point of convergence,
-    is at the top. My question is:
+    is at the top. 
 
 
     My next question was: When did the shell turn sideways?

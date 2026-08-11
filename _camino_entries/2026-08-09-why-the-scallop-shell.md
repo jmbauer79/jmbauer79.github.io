@@ -25,15 +25,15 @@ content_block_3:
     I wanted to understand more about the origin and symbolism of the iconic
     scallop shell before traveling to Spain next month. I quickly learned the
     relationship between the Camino de Santiago and the scallop shell is not a
-    recent trend. In fact, the earliest evidence I found goes back to the
-    12thcentury, around the time visits to the legendary tomb of St. James
-    started to take off across Europe. 
+    recent trend. In fact, the earliest evidence I found goes back to the 12th
+    century, around the time visits to the legendary tomb of St. James started
+    to take off across Europe. 
 
 
-    One important written source from this period is the Liber Sancti Jacobi, also known as the Codex Calixtinus, a five-book compilation about Saint James and the route to Santiago, compiled between about 1138 and1145. The work describes the Camino and includes prayers, pilgrimage travel guidance, and stories of miracles associated with Saint James and pilgrim “souvenirs” from Santiago. For example, in one account, said to have occurred in 1106, a knight suffering from a severe throat ailment was cured after appealing to St. James and being touched with a scallop shell that a neighbor had brought back from a pilgrimage to Santiago. According to the account, the knight was healed and subsequently inspired to make his own pilgrimage to the tomb of St. James.
+    One important written source from this period is the Liber Sancti Jacobi, also known as the Codex Calixtinus, a five-book compilation about Saint James and the route to Santiago, compiled between about 1138 and 1145. The work describes the Camino and includes prayers, pilgrimage travel guidance, and stories of miracles associated with Saint James and pilgrim “souvenirs” from Santiago. For example, in one account, said to have occurred in 1106, a knight suffering from a severe throat ailment was cured after appealing to St. James and being touched with a scallop shell that a neighbor had brought back from a pilgrimage to Santiago. According to the account, the knight was healed and subsequently inspired to make his own pilgrimage to the tomb of St. James.
 
 
-    Physical evidence backs up the written stories that associate scallops with pilgrims and Santiago. I found many examples of archaeological discoveries throughout Europe with burials dated from the mid-11th through early13th centuries, including sites in France, England, within the Cathedral of Santiago itself, and Jerusalem. The Jerusalem finds are particularly interesting, suggesting possible serial pilgrims who had visited Santiago and later traveled to the Holy Land. Many of the articles noted the shells were pierced with artificial holes, suggesting they were attached to clothing. 
+    Physical evidence backs up the written stories that associate scallops with pilgrims and Santiago. I found many examples of archaeological discoveries throughout Europe with burials dated from the mid-11th through early 13th centuries, including sites in France, England, within the Cathedral of Santiago itself, and Jerusalem. The Jerusalem finds are particularly interesting, suggesting possible serial pilgrims who had visited Santiago and later traveled to the Holy Land. Many of the articles noted the shells were pierced with artificial holes, suggesting they were attached to clothing. 
 
 
     This tracks with the artistic imagery I found portraying pilgrims with scallop shells attached to hats, clothing, and especially bags.
@@ -62,10 +62,10 @@ content_block_6:
     apparently by accident.
 
 
-    In 1987, the Council of Europe chose the Santiago de Compostela Pilgrim Routes as its first European Cultural Route. In addition to promoting democracy, human rights and the rule of law across Europe, this international organization also takes responsibility to “promote…culture and Europe’s cultural and natural heritage.” The year before, the Council sponsored a contest to find a logo for the Camino. 
+    In 1987, the Council of Europe chose the Santiago de Compostela Pilgrim Routes as its first European Cultural Route. In addition to promoting democracy, human rights and the rule of law across Europe, this international organization also takes responsibility to “promote…culture and Europe’s cultural and natural heritage.” In 1986, the Council sponsored a contest to find a logo for the Camino. 
 
 
-    Two Galician designers, Pedro García-Ramos and Ignacio Macua, learned of the contest with only 6 days until the deadline. García-Ramos explained later in an interview that they almost missed it because they learned about it so late. He further recounted their inspiration. They began with twelve yellow stars against a blue backdrop, drawing on the same medieval twelve-star imagery associated with the European flag. García-Ramos then drew lines from the outer points toward a single point in the west. By coincidence, he recognized that the resulting image resembled a scallop shell and adjusted the line lengths to emphasize the likeness. The Council selected the design by García-Ramos and Macua, and the rest is history.
+    Two Galician designers, Pedro García-Ramos and Ignacio Macua, learned of the contest with only 6 days until the deadline. García-Ramos explained later in an interview that they almost missed it because they learned about it so late. He further recounted their inspiration. They began with twelve yellow stars against a blue backdrop, drawing on the same medieval twelve-star imagery associated with the European flag. García-Ramos then drew lines from the outer points toward a single point in the west. By coincidence, he recognized that the resulting image resembled a scallop shell and adjusted the lines and convergence to emphasize the likeness. The Council selected the design by García-Ramos and Macua, and the rest is history.
   photo: /images/uploads/emblem_design.png
   photo_caption: "Camino logo in development. "
 content_block_7:
@@ -88,9 +88,9 @@ content_block_8:
     a relatively nearby source of a natural object that could serve the same
     purpose as an artificial badge. Notably, pilgrims visiting the site of
     Mont-Saint-Michel, where legend told the Archangel Michael had appeared,
-    also appear, for a time, to have returned home with shells as pilgrim
-    badges.. Mont-Saint-Michel sits right at the coast, with shells also readily
-    available. What wasn’t clear was why or when the connection between the
+    also seem, for a time, to have returned home with shells as pilgrim badges.
+    Mont-Saint-Michel sits right at the coast, with shells readily available, as
+    with Santiago. What wasn’t clear was why or when the connection between the
     scallop shell and Mont-Saint-Michel receded while Santiago’s became so
     strong. By the later Middle Ages, pilgrims to Mont-Saint-Michel were also
     carrying lead-alloy pilgrim badges. It’s possible the strengthening
@@ -98,7 +98,7 @@ content_block_8:
     symbol there from other pilgrimages, but I found no evidence proving that.
 
 
-    On a recent beach walk with my friend Rachel here in San Diego, while talking about the Camino and what I hope to find on that journey, we found ourselves gathering scallop shells and came up with an idea. I had mentioned that one of the experiences I look forward to most is making connections with like-minded people from all over the world who are walking the Camino in search of spiritual and personal growth. Rachel and I came up with a plan to make a handful of simple shell charms. I’ll carry them in my pack and have them with me as I meet people along the way. If I find myself spiritually moved and connected with a fellow pilgrim, I’ll hand one over as a keepsake and blessing to carry with them on the rest of their journey.
+    On a recent beach walk with my friend Rachel here in San Diego, while talking about the Camino and what I hope to achieve on that journey, we found ourselves gathering sand dollars and scallop shells and came up with an idea. I had mentioned to her that one of the experiences I look forward to most is making connections with like-minded people from all over the world who are walking the Camino in search of spiritual and personal growth. Rachel and I came up with a plan to make a handful of simple shell charms. I’d carry them in my pack and have them with me as I meet people along the way. I took the idea and ran with it. If I find myself spiritually moved and particularly connected with a fellow pilgrim, I’ll hand one over as a keepsake and blessing to carry with them on the rest of their journey. Buen camino.
   photo: /images/uploads/scallops_from_home.jpeg
   photo_caption: "Homemade scallop charms sourced from the Pacific Coast in San
     Diego County, California. "

@@ -78,9 +78,9 @@ content_block_7:
 
     Pilgrims who visited sacred sites often sought an object to carry home with them, both for protection on the return journey and as a blessing for their home community. These pilgrim souvenirs were often small objects made of lead or other metals.
   photo: /images/uploads/st-thomas.jpg
-  photo_caption: "Lead alloy pilgrim-badge portraying St Thomas à Becket
-    accompanied by two knights, associated with pilgrimage to Canterbury. c.
-    1170-1200. "
+  photo_caption: Lead-alloy pilgrim ampulla portraying St. Thomas Becket
+    accompanied by knights, associated with pilgrimage to Canterbury, c.
+    1170–1200.
 content_block_8:
   narrative: >-
     It’s plausible that the scallop shell became Santiago’s devotional object

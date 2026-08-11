@@ -98,6 +98,9 @@ content_block_8:
     symbol there from other pilgrimages, but I found no evidence proving that.
 
 
+    Some have also suggested a connection to the shell’s much older symbolism of birth and rebirth, dating to antiquity and famously associated with Venus. While I found no historical evidence supporting a connection to the Camino, I do find the symbolism personally meaningful for my own journey. 
+
+
     On a recent beach walk with my friend Rachel here in San Diego, while talking about the Camino and what I hope to achieve on that journey, we found ourselves gathering sand dollars and scallop shells and came up with an idea. I had mentioned to her that one of the experiences I look forward to most is making connections with like-minded people from all over the world who are walking the Camino in search of spiritual and personal growth. Rachel and I came up with a plan to make a handful of simple shell charms. I’d carry them in my pack and have them with me as I meet people along the way. I took the idea and ran with it. If I find myself spiritually moved and particularly connected with a fellow pilgrim, I’ll hand one over as a keepsake and blessing to carry with them on the rest of their journey. Buen camino.
   photo: /images/uploads/scallops_from_home.jpeg
   photo_caption: "Homemade scallop charms sourced from the Pacific Coast in San

@@ -11,14 +11,15 @@ layout: default
 
   <p class="camino-meta">
     {{ page.date | date: "%B %-d, %Y" }}
-    {% if page.start_location and page.end_location %}
+     {% if page.single_location %}
+      · {{ page.single_location }}
+    {% elsif page.start_location and page.end_location %}
       · {{ page.start_location }} to {{ page.end_location }}
     {% elsif page.start_location %}
       · {{ page.start_location }}
     {% elsif page.end_location %}
       · {{ page.end_location }}
-    {% endif %}
-    {% if page.distance_miles %}
+    {% endif %}    {% if page.distance_miles %}
       · {{ page.distance_miles }} miles
     {% endif %}
   </p>

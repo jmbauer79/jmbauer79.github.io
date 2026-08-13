@@ -28,6 +28,11 @@ collections:
         value_type: "int"
         required: false
 
+      - label: "Single Location"
+        name: "single_location"
+        widget: "string"
+        required: false
+
       - label: "Start Location"
         name: "start_location"
         widget: "string"

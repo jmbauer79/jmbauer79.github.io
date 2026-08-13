@@ -78,13 +78,15 @@ title: Camino de Santiago
           <p class="camino-meta">
             {{ entry.date | date: "%B %-d, %Y" }}
 
-            {% if entry.start_location and entry.end_location %}
-              · {{ entry.start_location }} to {{ entry.end_location }}
-            {% elsif entry.start_location %}
-              · {{ entry.start_location }}
-            {% elsif entry.end_location %}
-              · {{ entry.end_location }}
-            {% endif %}
+          {% if entry.single_location %}
+            · {{ entry.single_location }}
+          {% elsif entry.start_location and entry.end_location %}
+            · {{ entry.start_location }} to {{ entry.end_location }}
+          {% elsif entry.start_location %}
+            · {{ entry.start_location }}
+          {% elsif entry.end_location %}
+            · {{ entry.end_location }}
+          {% endif %}
           </p>
 
           {% if entry.km_walked or entry.elevation_gain or entry.weather %}

@@ -86,9 +86,9 @@ collections:
         fields:
           - { label: "Narrative", name: "narrative", widget: "markdown", required: false }
           - { label: "Photo", name: "photo", widget: "image", required: false }
-          - { label: "Photo Caption", name: "photo_caption", widget: "string", required: false }
+          - { label: "Photo Caption", name: "photo_caption", widget: "text", required: false }
           - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
-          - { label: "Vimeo Caption", name: "vimeo_caption", widget: "string", required: false }
+          - { label: "Vimeo Caption", name: "vimeo_caption", widget: "text", required: false }
 
       - label: "Content Block 2"
         name: "content_block_2"
@@ -97,9 +97,9 @@ collections:
         fields:
           - { label: "Narrative", name: "narrative", widget: "markdown", required: false }
           - { label: "Photo", name: "photo", widget: "image", required: false }
-          - { label: "Photo Caption", name: "photo_caption", widget: "string", required: false }
+          - { label: "Photo Caption", name: "photo_caption", widget: "text", required: false }
           - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
-          - { label: "Vimeo Caption", name: "vimeo_caption", widget: "string", required: false }
+          - { label: "Vimeo Caption", name: "vimeo_caption", widget: "text", required: false }
 
       - label: "Content Block 3"
         name: "content_block_3"
@@ -108,9 +108,9 @@ collections:
         fields:
           - { label: "Narrative", name: "narrative", widget: "markdown", required: false }
           - { label: "Photo", name: "photo", widget: "image", required: false }
-          - { label: "Photo Caption", name: "photo_caption", widget: "string", required: false }
+          - { label: "Photo Caption", name: "photo_caption", widget: "text", required: false }
           - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
-          - { label: "Vimeo Caption", name: "vimeo_caption", widget: "string", required: false }
+          - { label: "Vimeo Caption", name: "vimeo_caption", widget: "text", required: false }
 
       - label: "Content Block 4"
         name: "content_block_4"
@@ -119,9 +119,9 @@ collections:
         fields:
           - { label: "Narrative", name: "narrative", widget: "markdown", required: false }
           - { label: "Photo", name: "photo", widget: "image", required: false }
-          - { label: "Photo Caption", name: "photo_caption", widget: "string", required: false }
+          - { label: "Photo Caption", name: "photo_caption", widget: "text", required: false }
           - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
-          - { label: "Vimeo Caption", name: "vimeo_caption", widget: "string", required: false }
+          - { label: "Vimeo Caption", name: "vimeo_caption", widget: "text", required: false }
 
       - label: "Content Block 5"
         name: "content_block_5"
@@ -130,9 +130,9 @@ collections:
         fields:
           - { label: "Narrative", name: "narrative", widget: "markdown", required: false }
           - { label: "Photo", name: "photo", widget: "image", required: false }
-          - { label: "Photo Caption", name: "photo_caption", widget: "string", required: false }
+          - { label: "Photo Caption", name: "photo_caption", widget: "text", required: false }
           - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
-          - { label: "Vimeo Caption", name: "vimeo_caption", widget: "string", required: false }
+          - { label: "Vimeo Caption", name: "vimeo_caption", widget: "text", required: false }
 
       - label: "Content Block 6"
         name: "content_block_6"
@@ -141,9 +141,9 @@ collections:
         fields:
           - { label: "Narrative", name: "narrative", widget: "markdown", required: false }
           - { label: "Photo", name: "photo", widget: "image", required: false }
-          - { label: "Photo Caption", name: "photo_caption", widget: "string", required: false }
+          - { label: "Photo Caption", name: "photo_caption", widget: "text", required: false }
           - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
-          - { label: "Vimeo Caption", name: "vimeo_caption", widget: "string", required: false }
+          - { label: "Vimeo Caption", name: "vimeo_caption", widget: "text", required: false }
 
       - label: "Content Block 7"
         name: "content_block_7"
@@ -152,9 +152,9 @@ collections:
         fields:
           - { label: "Narrative", name: "narrative", widget: "markdown", required: false }
           - { label: "Photo", name: "photo", widget: "image", required: false }
-          - { label: "Photo Caption", name: "photo_caption", widget: "string", required: false }
+          - { label: "Photo Caption", name: "photo_caption", widget: "text", required: false }
           - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
-          - { label: "Vimeo Caption", name: "vimeo_caption", widget: "string", required: false }
+          - { label: "Vimeo Caption", name: "vimeo_caption", widget: "text", required: false }
 
       - label: "Content Block 8"
         name: "content_block_8"
@@ -163,9 +163,9 @@ collections:
         fields:
           - { label: "Narrative", name: "narrative", widget: "markdown", required: false }
           - { label: "Photo", name: "photo", widget: "image", required: false }
-          - { label: "Photo Caption", name: "photo_caption", widget: "string", required: false }
+          - { label: "Photo Caption", name: "photo_caption", widget: "text", required: false }
           - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
-          - { label: "Vimeo Caption", name: "vimeo_caption", widget: "string", required: false }
+          - { label: "Vimeo Caption", name: "vimeo_caption", widget: "text", required: false }
 
       - label: "Content Block 9"
         name: "content_block_9"
@@ -174,9 +174,9 @@ collections:
         fields:
           - { label: "Narrative", name: "narrative", widget: "markdown", required: false }
           - { label: "Photo", name: "photo", widget: "image", required: false }
-          - { label: "Photo Caption", name: "photo_caption", widget: "string", required: false }
+          - { label: "Photo Caption", name: "photo_caption", widget: "text", required: false }
           - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
-          - { label: "Vimeo Caption", name: "vimeo_caption", widget: "string", required: false }
+          - { label: "Vimeo Caption", name: "vimeo_caption", widget: "text", required: false }
 
       - label: "Content Block 10"
         name: "content_block_10"
@@ -185,9 +185,9 @@ collections:
         fields:
           - { label: "Narrative", name: "narrative", widget: "markdown", required: false }
           - { label: "Photo", name: "photo", widget: "image", required: false }
-          - { label: "Photo Caption", name: "photo_caption", widget: "string", required: false }
+          - { label: "Photo Caption", name: "photo_caption", widget: "text", required: false }
           - { label: "Vimeo ID", name: "vimeo_id", widget: "string", required: false }
-          - { label: "Vimeo Caption", name: "vimeo_caption", widget: "string", required: false }
+          - { label: "Vimeo Caption", name: "vimeo_caption", widget: "text", required: false }
 
   - name: "wanders"
     label: "JB Wanders"

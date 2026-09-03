@@ -12,6 +12,7 @@ content_block_1:
     For most of the trip, I’ll also have with me a small stone, some scallop
     charms, and a memorial keepsake.
   photo: /images/uploads/camino-pack.jpeg
+  photo_caption: "Everything I'll have on my back for six weeks. "
 content_block_2:
   narrative: >-
     My total exceeds the general Camino rule of thumb of 10 percent of body
@@ -40,6 +41,7 @@ content_block_2:
 
     At around the two-thirds mark, we reach the Cruz de Ferro, or Iron Cross, where a simple iron cross stands atop a tall wooden pole. Travelers have added stones to this spot for centuries, possibly continuing older roadside rituals dating back to the 5th century or perhaps augmenting an existing cairn that served as a landmark. More recently, since at least the 90s, pilgrims have been leaving a stone or other item brought from home to release a burden or acknowledge an intention.
   photo: /images/uploads/iron-cross-with-pilgrims.jpg
+  photo_caption: A pilgrim stands on a mound of intentions at the Cruz de Ferro.
 content_block_3:
   narrative: >-
     Among these, for my part, I’ll have a piece of pyrite with me I’m bringing

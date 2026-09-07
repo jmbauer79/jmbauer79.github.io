@@ -60,7 +60,8 @@ content_block_3:
 
     So instead of spending my one evening in Madrid alone, I got to spend some of it with a friend. We had drinks at a rooftop bar near Plaza del Callao and wandered around Chueca for a while.
   photo: /images/uploads/img_2361.jpeg
-  photo_caption: "Drinks overlooking Madrid near Plaza de Callao. "
+  photo_caption: "Drinks overlooking the city near Plaza de Callao with my friend
+    Danny, now a med student in Madrid. "
 content_block_4:
   narrative: >-
     As tempting as closing down the bars might have been, jet lag was catching

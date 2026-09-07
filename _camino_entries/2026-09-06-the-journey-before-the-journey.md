@@ -107,7 +107,7 @@ content_block_5:
     Eventually I reached the train station and began the long ride north.
 
 
-    I took an embarrassing number of video clips through the train window, capturing golden fields, little towns, encinas (holm oaks) stations, and mountains beginning to appear in the distance.
+    I took an embarrassing number of video clips through the train window, capturing golden fields, little towns, encinas (holm oaks), train stations, and mountains beginning to appear in the distance.
   vimeo_id: "1224556447"
   vimeo_caption: Train ride with a view. Don’t miss the 🌈!
 content_block_6:

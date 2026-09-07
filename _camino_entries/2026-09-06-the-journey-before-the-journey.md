@@ -92,6 +92,7 @@ content_block_4:
 
     I looked it up and learned the sculpture dates back to 1877, by Ricardo Bellver, inspired by John Milton’s *Paradise Lost*, and depicts Lucifer at the moment of his fall.
   photo: /images/uploads/img_2423.jpeg
+  photo_caption: "Bronze sculpture of the Fallen Angel by Ricardo Bellver, 1877. "
 content_block_5:
   narrative: >-
     According to Madrid legend, the statue sits at exactly 666 meters above sea
@@ -108,6 +109,7 @@ content_block_5:
 
     I took an embarrassing number of video clips through the train window, capturing golden fields, little towns, encinas (holm oaks) stations, and mountains beginning to appear in the distance.
   vimeo_id: "1224556447"
+  vimeo_caption: Train ride with a view. Don’t miss the 🌈!
 content_block_6:
   narrative: >-
     With no direct route to Saint-Jean, or even Pamplona, I looked ahead to a

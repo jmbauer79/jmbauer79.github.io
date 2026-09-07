@@ -11,34 +11,19 @@ content_block_1:
     with a cup of coffee.
 
 
-
-
-
     I began stirring when it was still dark. I couldn’t wait to get out of bed. It’s only day three, and there’s already so much on my mind. I decided I’d journal.
-
-
-
 
 
     Maybe this is an opportunity to practice something I’ve been thinking about at home: getting up early and doing some writing first thing in the morning, before the day really starts. Luckily, there was coffee in the kitchen downstairs. A nice couple was already awake and having breakfast, and they showed me how to use the machine. They were up before sunrise because they’re beginning their Camino today.
 
 
-
-
-
     I grabbed my coffee and made my way back upstairs to capture some moments while the memories are still fresh in my head.
-
-
-
 
 
     I arrived in Madrid around 2 p.m. on Saturday. The flight was lovely, and customs was a breeze. I made my way through the terminal. Despite the obnoxiously large advertising banner tempting me to pull out my phone and open an app, I resisted the temptation to call an Uber to take me into the City center and instead ventured into the Metro, where a nice woman helped me use the machines to purchase a subway ticket and pointed me in the right direction.
 
 
-
-
-
-    After around 40 minutes, I emerged near Plaza de Santa Bárbara to sunshine, cafés, trees and a little outdoor market, with vendors selling arts and crafts, clothes, trinkets and, of course, trash and recycling containers. Obviously, I documented the latter. If you know me and what I do, this is no surprise. Taking photos and videos of trash and recycling receptacles from around the world is a running gag among me and my coworkers.
+    After around 40 minutes, I emerged near Plaza de Santa Bárbara to sunshine, cafés, trees and a little outdoor market, with vendors selling arts and crafts, clothes, trinkets and, of course, I also saw trash and recycling containers. Obviously, I documented the latter. If you know me and what I do, this is no surprise. Taking photos and videos of trash and recycling receptacles from around the world is a running gag among me and my coworkers.
   vimeo_id: "1224555536"
   vimeo_caption: "First glimpse of Madrid! "
 content_block_2:

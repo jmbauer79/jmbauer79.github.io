@@ -163,6 +163,8 @@ content_block_7:
 
     And then I noticed something in the pavement. A scallop shell. The symbol of the Camino.
   photo: /images/uploads/img_2507.jpeg
+  photo_caption: "Multiple Camino routes traverse Spain. I encountered the Camino
+    del Ebro in Zaragoza. "
 content_block_8:
   narrative: >-
     I hadn’t known it beforehand, but I later learned that Zaragoza itself sits
@@ -180,6 +182,8 @@ content_block_8:
 
     Maybe it was simply happenstance, but what was supposed to be a schedule gap between two trains had somehow become a meaningful part of my pilgrimage.
   photo: /images/uploads/img_2547.jpeg
+  photo_caption: On the Puente de Piedra, with the Basílica del Pilar and Puente
+    de Santiago behind me along the Ebro.
 content_block_9:
   narrative: >-
     From Zaragoza, I continued north to Pamplona.

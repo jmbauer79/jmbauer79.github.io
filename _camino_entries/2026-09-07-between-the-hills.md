@@ -38,4 +38,19 @@ content_block_1:
     But today was a good reminder that the hills aren’t really the point.
   vimeo_id: "1225009576"
   vimeo_caption: "Snapshot of today’s walk. "
+content_block_2:
+  vimeo_id: "1225055003"
+  vimeo_caption: Cowbells were ubiquitous and made me happy, though they were mostly on 🐏
+content_block_3:
+  vimeo_id: "1225058133"
+  vimeo_caption: Ultra-localized rainfall within a 🌳. Sound on!
+content_block_4:
+  vimeo_id: "1225057889"
+  vimeo_caption: First glimpse of the ☀️!
+content_block_5:
+  vimeo_id: "1225053805"
+  vimeo_caption: Ephemeral 🌈
+content_block_6:
+  vimeo_id: "1225054238"
+  vimeo_caption: Wild blackberries 😋
 ---

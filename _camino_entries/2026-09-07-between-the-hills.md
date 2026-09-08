@@ -53,4 +53,8 @@ content_block_5:
 content_block_6:
   vimeo_id: "1225054238"
   vimeo_caption: Wild blackberries 😋
+content_block_7:
+  photo: /images/uploads/img_3203.jpeg
+  photo_caption: "Standing about the clouds in the Pyrenees halfway through
+    today’s hike. There’s no where I’d rather be. "
 ---

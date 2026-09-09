@@ -64,6 +64,6 @@ content_block_4:
 content_block_5:
   narrative: I made it to Zubiri around 1:30. I headed directly to Bar Valentin to
     debrief with fellow pilgrims over beers. Good conversation and connection
-    with a new friend inspired me to gift  my first [scallop
+    with a new friend inspired me to gift my first [scallop
     charm](https://jbwndrs.com/wanders/camino-de-santiago/2026-08-09-why-the-scallop-shell/).
 ---

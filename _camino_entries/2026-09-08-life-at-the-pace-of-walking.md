@@ -7,7 +7,7 @@ end_location: Zubiri
 latitude: 42.9355016
 longitude: -1.5129335
 distance_miles: 13.8
-elevation_gain: 1500
+elevation_gain: 457
 weather: "Blue skies with puffy white clouds. "
 content_block_1:
   narrative: >-

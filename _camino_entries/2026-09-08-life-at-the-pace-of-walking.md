@@ -39,9 +39,9 @@ content_block_2:
 
     I began my walk with a smile and felt gratitude to experience another day of beauty.
   vimeo_id: "1225356294"
-  vimeo_caption: Golden sun shining through the clouds, blue skies, stopping to
+  vimeo_caption: "Golden sun shining through the clouds, blue skies, stopping to
     smell the roses, cats and dogs, farm animals, green everywhere, wild
-    blackberries.
+    blackberries, bubbling brooks! "
 content_block_3:
   narrative: >-
     Even as a fast walker, which I am, one still takes in so much more than

@@ -45,7 +45,10 @@ content_block_1:
     She and I went down to the chapel a few minutes early to check out the space and test the acoustics  A moment later the other pilgrims arrived. None of them knew what Kiersten and I had conspired  
 
 
-    At the end of the prayer service, Fr. Cesar announced now we’ll end with a song to the Virgin Mother. That was my cue. I walked up, played the piano accompaniment on my phone and began.  
+    At the end of the prayer service, Fr. Cesar announced now we’ll end with a song to the Virgin Mother. That was my cue. I walked up, played the piano accompaniment on my phone and began.
+
+
+    What’s funny, too, is that Vedla almost didn’t stay at Betania. She explained to us that she had actually reserved a spot at another albergue. She got there, got to her bed, sat down, and said that, for her, the energy felt off. And so she left and found Betania instead. Had she not made that decision, there would have been no one to play the guitar, no singing, and no Ave Maria.
 
 
     It was a moment I’ll remember forever. Without my knowing it, Kiersten and another pilgrim, Scott, recorded it, and I’d like to share a portion below.

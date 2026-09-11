@@ -35,7 +35,7 @@ content_block_2:
     I stopped in a church. They had left some pre-printed prayers for pilgrims. I’ll leave somethings unwritten here but will just say it felt like the words on that piece of paper were speaking directly to me. 
 
 
-    I continued the walk to today’s summit, at about the halfway point, in conversation with Erzebet to encounter the we’ll know Monumento al Peregrino art installation. The series of sillouettes represent the same walk pilgrims have made to Santiago for many centuries.
+    I continued the walk to today’s summit, at about the halfway point, in conversation with Erzebet, who was walking the same tempo as me. As we approached the high point, we could start to see the Monumento al Peregrino art installation. The series of sillouettes represent the same walk pilgrims have made to Santiago for many centuries.
   vimeo_id: "1226056409"
   vimeo_caption: Monumento al Peregrino. Vicente Galbete, 1996.
 content_block_3:

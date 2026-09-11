@@ -11,7 +11,7 @@ elevation_gain: 665
 weather: "Mostly sunny. Beautiful altocumulus clouds in the morning. "
 content_block_1:
   narrative: >-
-    I made today another day without a an albergue reservation. I left later
+    I made today another day without an albergue reservation. I left later
     starting off on my own again, around 7:30 am, leaving after about half the
     group and before the rest. 
 

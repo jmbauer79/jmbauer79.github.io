@@ -18,7 +18,7 @@ content_block_1:
     I had a particular hostel in mind. Betania,  named after Saint Martha de Betania, who showed hospitality to Jesus in the gospels. The albergue has only 20 beds and included a pilgrim’s dinner, in which we all eat together family style. 
 
 
-    Committed to staying there, I got an early start. Too early it would seem. The doors opened at 1 and I arrived at 11. 
+    Committed to staying there, I got an early start out of Zubiri, pre-sunrise. Too early it would seem. I hauled ass thinking there would be a queue. The doors opened at 1 and I arrived at 11. I was the first one to arrive  
 
 
     I took a seat on the stoop assuming I’d have to wait around for 2 hours. 
@@ -33,16 +33,22 @@ content_block_1:
     I returned to the albergue and was assigned a bed. 
 
 
-    Not long after, one of the fellow pilgrims was playing guitar in the common room, specifically Imagine by John Lennon. I felt inspired to join in and sing with her. 
+    Not long after, one of the fellow pilgrims, Velda from Finland, was playing guitar in the common room, specifically Imagine by John Lennon. I felt inspired to join in and sing with her. 
 
 
-    One of the other volunteers heard me singing.   She let me know that after dinner, there would be a reflection in the 400 year old church attached to the albergue and asked whether I’d like to sing “the acoustics are amazing.” She just said the song would need to be religious. 
+    One of the other albergue volunteers heard me singing. She let me know that after dinner, there would be a reflection in the 400 year old church attached to the albergue and asked whether I’d like to sing. “The acoustics are amazing.” She just said the song would need to be religious. 
 
 
-    I told her I used to sing Ave Maria all the time at family weddings. Perfect 
+    I told her I used to sing Ave Maria all the time at family weddings. Perfect, she said 
 
 
-    It was a moment. Without my knowing it, the volunteer recorded it.
+    She and I went down to the chapel a few minutes early to check out the space and test the acoustics  A moment later the other pilgrims arrived. None of them knew what Kiersten and I had conspired  
+
+
+    At the end of the prayer service, Fr. Cesar announced now we’ll end with a song to the Virgin Mother. That was my cue. I walked up, played the piano accompaniment on my phone and began.  
+
+
+    It was a moment I’ll remember forever. Without my knowing it, the volunteer recorded it, and I’d like to share a portion below.
   vimeo_id: "1225839000"
   vimeo_caption: Singing the Ave Maria in the 17th Century Iglesia de las
     Agustinas Recoletas (Convento de la Purísima Concepción), Pamplona.

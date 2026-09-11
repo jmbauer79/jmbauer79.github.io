@@ -2,6 +2,7 @@
 title: "Crossing a bridge "
 date: 2026-09-11
 stage_number: 4
+single_location: ""
 start_location: "Pamplona "
 end_location: "Puente la Reina "
 latitude: 42.6733021

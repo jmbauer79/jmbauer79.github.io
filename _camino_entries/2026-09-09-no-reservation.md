@@ -15,7 +15,7 @@ content_block_1:
     first come first serve albergue (pilgrims hostel).
 
 
-    I had a particular hostel in mind. Betania,  named after Saint Martha de Betania, who showed hospitality to Jesus in the gospels. The albergue has only 20 beds and included a pilgrim’s dinner, in which we all eat together family style. 
+    I had a particular hostel in mind. Betania, named after Saint Martha de Betania, who showed hospitality to Jesus in the gospels. The albergue has only 20 beds and included a pilgrim’s dinner, in which we all eat together family style. 
 
 
     Committed to staying there, I got an early start out of Zubiri, pre-sunrise. Too early it would seem. I hauled ass thinking there would be a queue. The doors opened at 1 and I arrived at 11. I was the first one to arrive  

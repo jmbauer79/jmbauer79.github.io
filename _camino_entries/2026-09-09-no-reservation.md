@@ -1,5 +1,5 @@
 ---
-title: No reservation
+title: No reservations
 date: 2026-09-10
 stage_number: 3
 start_location: "Zubiri "
@@ -47,4 +47,11 @@ content_block_1:
   vimeo_caption: "Singing Ave Maria "
 content_block_2:
   narrative: Trust the process. Sometimes the best memories are unplanned.
+  photo: /images/uploads/img_3700.jpeg
+  photo_caption: "Doors don’t open until 1. Womp womp. "
+  vimeo_id: "1225830054"
+  vimeo_caption: "Tonight’s accommodations. "
+content_block_3:
+  photo: /images/uploads/img_2718.jpeg
+  photo_caption: First pilgrims’ dinner!
 ---

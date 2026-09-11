@@ -10,12 +10,12 @@ distance_miles: 14.5
 weather: Party cloudy mild and warm
 content_block_1:
   narrative: >-
-    Today left my heart full. I took a chance and declined to reserve a place to
-    stay and instead opted to try my chance at getting into a first come first
-    serve albergue (pilgrims hostel).
+    Today left my heart full. I decided to let go of control and declined to
+    reserve a place to stay and instead opted to try my chance at getting into a
+    first come first serve albergue (pilgrims hostel).
 
 
-    I had a particular hostel in mind. Betania,  named after Saint Martha de Betania, who showed hospitality to Jesus in the gospels. The albergue has only 20 beds and included a pilgrim’s dinner, in which we all ear together family style. 
+    I had a particular hostel in mind. Betania,  named after Saint Martha de Betania, who showed hospitality to Jesus in the gospels. The albergue has only 20 beds and included a pilgrim’s dinner, in which we all eat together family style. 
 
 
     Committed to staying there, I got an early start. Too early it would seem. The doors opened at 1 and I arrived at 11. 

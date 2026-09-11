@@ -48,7 +48,7 @@ content_block_1:
     At the end of the prayer service, Fr. Cesar announced now we’ll end with a song to the Virgin Mother. That was my cue. I walked up, played the piano accompaniment on my phone and began.  
 
 
-    It was a moment I’ll remember forever. Without my knowing it, the volunteer recorded it, and I’d like to share a portion below.
+    It was a moment I’ll remember forever. Without my knowing it, Kiersten and another pilgrim, Scott, recorded it, and I’d like to share a portion below.
   vimeo_id: "1225839000"
   vimeo_caption: Singing the Ave Maria in the 17th Century Iglesia de las
     Agustinas Recoletas (Convento de la Purísima Concepción), Pamplona.

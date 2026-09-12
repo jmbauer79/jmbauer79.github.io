@@ -11,13 +11,13 @@ elevation_gain: 595
 weather: "Mostly sunny "
 content_block_1:
   narrative: >-
-    Great day. Maybe my favorite so far
+    Great day. Maybe my favorite so far.
 
 
-    Sunrise start at 7:29 with Scott. We met at the bridge and started walking to finish a conversation we had started yesterday. 
+    Sunrise start at 7:30 with Scott. We met at the bridge and started walking to finish a conversation we had started yesterday about my time at Notre Dame and my faith journey since  
 
 
-    After a couple hours or so of meaningful conversation, we stopped for “second breakfast” at a shaded plaza. 
+    After a couple hours or so of meaningful conversation, we stopped for “second breakfast” at a shaded plaza.
 
 
     Among the memories, three cute dogs, one wearing a t-shirt saying “please don’t feed me.”

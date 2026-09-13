@@ -41,16 +41,16 @@ content_block_3:
     the same albergue. 
 
 
-    I walk over and say hi. We have a broken conversation in French, but she makes the connection that I’m the same person she sang to earlier in the day. I told her it was my favorite memory of the day. 
+    I walk over and say hi. We have a broken conversation in French, but she makes the connection that I’m the same person she sang to earlier in the day. I told her it was my favorite memory of the day. It was a joyous moment with smiles all around. 
 
 
-    Retuning to my table, I recount the tale to my dinner mates, members of my smaller Camino family, and the ask, “so what are you gonna sing?”
+    Retuning to my table, I recount the tale to my dinner mates, members of my smaller Camino family, and they ask, “so what are you gonna sing?”
 
 
-    Pressure’s on. Considering my options, I download the karaoke track of Leonard Cohen’s Hallelujah on my phone and begin singing. The room stops to listen. At the refrain, we become a congregation and everyone joins in, singer or not. 
+    Pressure’s on. Considering my options, I download the karaoke track of Leonard Cohen’s Hallelujah on my phone and begin singing. The room stops to listen. At the refrain, we become not a pilgrims’ dinner but a congregation. Everyone joins in, singer or not. It was such a poignant moment. 
 
 
-    I didn’t think anything could possibly have compared to my Ave Maria moment from a couple days prior, but this impromptu singalong ranks pretty close.
+    I didn’t think anything could possibly have compared to my [Ave Maria moment ](https://jbwndrs.com/wanders/camino-de-santiago/2026-09-09-no-reservation/)from a couple days prior, but this impromptu singalong ranks pretty close.
   vimeo_id: "1226420089"
   vimeo_caption: Pilgrim dinners sometimes break into song. Hallelujah!
 content_block_4:

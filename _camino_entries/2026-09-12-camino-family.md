@@ -7,7 +7,7 @@ end_location: "Los Arcos "
 latitude: 42.5689866
 longitude: -2.1943263
 distance_miles: 13.24
-weather: "Full sun and hot "
+weather: "Sunny and hot "
 content_block_1:
   narrative: >-
     Over the last couple of days, I'm starting to experience what people in the
@@ -16,7 +16,8 @@ content_block_1:
 
     I mean this in a couple of ways. One, there's the immediate group of pilgrims that’s begun to coalesce with while I’ve been spending the majority of my social time, from quiet morning snacks before hitting the road, to walking portions of the trail, from second breakfast with coffee and Spanish tortilla, and from post walk beers on the terrace to group dinners. I know the group will ebb and flow as individual plans change but I’m feeling quite content today.
   photo: /images/uploads/img_4006.jpeg
-  photo_caption: From left,  Emma, Jason, and Ollie leaving Luquin after second breakfast.
+  photo_caption: Camino family members, from left,  Emma, Jason, and Ollie leaving
+    Luquin after second breakfast.
 content_block_2:
   narrative: >-
     I also refer to the larger group of my pilgrimage cohort. Most of us are

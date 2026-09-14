@@ -23,10 +23,12 @@ content_block_2:
     It was a long day, and I captured most of it in my journal. 
 
 
-    I may add more later. For now, I’ll share that when I arrived at my albergue, the sign in the dining room has the music and lyrics to the song the [Frenchwomene was singing](https://jbwndrs.com/wanders/camino-de-santiago/2026-09-12-camino-family/). \
+    I may add more later. For now, I’ll share that when I arrived at my albergue, the sign in the dining room has the music and lyrics to the song the [Frenchwoman was singing](https://jbwndrs.com/wanders/camino-de-santiago/2026-09-12-camino-family/). 
 
-    \
 
-    Onward and upward. God help us.
+    “Onward and upward. God help us.”
+
+
+    Camino coincidence? Or something else?
   photo: /images/uploads/img_4178.jpeg
 ---

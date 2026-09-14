@@ -16,7 +16,8 @@ content_block_1:
     started. I was on the road by 5:20. It was dark and moonless. That means
     stars.
   photo: /images/uploads/img_4029.jpeg
-  photo_caption: "Looking up at the night sky this morning. The Milky Way shown through. "
+  photo_caption: "Looking up at the night sky this morning so dark the Milky Way
+    showed through. "
 content_block_2:
   narrative: >-
     It was a long day, and I captured most of it in my journal. 

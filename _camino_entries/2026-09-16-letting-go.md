@@ -9,7 +9,7 @@ longitude: -3.1882611
 distance_miles: 14.82
 elevation_gain: 496
 weather: "Cool and comfortable. Large puffy clouds with dark undersides. Blue
-  sly between the clouds. "
+  sky between the clouds. "
 content_block_1:
   photo: /images/uploads/img_4358.jpeg
   narrative: >-

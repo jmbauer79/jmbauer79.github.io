@@ -60,13 +60,13 @@ content_block_3:
 
     \
 
-    It was a great day and a lovely meal. There was also talk about whether our Camino family has grown too close, or closed off, and if we are robbing ourselves of meeting or connecting with others. I don’t know the answer, but time will tell.
+    It was a great day and a lovely meal. There was also talk about whether our Camino family has grown too close, or closed off, and if we are robbing ourselves of meeting or connecting with others. I don’t know the answer. I’ve enjoyed the time with my new friends. We’ve laughed so much and provided each other so much support and comfort.
 
 
     This journey is temporary. It was always going to be, as is the time I spend with people on this walk, whether it’s for 10 days or 30. 
 
 
-    Would staying connected limit additional connection? Does it limit individual reflection time? 
+    Would staying connected limit additional connection? Does it limit individual reflection time? Why do we often seek new, or different friends when we already have some in front of us? Do we wonder if we might be missing something? 
 
 
     Regardless, the connections made so far exist. They don’t go away even if we decide to start to walk at different tempos or separately in the coming days. Even after just the week and a half we’ve been through, we share an experience that will carry this friendship forward past the Camino. 

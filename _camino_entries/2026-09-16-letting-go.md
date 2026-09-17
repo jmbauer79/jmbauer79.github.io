@@ -27,7 +27,7 @@ content_block_2:
 
     Today we lost our second balloon. I gave mine up yesterday. It was mostly deflated already and wouldn’t last another day.
   photo: /images/uploads/img_4293.jpeg
-  photo_caption: Bluey, Emma, and I
+  photo_caption: "Bluey, Emma, and I yesterday afternoon. "
   vimeo_id: "1227862515"
   vimeo_caption: "Jason releases his unicorn into the wild. While we didn’t
     condone the action, there’s some valuable symbolism to unpack here. "

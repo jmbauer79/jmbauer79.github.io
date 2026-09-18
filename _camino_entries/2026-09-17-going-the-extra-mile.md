@@ -148,9 +148,12 @@ content_block_2:
 
 
     I also paused by a structure reportedly dating from somewhere between the 6th and 9th centuries, supposedly the remains of the old Monastery of San Félix de Oca.
-
-
-    The ruins are a good reminder of the amount of time people have been walking and praying and living along this route.
+  photo: /images/uploads/img_4415.jpeg
+  photo_caption: "San Félix de Oca monastery ruins, circa 6th to 9th centuries. "
+content_block_3:
+  narrative: >-
+    The ruins are a good reminder of the amount of time people have been walking
+    and praying and living along this route.
 
 
     More profound yet, Atapuerca — the town where I’m staying tonight — is associated with the discovery of a fragment of a human jaw found alongside stone tools and butchered animal bones, supporting the understanding that this area contains some of the earliest and most abundant evidence of humankind in Europe, going back more than a million years.
@@ -165,5 +168,5 @@ content_block_2:
     I miss my Camino family, but I feel good about the prospects for tonight. As Jason says “this is good for us.” 😂
 
 
-    I’m looking forward to potential new connections tonight and debriefing with my, what seem like, “old friends” tomorrow. Funny how that works.
+    I’m looking forward to potential new connections tonight and debriefing with my, what seem like, “old friends” tomorrow, though we’ve known each other all of a week. Funny how that works.
 ---

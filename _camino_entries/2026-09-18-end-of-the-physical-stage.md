@@ -58,5 +58,5 @@ content_block_2:
     \- probably a long time until I see Emma again. Will miss her!
 
 
-    \- Reconnected with Jason. Hope he recovers and that we can finish the Camino together
+    \- Reconnected with Jason. Hope he recovers and can see this through to Santiago.
 ---

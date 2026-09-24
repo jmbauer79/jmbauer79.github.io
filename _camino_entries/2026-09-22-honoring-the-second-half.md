@@ -89,4 +89,8 @@ content_block_2:
 content_block_3:
   photo: /images/uploads/img_5460.jpeg
   photo_caption: But wait! There’s more!
+content_block_4:
+  photo: /images/uploads/img_5459.jpeg
+  photo_caption: Real smile emerges as I catch eyes with pilgrims I know walking
+    along the trail and catches a glimpse of what’s happening. 😂
 ---

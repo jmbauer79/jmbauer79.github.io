@@ -59,10 +59,10 @@ content_block_2:
     Allison has three sons, the youngest of which just started as a freshman at Michigan State University the same school, where my nephew just began as a freshman this fall as well. Her Camino is a gift to herself to commemorate reaching empty nest state. 
 
 
-    Among the topics covered included the magical moments we had both encountered on the Camino. For her part, on day one, from St. Jean to Roncesvalles, jusf after ascending above the cloud layer, she encountered a man spreading the ashes of his lost wife by a statue of the Virgin Mary. She didn’t speak Spanish and he didn’t speak English, but she comforted him and then said her goodbye. Later that day, upon reaching Roncesvalles,  she needed to call a cab to get to where she would be staying that evening. Strangely enough, when the cab arrived, the same man was inside which led to a conversation between the two of them, facilitated by Google translate, during what she learned the backstory of the man and his deceased wife. I also told her some of my experiences to date, including the ribbon I had received in Zaragoza, how I happened to sing Ave Maria in Pamplona, and how and when I felt called to say goodbye to Erin. 
+    Among the topics covered included the magical moments we had both encountered on the Camino. For her part, on day one, from St. Jean to Roncesvalles, just after ascending above the cloud layer, she encountered a man spreading the ashes of his lost wife by a statue of the Virgin Mary. She didn’t speak Spanish and he didn’t speak English, but she comforted him and then said her goodbye. Later that day, upon reaching Roncesvalles,  she needed to call a cab to get to where she would be staying that evening. Strangely enough, when the cab arrived, the same man was inside which led to a conversation between the two of them, facilitated by Google translate, during what she learned the backstory of the man and his deceased wife. I also told her some of my experiences to date, including the ribbon I had received in Zaragoza, how I happened to sing Ave Maria in Pamplona, and how and when I felt called to say goodbye to Erin. 
 
 
-    We appreciate each other’s stories, and then she asked me, “I don’t want to diminish these experiences and the magic of the Camino, but do you think this also exists back home too, but that we move to quickly and fill our lives with too much noise to notice it?”
+    We appreciated each other’s stories, and then she asked me, “I don’t want to diminish these experiences and the magic of the Camino, but do you think this also exists back home too, but that we move to quickly and fill our lives with too much noise to notice it?”
 
 
     “Yes” I told her. There’s a lesson there I hope to carry with me back to San Diego. 
@@ -83,7 +83,7 @@ content_block_2:
     “Of course I stopped for my Camino glamour shots!”
 
 
-    So Allison and I both stopped to get our photos taken by Luca, a photographer from Italy who does pilgrim portraits on a donation basis. What an experience. Allison’s story is much interesting than mine, but it’s not mine to tell, but if you ask me in person, maybe I will share. For now, I’ll just post one of the ridiculously extra photos taken of me in a random field in the middle of Spain on the Camino. Because why not?
+    So Allison and I both stopped to get our photos taken by Luca, a photographer from Italy who does pilgrim portraits on a donation basis. What an experience. Allison’s story is much more interesting than mine, but it’s not mine to tell, but if you ask me in person, maybe I will share. For now, I’ll just post some of the ridiculously extra photos taken of me in a random field in the middle of Spain on the Camino. Because why not?
   photo: /images/uploads/img_5461.jpeg
   photo_caption: Camino glamour shots!
 content_block_3:

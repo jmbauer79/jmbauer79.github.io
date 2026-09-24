@@ -86,4 +86,7 @@ content_block_2:
     So Allison and I both stopped to get our photos taken by Luca, a photographer from Italy who does pilgrim portraits on a donation basis. What an experience. Allison’s story is much interesting than mine, but it’s not mine to tell, but if you ask me in person, maybe I will share. For now, I’ll just post one of the ridiculously extra photos taken of me in a random field in the middle of Spain on the Camino. Because why not?
   photo: /images/uploads/img_5461.jpeg
   photo_caption: Camino glamour shots!
+content_block_3:
+  photo: /images/uploads/img_5460.jpeg
+  photo_caption: But wait! There’s more!
 ---

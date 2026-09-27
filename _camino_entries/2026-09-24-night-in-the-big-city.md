@@ -44,7 +44,7 @@ content_block_1:
     At about 16 miles, today amounted to what really represents an average walking day for me. 
 
 
-    I’ve derailed more in my journal, but for now I’ll note just a few things. 
+    I’ve derailed more in my journal, but for now I’ll note just a handful of memories. 
 
 
     * Dry aged meat for lunch (I ended up ordering a salad and bread too)

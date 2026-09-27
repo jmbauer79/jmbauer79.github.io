@@ -41,7 +41,7 @@ content_block_1:
     Morning arrives. 
 
 
-    At about 16 miles, today amounted to what really amounts to an average walking day for me. 
+    At about 16 miles, today amounted to what really represents an average walking day for me. 
 
 
     I’ve derailed more in my journal, but for now I’ll note just a few things. 

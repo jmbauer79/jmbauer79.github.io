@@ -17,13 +17,13 @@ content_block_1:
     With each passing step, the gravel and small stones on the path gradually gained detail. 
 
 
-    In the cool morning air, the miles seem to pass without notice. Sometimes, I’ll check the status of my progress on my AllTrails app and find I’ve already gone 3 or more miles though it feels I’ve only just begun. 
+    In the cool morning air, the miles seemed to pass without notice. Sometimes, I’ll check the status of my progress on my AllTrails app and find I’ve already gone 3 or more miles though it feels I’ve only just begun. 
 
 
     The changing sky lightens the ambient and awakes my body. Perhaps this is one reason the first few miles go so fast. It’s as if I’m walking partially asleep. There seems to be a distinct moment when light appears and I become fully awake and aware of my surroundings. 
 
 
-    Then the sky really begins to change rapidly, so fast it seems its easy to miss. 
+    Then the sky really begins to change rapidly, so fast it seems it’s easy to miss. 
 
 
     It starts with a crescent of soft pale orange, like a slice of cantaloupe along the eastern horizon, while the western sky remains a faded charcoal blue. 
@@ -44,10 +44,10 @@ content_block_1:
     At about 16 miles, today amounted to what really represents an average walking day for me. 
 
 
-    I’ve derailed more in my journal, but for now I’ll note just a handful of memories. 
+    I’ve detailed more in my journal, but for now I’ll note just a handful of memories. 
 
 
-    * Dry aged meat for lunch (I ended up ordering a salad and bread too)
+    * Cecina (dry aged meat) for lunch. I ended up ordering a salad and bread too. 
 
     * Gorgeous cathedral and its stained glass
 

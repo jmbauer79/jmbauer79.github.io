@@ -26,7 +26,7 @@ content_block_1:
     Then the sky really begins to change rapidly, so fast it seems its easy to miss. 
 
 
-    It starts with a crescent of soft pale orange, like a slice of cantaloupe along the eastern horizon , while the western sky remains a faded charcoal blue. 
+    It starts with a crescent of soft pale orange, like a slice of cantaloupe along the eastern horizon, while the western sky remains a faded charcoal blue. 
 
 
     Then appear the hints of rose, subtle at first, and then becoming a rising orb of concentrated hot pink grading outward,  the sky a piece of wet paper and the predawn sunrays a neon highlighter whose ink spreads from a point. 

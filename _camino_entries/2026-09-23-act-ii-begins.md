@@ -10,7 +10,7 @@ distance_miles: 19
 weather: "Mostly sunny. 70s. "
 content_block_1:
   narrative: >-
-    I awoke well rested, having secured a private room for around more ten euros
+    I awoke well rested, having secured a private room for around ten more euros
     than I’d pay to stay in the dorms.
 
 
@@ -20,7 +20,7 @@ content_block_1:
     I slept well that night, which means I slept in, past sunrise. I’ve been sleeping best with the window open, the cool air providing refreshing ventilation and temperature moderation. In a group setting, the warm blooded seem to consistently win the window battle, meaning I suffer in sweat through the night. In my private room, there’s no contest. 
 
 
-    I awoke to the sound of a guitar playing down below at the street level. It was Arthur, a French pilgrim traveling the Camino with his great-uncle and aunt. He’s a off shore wind turbine engineer who was living in Boston but recently lost his job due to energy policy changes in the U.S.  
+    I awoke to the sound of a guitar playing down below at the street level. It was Arthur, a French pilgrim traveling the Camino with his great-uncle and aunt. He’s an offshore wind turbine engineer who was living in Boston but recently lost his job due to energy policy changes in the U.S.  
 
 
     I gathered my belongings, packed my bag, and went downstairs for a modest breakfast before heading out into the daylight, leaving at roughly the same time as Lizzie from Amsterdam.
@@ -47,7 +47,7 @@ content_block_2:
     I couldn’t ask for a better boss.  
 
 
-    Lizzie and I stopped for breakfast and were soon joined by Hadrien from France, who had walking alone.
+    Lizzie and I stopped for breakfast and were soon joined by Hadrien from France, who had been walking alone.
 
 
     “Can I walk with you guys for a while?” he asked.
@@ -104,7 +104,7 @@ content_block_4:
   narrative: Dinner even ended in a complimentary round of shots and a small kiss
     between Medi and Patricia.
   photo: /images/uploads/img_5453.jpeg
-  photo_caption: "Tonight’s dinner crew! Patrica and Medi standing in the back. "
+  photo_caption: "Tonight’s dinner crew! Patricia and Medi standing in the back. "
 content_block_5:
   narrative: Love is in the air on the Camino.
 ---

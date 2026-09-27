@@ -32,7 +32,7 @@ content_block_1:
     Then appear the hints of rose, subtle at first, and then becoming a rising orb of concentrated hot pink grading outward,  the sky a piece of wet paper and the predawn sunrays a neon highlighter whose ink spreads from a point. 
 
 
-    This last just a moment before the pink becomes orange. Then a brighter orange. And then, a burst of yellow. 
+    This lasts just a moment before the pink becomes orange. Then a brighter orange. And then, a burst of yellow. 
 
 
     My shadow takes definition. No longer amorphous but defined, and long, and guiding me west to my destination.  

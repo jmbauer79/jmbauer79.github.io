@@ -55,7 +55,7 @@ content_block_2:
   photo: /images/uploads/img_5600.jpeg
   photo_caption: "The meal that got me through today. I thought it was chicken
     when I placed my order. No, they told me, and proceeded to say a word I
-    didn’t recognize. Based on the flavor and soft, buttery texture my best
+    didn’t recognize. Based on the flavor and soft, buttery texture, my best
     guess, with the assistance of AI, is mollejas de ternera, sweetbreads,
     something I’d likely never order off a menu, but my options were limited,
     and it actually wasn’t half bad. "
@@ -64,7 +64,8 @@ content_block_3:
   photo_caption: "The trees have eyes. "
   vimeo_id: "1231049396"
   vimeo_caption: "Exploring an abandoned underground storage structure, against my
-    better judgement and until my imagination took over. "
+    better judgement and until my imagination took over, and I got out of there
+    as quickly as possible. "
 content_block_4:
   photo: /images/uploads/img_5664.jpeg
   photo_caption: "Resting on a bench when I was nearly out of energy to find
@@ -83,7 +84,7 @@ content_block_8:
   photo_caption: Setting up my tent before bedtime!
 content_block_9:
   photo: /images/uploads/img_5735.jpeg
-  photo_caption: "Enjoying the local flavors in town (“trout with soups”) before
-    returning to camp for one of the best night’s rests I will have had on the
-    Camino up to this point. "
+  photo_caption: Enjoying the local flavors in town (“trout with soups”) before
+    returning to camp for one of the best night’s rests I’ve had so far on the
+    Camino!
 ---

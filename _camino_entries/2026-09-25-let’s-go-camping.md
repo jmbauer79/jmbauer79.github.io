@@ -1,5 +1,5 @@
 ---
-title: "Let’s go camping "
+title: Let’s go camping!
 date: 2026-09-26
 stage_number: 19
 start_location: "León "
@@ -57,7 +57,8 @@ content_block_2:
     when I placed my order. No, they told me, and proceeded to say a word I
     didn’t recognize. Based on the flavor and soft, buttery texture my best
     guess, with the assistance of AI, is mollejas de ternera, sweetbreads,
-    something I’d likely never order off a menu, but my options were limited. "
+    something I’d likely never order off a menu, but my options were limited,
+    and it actually wasn’t half bad. "
 content_block_3:
   photo: /images/uploads/img_5598.jpeg
   photo_caption: "The trees have eyes. "

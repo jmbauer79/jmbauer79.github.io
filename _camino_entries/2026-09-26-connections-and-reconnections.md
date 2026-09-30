@@ -83,6 +83,9 @@ content_block_2:
     We found a nice spot for lunch - hamburgers and beers even with time for a coffee. I offered to treat Jacopo to lunch and he graciously accepted. 
 
 
+    It’s funny though, or maybe obvious is the better word, I’ve in fact been spending significantly less money on a daily and weekly basis here than I do in my home life, and yet I’m feeling fulfilled and satisfied with so much less. Maybe it’s a bit cliche but I’ll take the lesson.
+
+
     We got back to the albergue just as the line was beginning to move. We retook our place in line and were assigned a double room. 
 
 

@@ -33,7 +33,7 @@ content_block_2:
     *Bright light.* 
 
 
-    This time it was lunar. I opened my eyes and the moonlight shone brightly through the translucent roof of the terrace. To the north I saw a star, likely Polaris, the North Star, based on the orientation of where I lay. 
+    This time it was lunar. I opened my eyes and the moonlight shone brightly through the translucent roof of the terrace. To the north I saw a star, likely Cassiopeia based on the time of night and orientation of where I lay. 
 
 
     Which was outside. On the patio. In a makeshift bed on an adjustable plastic lounge chair. 
@@ -118,6 +118,10 @@ content_block_3:
   photo: /images/uploads/img_5894.jpeg
   photo_caption: "Tonight’s bed. "
 content_block_4:
+  narrative: ""
+  photo: /images/uploads/img_5896.jpeg
+  photo_caption: "View of stars from my makeshift bed at 12:07 am. "
+content_block_5:
   narrative: I eventually awoke for good around 5:30 to the crunching steps of the
     early risers walking west, unaware of the man sleeping outside under the
     terrace.

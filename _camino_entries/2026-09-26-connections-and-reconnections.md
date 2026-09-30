@@ -58,7 +58,7 @@ content_block_1:
   photo_caption: "Reconnecting with Mike and Pascal while approaching Astorga. "
 content_block_2:
   narrative: >-
-    In the meantime, our paths diverged as we heading to our respective
+    In the meantime, our paths diverged as we headed to our respective
     accommodations. Jacopo and I found a first come first serve albergue already
     with a queue of pilgrims at the door that would be opening in around 45
     minutes. We set our bags down and asked the two women in front of us if

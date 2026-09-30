@@ -84,7 +84,7 @@ content_block_2:
     “You can set up on one of these. If it rains, you can move under the roofed terrace. You’re welcome to join for dinner. Also, you can shower, but we just ask that you wait until after 4, when the pilgrims sleeping inside have finished bathing.”
 
 
-    The ridiculous part of all of this is that, while the town was indeed fully booked, I later learned that - pilgrim didn’t show up for his reservation that evening, so there was an empty bed inside I could have used, had I known about it. Also, the albergue allowed me to use a couple of extra blankets to stay warm, so I was never cold that evening. Not to mention the access to hot showers and power. 
+    The ridiculous part of all of this is that, while the town was indeed fully booked, I later learned that a pilgrim didn’t show up for his reservation that evening, so there was an empty bed inside I could have used, had I known about it. Also, the albergue allowed me to use a couple of extra blankets to stay warm, so I was never cold that evening. Not to mention the access to hot showers and power. 
 
 
     Once I showered, I take my place on the patio. I joined the music and helped provide lyrics to the songs being played. Beers all around. 

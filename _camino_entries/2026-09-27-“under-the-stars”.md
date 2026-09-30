@@ -102,19 +102,23 @@ content_block_3:
     I was joined by Jacopo, Beatriz, and Osama whom I had met in Leon and was happy to reconnect with. 
 
 
-    Suffering? No. 
+    After a long dinner of great conversation, everyone retires to journal or early read. I made my bed. I myself journaled until 10:30 and then crawled in. 
 
 
-    Sleeping under the stars? Arguably. 
+    Did I suffer? No. 
 
 
-    Out of my comfort zone? Yes. 
+    Did I actually sleep under the stars? Arguably. 
+
+
+    Was I out of my comfort zone? Absolutely. 
 
 
     Do I need to do it again? Maybe 😆
   photo: /images/uploads/img_5894.jpeg
   photo_caption: "Tonight’s bed. "
 content_block_4:
-  narrative: I eventually awoke around 5:30 to the crunching steps of the early
-    risers walking west unaware of the man sleeping outside under the terrace.
+  narrative: I eventually awoke for good around 5:30 to the crunching steps of the
+    early risers walking west unaware of the man sleeping outside under the
+    terrace.
 ---

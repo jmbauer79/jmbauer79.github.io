@@ -87,10 +87,10 @@ content_block_4:
     Mentally, the challenge was attributable not only to the heavy topics we chose to discuss, but also because we asked tough follow up questions. We each approached the conversation with curiosity and non-judgment, and answered honestly, leading to deeper questions and further challenges. 
 
 
-    Some people describe the Camino as a liminal space, a place between who you were and who you will become. No one here knows who you were before you arrived, and you don’t yet know exactly who you will be when you leave. With no pre held images to maintain, I’ve found my fellow pilgrims to be remarkably transparent from the beginning and even more so as honesty and openness beget more of the same. 
+    Some people describe the Camino as a liminal space, a place between who you were and who you will become. No one here knows who you were before you arrived, and you don’t yet know exactly who you will be when you leave. With no pre-held images to maintain, I’ve found my fellow pilgrims to be remarkably transparent from the beginning and even more so as honesty and openness beget more of the same. 
 
 
-    After several hours of walking and discussion, Osama and I parted ways in Ponferrada, heading towards our respective albergues. Later I thanked him for spending the day walking with me and foe the deeply meaningful conversation  
+    After several hours of walking and discussion, Osama and I parted ways in Ponferrada, heading towards our respective albergues. Later I thanked him for spending the day walking with me and for the deeply meaningful conversation  
 
 
     I had plenty to unpack and process that day, as I closed the mental phase of the Camino, ready to embark upon the spiritual.

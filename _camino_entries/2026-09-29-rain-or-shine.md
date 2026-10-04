@@ -68,7 +68,7 @@ content_block_2:
     Eventually, my patience paid off. The clouds began to break. The rain stopped. Evaporation followed as the sun’s gentle heat came through.
 
 
-    A few hours into the day, I encountered Ulrika, a well-traveled Swedish pilgrim in her thirties I had first met about a week ago at the [tri-continental dinner](https://jbwndrs.com/wanders/camino-de-santiago/2026-09-21-across-generations-across-continents/) featuring microwaves rice.
+    A few hours into the day, I encountered Ulrika, a well-traveled Swedish pilgrim in her thirties I had first met about a week ago at the [tri-continental dinner](https://jbwndrs.com/wanders/camino-de-santiago/2026-09-21-across-generations-across-continents/) featuring microwaved rice.
 content_block_3:
   narrative: >-
     She had left her job and, for now, was simply traveling, including pre- and
@@ -82,9 +82,9 @@ content_block_3:
   vimeo_id: "1232716365"
   vimeo_caption: Ulrika and I take clips of each other walking though another wine region.
 content_block_4:
-  narrative: Each passing day seemingly seems to lead us through another ecosystem
-    or agricultural region. Today we found ourselves again wandering through
-    vineyards, distinct from those earlier on the Camino, but just as beautiful.
+  narrative: Each passing day leads us through another ecosystem or agricultural
+    region. Today we found ourselves again wandering through vineyards, distinct
+    from those earlier on the Camino, but just as beautiful.
   photo: /images/uploads/img_6088.jpeg
   photo_caption: "Grapes on the vine. Leaves taking on fall colors. "
 content_block_5:

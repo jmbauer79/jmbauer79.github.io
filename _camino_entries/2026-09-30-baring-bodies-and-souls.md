@@ -26,7 +26,7 @@ content_block_1:
     “Yes. She’s hoping I’ll change my mind.”
 
 
-    At lunch today, I sat with Daniel (a pseudonym), a 30-somethin pilgrim from Eastern Europe now living in Western Europe. A small group was sitting in the sun at one of the few open restaurants in O Cebreiro. Most were new faces but I knew Osama and Ulrika who invited me to join the table. Wanting my back to the sun, I took the open seat next to Daniel. 
+    At lunch today, I sat with Daniel (a pseudonym), a 30-something pilgrim from Eastern Europe now living in Western Europe. A small group was sitting in the sun at one of the few open restaurants in O Cebreiro. Most were new faces but I knew Osama and Ulrika who invited me to join the table. Wanting my back to the sun, I took the open seat next to Daniel. 
 
 
     We had actually already “met” briefly but informally about an hour prior through the shared trauma of entering the bathing area to find showers lacking both curtains and hot water, at least initially in the case of the latter. The hot water eventually arrived but not before we had already experienced cold wash and rinse cycles.  
@@ -41,7 +41,7 @@ content_block_1:
     Daniel also shared with me a conversation he had had with another pilgrim who, after 38 years, has made the difficult decision to leave her husband. 
 
 
-    He wisely resisted any temptation to compare himself to her and the number of years each passed in their respective situations, recognizing everything is relative and we’re each on own journeys. 
+    He wisely resisted any temptation to compare himself to her and the number of years each passed in their respective situations, recognizing everything is relative and we’re each on our own journeys. 
 
 
     Daniel further laid bare the existence of a Camino crush who has caught his attention. 
@@ -50,7 +50,7 @@ content_block_1:
     While he acknowledged the responsibility to see through the fate of his current relationship before focusing on someone new, he also confessed his failure to overcome that temptation and has found himself spending a majority of his time in Spain with this new woman.  
 
 
-    Throughout our weeks in Spain, we’ve both heard tails of pilgrims over the years finding a love match on the Camino. 
+    Throughout our weeks in Spain, we’ve both heard tales of pilgrims over the years finding a love match on the Camino. 
 
 
     Walking and talking for hours through beautiful scenery with nothing but time. It’s magical. It’s easy, he noted, to fall under that spell. 

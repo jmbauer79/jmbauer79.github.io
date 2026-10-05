@@ -66,6 +66,7 @@ content_block_1:
 
 
     They were smiling, looking into each other’s eyes.
-  photo: /images/uploads/img_8243.jpeg
-  photo_caption: "Ulrika and I cross into Galicia. "
+  photo: /images/uploads/img_6266.jpeg
+  photo_caption: "Pathway in Galicia leading to O Cebreiro. If only life provided
+    us with yellow arrows to follow. "
 ---

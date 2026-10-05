@@ -102,7 +102,7 @@ content_block_3:
     I was joined by Jacopo, Beatriz, and Osama whom I had met in Leon and was happy to reconnect with. 
 
 
-    After a long dinner of great conversation, everyone retired to journal or early read. I made my bed. I myself journaled until 10:30 and then crawled in. 
+    After a long dinner of great conversation, everyone retired to journal or read. I made my bed. I myself journaled until 10:30 and then crawled in. 
 
 
     Did I suffer? No. 

@@ -10,6 +10,7 @@ distance_miles: 7.33
 weather: "Mostly cloudy. Intermittent sprinkles. "
 content_block_1:
   narrative: article under development ✍️
-  photo: /images/uploads/c845b616-c165-485d-b662-02ca886262d3.jpeg
-  photo_caption: We made it!
+  photo: /images/uploads/img_6855.jpeg
+  photo_caption: "Standing in front of the Cathedral with my pilgrim credential
+    stamped to document each stage of my journey. "
 ---

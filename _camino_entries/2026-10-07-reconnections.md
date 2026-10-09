@@ -2,6 +2,7 @@
 title: Reconnections
 date: 2026-10-08
 single_location: "Santiago de Compostela "
+weather: "Blue skies. Partly cloudy. 60s. "
 content_block_1:
   photo: /images/uploads/img_6925.jpeg
   photo_caption: San Diego Jason (Jase) and I in front of the Cathedral!

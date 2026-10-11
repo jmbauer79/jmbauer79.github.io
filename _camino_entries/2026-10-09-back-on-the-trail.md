@@ -12,4 +12,7 @@ content_block_1:
   narrative: article under development ✍️
   photo: /images/uploads/img_7137.jpeg
   photo_caption: Feels good to be walking again!
+content_block_2:
+  photo: /images/uploads/img_7199.jpeg
+  photo_caption: "Ponte Maceira "
 ---

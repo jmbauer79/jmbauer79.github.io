@@ -15,4 +15,7 @@ content_block_1:
 content_block_2:
   photo: /images/uploads/img_7199.jpeg
   photo_caption: "Ponte Maceira "
+content_block_3:
+  photo: /images/uploads/img_7150.jpeg
+  photo_caption: "Jase’s first “second breakfast” "
 ---

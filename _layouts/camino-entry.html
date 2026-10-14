@@ -201,6 +201,52 @@ layout: default
     </div>
   </section>
 
+  <!-- CAMINO ENTRY NAVIGATION -->
+
+  {% assign entries = site.camino_entries | sort: "date" %}
+  {% assign current_index = nil %}
+
+  {% for entry in entries %}
+    {% if entry.url == page.url %}
+      {% assign current_index = forloop.index0 %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+
+  {% if current_index != nil %}
+
+    {% assign previous_index = current_index | minus: 1 %}
+    {% assign next_index = current_index | plus: 1 %}
+    {% assign last_index = entries.size | minus: 1 %}
+
+    <nav class="camino-entry-navigation" aria-label="Camino entry navigation">
+
+      <div class="camino-nav-previous">
+        {% if current_index > 0 %}
+          {% assign previous_post = entries[previous_index] %}
+
+          <a href="{{ previous_post.url | relative_url }}">
+            <span class="camino-nav-label">← Previous Entry</span>
+            <span class="camino-nav-title">{{ previous_post.title }}</span>
+          </a>
+        {% endif %}
+      </div>
+
+      <div class="camino-nav-next">
+        {% if current_index < last_index %}
+          {% assign next_post = entries[next_index] %}
+
+          <a href="{{ next_post.url | relative_url }}">
+            <span class="camino-nav-label">Next Entry →</span>
+            <span class="camino-nav-title">{{ next_post.title }}</span>
+          </a>
+        {% endif %}
+      </div>
+
+    </nav>
+
+  {% endif %}
+
   <p class="camino-back-link">
     <a href="/wanders/camino-de-santiago.html">
       ← Back to Camino page
@@ -426,6 +472,57 @@ layout: default
   .camino-contact-submit:hover,
   .camino-contact-submit:focus-visible {
     background: #102639;
+  }
+
+  /* CAMINO PREVIOUS / NEXT NAVIGATION */
+
+  .camino-entry-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid rgba(24, 48, 68, 0.15);
+    border-bottom: 1px solid rgba(24, 48, 68, 0.15);
+  }
+
+  .camino-nav-previous,
+  .camino-nav-next {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .camino-nav-next {
+    text-align: right;
+  }
+
+  .camino-entry-navigation a {
+    display: block;
+    color: #183044;
+    text-decoration: none;
+  }
+
+  .camino-nav-label {
+    display: block;
+    color: #c18f32;
+    font-family: "Barlow Condensed", system-ui, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .camino-nav-title {
+    display: block;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.15rem;
+    line-height: 1.4;
+  }
+
+  .camino-entry-navigation a:hover .camino-nav-title {
+    text-decoration: underline;
   }
 
   .camino-back-link {

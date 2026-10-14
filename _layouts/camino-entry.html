@@ -180,6 +180,13 @@ layout: default
       >
         <input type="hidden" name="form-name" value="contact">
 
+        <!-- AUTOMATIC EMAIL SUBJECT WITH ARTICLE TITLE -->
+        <input
+          type="hidden"
+          name="subject"
+          value="New comment on: {{ page.title | escape }}"
+        >
+
         <input
           type="hidden"
           name="page-title"

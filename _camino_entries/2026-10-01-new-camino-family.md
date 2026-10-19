@@ -31,7 +31,7 @@ content_block_1:
 
     We comforted him, complimenting the music he had created up to that point, and reassured him we’d have another chance to sing and finish the song another day.
   photo: ""
-  photo_caption: ""
+  photo_caption: " "
   vimeo_id: "1236987812"
   vimeo_caption: "Two days later, Hadrien shared his gift of song uninterrupted,
     singing La Corrida for us at Albergue Casa Domingo. "

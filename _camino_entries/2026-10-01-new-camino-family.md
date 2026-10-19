@@ -104,7 +104,7 @@ content_block_2:
 
     Lizzie is a vegetarian and was also pleased to know El Beso is a vegan space, so the dinner would be fully accessible.
   photo: /images/uploads/img_6353.jpeg
-  photo_caption: Tonight’s vegan dinner courtesy of Albergue El Beso 🥗💋
+  photo_caption: "Tonight’s vegan dinner courtesy of Albergue El Beso 🥗💋 "
 content_block_3:
   narrative: >-
     She also learned the owner is from the Netherlands, like herself. They

@@ -42,7 +42,7 @@ content_block_2:
     It wasn’t even the only incident at that dinner. I sat towards the center of the table while my friends were gathered at one end to my right. I introduced myself to the pilgrim across the table. 
 
 
-    “Susie?”  
+    “Susie?” 
 
 
     “No! That is not my name. Don’t call me that. I hate that name. It’s Susan.”

@@ -1,5 +1,6 @@
 ---
 title: "New Camino Family "
+featured_image: /images/uploads/img_6646.jpeg
 date: 2026-10-02
 stage_number: 25
 start_location: O Cebreiro

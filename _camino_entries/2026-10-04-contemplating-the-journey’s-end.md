@@ -20,7 +20,7 @@ content_block_1:
 
     The front door to the main albergue was locked. I remained outside in the courtyard for a few moments, breathing in the cool fresh air and watching a plump little sparrow singing on the arm of a chair.
   photo: ""
-  photo_caption: "  "
+  photo_caption: ""
   vimeo_id: "1245969890"
   vimeo_caption: "Little bird keeps me company this dark, cool morning. "
 content_block_2:

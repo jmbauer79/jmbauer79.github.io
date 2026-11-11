@@ -88,7 +88,7 @@ content_block_5:
 
 
     They finished their beers and got back on the trail. I didn’t stay much longer. I wanted to reach Arzúa soon, the town where I would be staying that evening. I heard from Pol on WhatsApp. Originally, he was going to stay in Arzúa that evening as well but decided instead to walk further. He asked me when I’d be arriving because he wanted a chance to say goodbye before continuing. It would likely be our last chance to see each other during the trip. I arrived around 3 with Pol packed and ready to go. He had a long day ahead of him but was in great spirits.
-  photo: /images/uploads/img_6630.jpeg
+  photo: /images/uploads/img_6626.jpeg
   photo_caption: "Pol and I say our goodbyes. "
 content_block_6:
   narrative: >-
